@@ -1,0 +1,66 @@
+@import "sh_sanitize.css";
+
+.container {
+  display: grid;
+  /* grid-template-rows: 50px 800px 50px; */
+  /* grid-template-areas:
+    "hd"
+    "sd"
+    "main"
+    "ft"; */
+  /* border: 2px solid yellow;  */
+}
+
+/* add css for nested grid here */
+.box {
+  border: 1px solid red;
+  background: #f8fa9d;
+}
+
+.header {
+  grid-area: hd;
+}
+.footer {
+  grid-area: ft;
+}
+.sidebar {
+  grid-area: sd;
+}
+.main {s
+  grid-area: main;
+}
+
+
+/* .picture {
+    border: 2px black solid;
+    border-radius: 15px;
+    padding: 20px;
+} */
+
+/* .nestedGrid {
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+} */
+
+
+
+/* If Screen Is Wide Enough */
+@media (min-width: 900px) {
+  .container {
+    display: grid;
+    grid-template-columns: 300px 300px 1fr;
+    grid-template-columns: repeat(6, 1fr);
+    /* grid-template-rows: 50px 600px 50px; */
+    grid-template-areas:
+      "hd hd hd hd hd hd hd hd"
+      "sd sd main main main main main main main"
+      "ft ft ft ft ft ft ft ft";
+    border: 2px solid red;
+  }
+  .box {
+    border: 1px solid red;
+    background: cyan;
+  }
+}
