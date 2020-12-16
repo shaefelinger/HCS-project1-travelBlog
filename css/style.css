@@ -1,53 +1,56 @@
 @import "sh_sanitize.css";
+@import "card_style.css";
 
 .container {
   display: grid;
+ 
   /* grid-template-rows: ; */
   grid-template-areas:
     "hd "
     "main"
     "ft ";
   /* border: 2px solid yellow;  */
+
 }
 
 /* add css for nested grid here */
-.box {
+/* .box {
   border: 1px solid red;
   background: #f8fa9d;
-}
+} */
 
 .header {
   grid-area: hd;
   height: 7rem;
   position: fixed;
   width: 100%;
+  background-color: #444;
 }
 
 .main {
   grid-area: main;
   min-height: 800px;
-  margin-top: 7rem
+  margin-top: 7rem;
+  background-color: #F5F5F5
 }
 
 .footer {
   grid-area: ft;
   /* height: 4rem; */
   min-height: 300px;
+  background-color: cadetblue;
 }
 
-/* .picture {
-    border: 2px black solid;
-    border-radius: 15px;
-    padding: 20px;
-} */
+#blogContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* padding: 8rem; */
+  /* flex-direction: row; */
+  /* margin: 10px auto 23px; */
+  /* width: 400px; */
 
-/* .nestedGrid {
-    width: 50%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-} */
-
+}
 
 
 /* If Screen Is Wide Enough */
