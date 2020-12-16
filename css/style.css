@@ -2,12 +2,11 @@
 
 .container {
   display: grid;
-  /* grid-template-rows: 50px 800px 50px; */
-  /* grid-template-areas:
-    "hd"
-    "sd"
+  /* grid-template-rows: ; */
+  grid-template-areas:
+    "hd "
     "main"
-    "ft"; */
+    "ft ";
   /* border: 2px solid yellow;  */
 }
 
@@ -19,17 +18,22 @@
 
 .header {
   grid-area: hd;
-}
-.footer {
-  grid-area: ft;
-}
-.sidebar {
-  grid-area: sd;
-}
-.main {s
-  grid-area: main;
+  height: 7rem;
+  position: fixed;
+  width: 100%;
 }
 
+.main {
+  grid-area: main;
+  min-height: 800px;
+  margin-top: 7rem
+}
+
+.footer {
+  grid-area: ft;
+  /* height: 4rem; */
+  min-height: 300px;
+}
 
 /* .picture {
     border: 2px black solid;
@@ -47,15 +51,15 @@
 
 
 /* If Screen Is Wide Enough */
-@media (min-width: 900px) {
+
+/* @media (min-width: 900px) {
   .container {
     display: grid;
     grid-template-columns: 300px 300px 1fr;
     grid-template-columns: repeat(6, 1fr);
-    /* grid-template-rows: 50px 600px 50px; */
     grid-template-areas:
       "hd hd hd hd hd hd hd hd"
-      "sd sd main main main main main main main"
+      "main main main main main main main"
       "ft ft ft ft ft ft ft ft";
     border: 2px solid red;
   }
@@ -63,4 +67,4 @@
     border: 1px solid red;
     background: cyan;
   }
-}
+} */
