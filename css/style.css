@@ -35,7 +35,7 @@
 
 .footer {
   grid-area: ft;
-  min-height: 400px;
+  min-height: 800px;
   /* background-color: cadetblue; */
 }
 
