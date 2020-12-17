@@ -1,40 +1,30 @@
 
 /* BLOG POST */
 
-
 .blogPost {
   margin: 0.5rem;
   display: flex;
   /* flex-direction: column; */
   align-items: center;
-  /* border: 1px solid #cbd5e0; */
   border-radius: 4px;
   overflow: hidden;
   width: 400px;
   background-color: #fefefe;
   color: initial;
-  /* box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); */
   box-shadow: 0 2px 20px 2px rgba(0,0,0,0.1);
 }
 
 .blogPost a {
-  text-decoration: none;
-  /* width: 100%;
-  height: 100%; */
- 
+  text-decoration: none; 
 }
 
 .blogPost:hover {
-  /* width: 415px; */
   background-color: #fff;
   transform: scale(1.01);
   box-shadow: 0 10px 20px 3px rgba(0,0,0,0.15);;
-  
 }
 
 .blogImage {
-  /* background-image: url("http://placekitten.com/200/300"); */
-  /* background-image: url("https://picsum.photos/id/10/500"); */
   width: 100%;
   height: 280px;
   background-repeat: no-repeat;
@@ -66,7 +56,6 @@
 .blogTextWrapper h2 {
   font-size: 20px;
   font-weight: 500;
-  /* line-height: 30px; */
   color: rgba(17, 24, 39);
   
 }
@@ -74,11 +63,7 @@
 .blogTextWrapper p {
   font-size: 16px;
   font-weight: 200;
-  /* line-height: 21px; */
   color: #4a5568;
-  /* margin: 5px 0; */
-  /* padding: 2rem; */
-
 }
 
 .authorPic img {
@@ -96,7 +81,6 @@ p.author {
   color: #718096;
   margin-bottom: 0;
 } */
-
 
 #post1 .blogImage {
   background-image: url("https://picsum.photos/id/10/500");

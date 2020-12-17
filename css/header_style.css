@@ -10,21 +10,13 @@
   justify-content: space-between; 
   align-items: center;
   padding: 0 10rem;
-  /* height: 48px; */
-  /* line-height: 48px; */
-  
 }
 
 .header .logo {
-  /* float: left; */
   height: 27px;
-
-  /* padding: 12px 10px; */
-  /* color: #f2f2f2; */
 }
 
 .header #companyName {
-  /* color: #222 */
   color: #111;
   font-size: 2.5rem;
   font-weight: 400;
@@ -44,19 +36,14 @@
 
 .header nav a {
   text-transform: uppercase;
-  /* color: #f2f2f2; */
   color: #155e39;
-  /* text-decoration: none; */
   font-size: 1.1rem;
-  /* margin-left: 10px; */
   margin: 0 1rem;
   display: inline-block;
 }
 
 .header nav a:hover {
-  /* color: red; */
-  /* transform: translateY(-3px); */
-  transform: scale(1.1);
+  transform: scale(1.1) translateY(-1px);
 }
 
 .worldLogo {
