@@ -10,7 +10,6 @@
     "ft ";
 }
 
-
 .header {
   grid-area: hd;
   height: 7rem;
@@ -19,15 +18,16 @@
   /* padding: 2rem; */
 }
 
-.pageTitle {
+/* .pageTitle {
   margin-left: 0.5rem;
-}
+} */
 
 .main {
   grid-area: main;
   min-height: 800px;
   margin-top: 7rem;
-  background-color: #F5F5F5
+  background-color: #f5f5f5;
+  /* background-color: white; */
 }
 
 .footer {
@@ -45,9 +45,7 @@
   /* flex-direction: row; */
   /* margin: 10px auto 23px; */
   /* width: 400px; */
-
 }
-
 
 /* If Screen Is Wide Enough */
 
@@ -67,3 +65,27 @@
     background: cyan;
   }
 } */
+
+ .banner-panel {
+  /* background-image: url("../assets/travel01.jpg"); */
+  background-image: url("https://picsum.photos/id/116/1000/535");
+  height: 535px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin: 2rem 1rem;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bannerText {
+  font-size: 4rem;
+  font-weight: 200;
+  color: white;
+  z-index: 1001;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+

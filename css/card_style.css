@@ -33,7 +33,8 @@
 }
 
 .blogImage {
-  background-image: url("http://placekitten.com/200/300");
+  /* background-image: url("http://placekitten.com/200/300"); */
+  /* background-image: url("https://picsum.photos/id/10/500"); */
   width: 100%;
   height: 280px;
   background-repeat: no-repeat;
@@ -91,8 +92,32 @@ p.author {
   color: #4a5568;
 }
 
-p.date {
+/* p.date {
   color: #718096;
   margin-bottom: 0;
+} */
+
+
+#post1 .blogImage {
+  background-image: url("https://picsum.photos/id/10/500");
 }
 
+#post2 .blogImage {
+  background-image: url("https://picsum.photos/id/1016/500");
+}
+
+#post3 .blogImage {
+  background-image: url("https://picsum.photos/id/164/500");
+}
+
+#post4 .blogImage {
+  background-image: url("https://picsum.photos/id/162/500");
+}
+
+#post5 .blogImage {
+  background-image: url("https://picsum.photos/id/163/500");
+}
+
+#post6 .blogImage {
+  background-image: url("https://picsum.photos/id/182/500");
+}

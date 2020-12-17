@@ -2,18 +2,21 @@
 
 /* HEADER */
 .header {
-  /* background-color: #4f4f4f; */
   background-color: #fff;
   border-bottom: 0.125rem #155e39 solid;
-  box-shadow: 0 0px 40px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 0px 20px 2px rgba(0,0,0,0.2);
   z-index: 1000;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0 10rem;
   /* height: 48px; */
   /* line-height: 48px; */
-  /* color: #f2f2f2; */
+  
 }
 
 .header .logo {
-  float: left;
+  /* float: left; */
   height: 27px;
 
   /* padding: 12px 10px; */
@@ -21,25 +24,38 @@
 }
 
 .header #companyName {
-  /* color: #f2f2f2; */
-  /* font-size: 18px; */
+  /* color: #222 */
+  color: #111;
+  font-size: 2.5rem;
   font-weight: 400;
-  float: left;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.worldLogo {
+  margin-bottom: 10px;
 }
 
 /* NAV not shown on small screens */
 .header nav {
-  float: right;
+  /* float: right; */
   /* display: none; */
   /* margin-right: 26px; */
 }
 
 .header nav a {
-  color: #f2f2f2;
-  text-decoration: none;
-  font-size: 14px;
-  margin-left: 10px;
+  text-transform: uppercase;
+  /* color: #f2f2f2; */
+  color: #155e39;
+  /* text-decoration: none; */
+  font-size: 1.1rem;
+  /* margin-left: 10px; */
+  margin: 0 1rem;
 }
+
+.worldLogo {
+  height: 4rem;
+} 
+
 
 /* BURGER-MENU for small screens */
 .header .burger {
