@@ -40,10 +40,15 @@
   font-size: 1.1rem;
   margin: 0 1rem;
   display: inline-block;
+  transition: color 800ms ease-in-out, 
+              transform 800ms ease-in-out;
 }
 
 .header nav a:hover {
   transform: scale(1.1) translateY(-1px);
+  color: #111;
+  transition: color 250ms ease-in-out, 
+              transform 250ms ease-in-out;
 }
 
 .worldLogo {
