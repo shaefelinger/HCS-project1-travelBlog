@@ -50,6 +50,13 @@
   font-size: 1.1rem;
   /* margin-left: 10px; */
   margin: 0 1rem;
+  display: inline-block;
+}
+
+.header nav a:hover {
+  /* color: red; */
+  /* transform: translateY(-3px); */
+  transform: scale(1.1);
 }
 
 .worldLogo {
@@ -58,7 +65,8 @@
 
 
 /* BURGER-MENU for small screens */
-.header .burger {
+
+/* .header .burger {
   display: block;
   float: right;
 }
@@ -66,4 +74,4 @@
 .header .burger img {
   height: 12px;
   padding: 18px;
-}
+} */
