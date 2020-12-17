@@ -2,6 +2,9 @@
 @import "card_style.css";
 @import "header_style.css";
 
+
+
+
 .container {
   display: grid;
   grid-template-areas:
