@@ -1,0 +1,18 @@
+.banner-panel {
+    background-image: url("https://picsum.photos/id/116/1000/535");
+    height: 535px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .bannerText {
+    font-size: 4rem;
+    font-weight: 200;
+    color: white;
+    z-index: 1001;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
