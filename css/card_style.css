@@ -8,7 +8,9 @@
   align-items: center;
   border-radius: 4px;
   overflow: hidden;
-  width: 400px;
+  /* min-width: 320px; */
+  max-width: 500px;
+  /* width: 400px; */
   background-color: #fefefe;
   color: initial;
   box-shadow: 0 2px 20px 2px rgba(0,0,0,0.1);
