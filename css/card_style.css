@@ -1,4 +1,3 @@
-
 /* BLOG POST */
 
 .blogPost {
@@ -8,14 +7,14 @@
   align-items: center;
   border-radius: 4px;
   overflow: hidden;
+  width: 80%;
   /* min-width: 320px; */
-  max-width: 500px;
+  /* max-width: 500px; */
   /* width: 400px; */
   background-color: #fefefe;
   color: initial;
-  box-shadow: 0 2px 20px 2px rgba(0,0,0,0.1);
-  transition: transform  300ms ease-in-out,
-              box-shadow 300ms ease-in-out;
+  box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
 }
 
 .blogPost a {
@@ -25,9 +24,8 @@
 .blogPost:hover {
   background-color: #fff;
   transform: scale(1.02);
-  box-shadow: 0 10px 20px 3px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 20px 3px rgba(0, 0, 0, 0.15);
   /* transition: transform 300ms ease-in-out; */
-              
 }
 
 .blogImage {
@@ -39,6 +37,8 @@
 
 .blogTextWrapper {
   padding: 0 2rem 2.5rem;
+  /* background-color: red; */
+  /* width: 90%; */
 }
 
 /* members link */
@@ -54,7 +54,7 @@
   border-radius: 9999px;
 } */
 
-  /* .topic:hover {
+/* .topic:hover {
     color: #bbb;
     background-color: #444;
   } */
@@ -63,7 +63,13 @@
   font-size: 20px;
   font-weight: 500;
   color: rgba(17, 24, 39);
-  
+  /* max-height: 2rem; */
+  /* overflow: hidden; */
+
+  /* height: 3rem; */
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
 }
 
 .blogTextWrapper p {
@@ -110,4 +116,14 @@ p.author {
 
 #post6 .blogImage {
   background-image: url("https://picsum.photos/id/274/500");
+}
+
+/* RESPONSIVE ------------------------------------- */
+/* tailwind-small 640px */
+@media (min-width: 640px) {
+  .blogPost {
+    width: 40%;
+    /* min-width: 280px; */
+    max-width: 600px;
+  }
 }

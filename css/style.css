@@ -30,6 +30,7 @@
 .footer {
   grid-area: ft;
   min-height: 400px;
+  /* height: 300px; */
 }
 
 #blogContainer {
