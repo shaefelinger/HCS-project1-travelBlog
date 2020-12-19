@@ -1,18 +1,54 @@
 .banner-panel {
-    background-image: url("https://picsum.photos/id/116/1000/535");
-    height: 535px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    margin: 2rem 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-image: url("https://picsum.photos/id/116/1000/535");
+
+  /* max-height: 535px; */
+  /* min-height: fit-content; */
+  /* min-width: 1024px; */
+  /* height: fit-content; */
+
+  height: 200px;
+  /* width: 100%; */
+  background-size: cover;
+  background-position: center;
+  /* background-repeat: no-repeat; */
+  /* background-size: 100%; */
+  margin: 2rem 2rem 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: red;
+}
+
+.bannerText {
+  font-size: 1.7rem;
+  font-weight: 200;
+  color: white;
+  z-index: 1001;
+
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+@media (min-width: 640px) {
+  .bannerText {
+    font-size: 2.4rem;
+    /* margin-top: 100px;
+      margin-bottom: 100px; */
   }
-  
+
+  .banner-panel {
+    height: 335px;
+    /* margin-left: 5%;
+    margin-right: 5%; */
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner-panel {
+    height: 535px;
+  }
+
   .bannerText {
     font-size: 4rem;
-    font-weight: 200;
-    color: white;
-    z-index: 1001;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
+}

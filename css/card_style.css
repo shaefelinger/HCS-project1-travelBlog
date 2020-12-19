@@ -2,12 +2,13 @@
 
 .blogPost {
   margin: 0.5rem;
-  display: flex;
-  /* flex-direction: column; */
-  align-items: center;
+  /* display: flex; */
+  /* flex-direction: column-reverse; */
+  /* align-items: space-around; */
   border-radius: 4px;
   overflow: hidden;
   width: 80%;
+  min-height: 610px;
   /* min-width: 320px; */
   /* max-width: 500px; */
   /* width: 400px; */
@@ -37,6 +38,7 @@
 
 .blogTextWrapper {
   padding: 0 2rem 2.5rem;
+  /* height: 400px; */
   /* background-color: red; */
   /* width: 90%; */
 }
@@ -82,6 +84,7 @@
   height: 40px;
   border-radius: 50%;
   float: left;
+  bottom: 0;
   margin: 4px 16px 0 0;
 }
 
