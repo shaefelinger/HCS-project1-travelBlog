@@ -4,6 +4,13 @@
 @import "banner_style.css";
 @import "footer_style.css";
 
+/* input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+} */
+
 
 .container {
   display: grid;
