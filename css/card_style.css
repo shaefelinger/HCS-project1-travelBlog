@@ -2,17 +2,16 @@
 
 .blogPost {
   margin: 0.5rem;
-  /* display: flex; */
-  /* flex-direction: column-reverse; */
-  /* align-items: space-around; */
+
   border-radius: 4px;
   overflow: hidden;
   width: 80%;
-  min-height: 610px;
+  /* min-height: 610px; */
   /* min-width: 320px; */
   /* max-width: 500px; */
   /* width: 400px; */
   background-color: #fefefe;
+
   color: initial;
   box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.1);
   transition: transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
@@ -37,9 +36,15 @@
 }
 
 .blogTextWrapper {
+  /* background-color: cyan; */
   padding: 0 2rem 2.5rem;
   /* height: 400px; */
-  /* background-color: red; */
+  height: 13.5rem;
+  overflow: hidden;
+  /* 
+  white-space: normal;
+  text-overflow: ellipsis; */
+
   /* width: 90%; */
 }
 
@@ -92,33 +97,38 @@ p.author {
   color: #4a5568;
 }
 
+.cardBottom {
+  padding: 1rem 2rem 2.5rem;
+  /* align-self: flex-end; */
+}
+
 /* p.date {
   color: #718096;
   margin-bottom: 0;
 } */
 
 #post1 .blogImage {
-  background-image: url("https://picsum.photos/id/10/500");
+  background-image: url('https://picsum.photos/id/10/500');
 }
 
 #post2 .blogImage {
-  background-image: url("https://picsum.photos/id/1016/500");
+  background-image: url('https://picsum.photos/id/1016/500');
 }
 
 #post3 .blogImage {
-  background-image: url("https://picsum.photos/id/164/500");
+  background-image: url('https://picsum.photos/id/164/500');
 }
 
 #post4 .blogImage {
-  background-image: url("https://picsum.photos/id/162/500");
+  background-image: url('https://picsum.photos/id/162/500');
 }
 
 #post5 .blogImage {
-  background-image: url("https://picsum.photos/id/249/500");
+  background-image: url('https://picsum.photos/id/249/500');
 }
 
 #post6 .blogImage {
-  background-image: url("https://picsum.photos/id/274/500");
+  background-image: url('https://picsum.photos/id/274/500');
 }
 
 /* RESPONSIVE ------------------------------------- */
