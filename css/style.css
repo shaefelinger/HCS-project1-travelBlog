@@ -1,8 +1,9 @@
-@import "sh_sanitize.css";
-@import "card_style.css";
-@import "header_style.css";
-@import "banner_style.css";
-@import "footer_style.css";
+@import 'sh_sanitize.css';
+@import 'card_style.css';
+@import 'header_style.css';
+@import 'banner_style.css';
+@import 'footer_style.css';
+@import 'blogpage_style.css';
 
 /* input:focus,
 select:focus,
@@ -11,13 +12,12 @@ button:focus {
     outline: none;
 } */
 
-
 .container {
   display: grid;
   grid-template-areas:
-    "hd "
-    "main"
-    "ft ";
+    'hd '
+    'main'
+    'ft ';
 }
 
 .header {
@@ -48,7 +48,11 @@ button:focus {
   align-items: center;
 }
 
-
+button:focus {
+  /* border: none;
+  border-radius: 9999px; */
+  outline: none;
+}
 /* If Screen Is Wide Enough */
 /* tailwind-small 640px */
 @media (min-width: 640px) {
@@ -62,5 +66,4 @@ button:focus {
 
 /* tw-lg 1024 */
 @media (min-width: 1024px) {
-  
 }

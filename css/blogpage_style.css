@@ -1,0 +1,50 @@
+#blogpage1Banner {
+  background-image: url('https://picsum.photos/id/10/1800/535');
+}
+
+.blogpageArtice {
+  /* margin: 0.5rem; */
+  border-radius: 4px;
+  overflow: hidden;
+  width: 90%;
+  color: #333;
+  /* background-color: #fefefe; */
+
+  /* color: initial; */
+  /* box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.1); */
+  /* padding: 2rem; */
+  /* transition: transform 300ms ease-in-out, box-shadow 300ms ease-in-out; */
+}
+
+.blogpageArtice p {
+  color: #666;
+}
+
+.blogpageArtice h2 {
+  margin-bottom: 2rem;
+}
+
+.blogpageArticeImage {
+  width: 100%;
+}
+
+.imageRight {
+  margin: 1rem 0 1rem 2rem;
+  /* margin-left: 2rem; */
+  float: right;
+  /* width: 10px; */
+}
+
+@media (min-width: 640px) {
+  .blogpageArtice {
+    width: 60%;
+  }
+}
+
+figure {
+  /* margin: 0; */
+}
+
+figcaption {
+  font-size: 0.8rem;
+}
