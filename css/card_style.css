@@ -1,31 +1,23 @@
-/* BLOG POST */
+/* ========== BLOG POST ========== */
 
 .blogPost {
   margin: 0.5rem;
-
   border-radius: 4px;
   overflow: hidden;
   width: 80%;
-  /* min-height: 610px; */
-  /* min-width: 320px; */
-  /* max-width: 500px; */
-  /* width: 400px; */
   background-color: #fefefe;
-
-  color: initial;
   box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.1);
-  transition: transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
 }
 
-.blogPost a {
-  /* text-decoration: none;  */
-}
+/* .blogPost a {
+  text-decoration: none; 
+} */
 
 .blogPost:hover {
   background-color: #fff;
   transform: scale(1.02);
   box-shadow: 0 10px 20px 3px rgba(0, 0, 0, 0.15);
-  /* transition: transform 300ms ease-in-out; */
 }
 
 .blogImage {
@@ -36,52 +28,19 @@
 }
 
 .blogTextWrapper {
-  /* background-color: cyan; */
   padding: 0 2rem 2.5rem;
-  /* height: 400px; */
   height: 10.4rem;
   overflow: hidden;
-  /* 
-  white-space: normal;
-  text-overflow: ellipsis; */
-
-  /* width: 90%; */
 }
-
-/* members link */
-/* .topic {
-  color: #444;
-  text-decoration: none;
-  font-size: 0.7rem;
-  font-weight: 300;
-  display: inline;
-  text-transform: uppercase;
-  background-color: #bbb;
-  padding: 0.4rem 0.8rem;
-  border-radius: 9999px;
-} */
-
-/* .topic:hover {
-    color: #bbb;
-    background-color: #444;
-  } */
 
 .blogTextWrapper h2 {
   font-size: 20px;
   font-weight: 500;
-  color: rgba(17, 24, 39);
-  /* max-height: 2rem; */
-  /* overflow: hidden; */
-
-  /* height: 3rem; */
-  /* white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; */
 }
 
 .blogTextWrapper p {
   font-size: 16px;
-  font-weight: 200;
+  font-weight: 300;
   color: #4a5568;
 }
 
@@ -99,13 +58,7 @@ p.author {
 
 .cardBottom {
   padding: 1rem 2rem 2.5rem;
-  /* align-self: flex-end; */
 }
-
-/* p.date {
-  color: #718096;
-  margin-bottom: 0;
-} */
 
 #post1 .blogImage {
   background-image: url('https://picsum.photos/id/10/500');
@@ -131,12 +84,11 @@ p.author {
   background-image: url('https://picsum.photos/id/274/500');
 }
 
-/* RESPONSIVE ------------------------------------- */
+/* ========== RESPONSIVE ========== */
 /* tailwind-small 640px */
 @media (min-width: 640px) {
   .blogPost {
     width: 40%;
-    /* min-width: 280px; */
     max-width: 600px;
   }
 }

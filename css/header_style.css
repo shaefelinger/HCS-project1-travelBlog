@@ -1,4 +1,4 @@
-/* HEADER */
+/* ========== HEADER ========== */
 .header {
   background-color: #fff;
   border-bottom: 0.125rem #155e39 solid;
@@ -7,7 +7,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 0 10rem; */
   padding: 0 7%;
 }
 
@@ -27,11 +26,9 @@
   height: 2rem;
 }
 
-/* NAV not shown on small screens */
+/* ========== NAV not shown on small screens ========== */
 .header nav {
-  /* float: right; */
   display: none;
-  /* margin-right: 26px; */
 }
 
 .header nav a {
@@ -50,12 +47,8 @@
 }
 
 /* BURGER-MENU for small screens */
-
 .header .burger {
   display: block;
-  /* float: right; */
-  /* color: red; */
-  /* height: 5rem; */
   font-size: 1.2rem;
 }
 
@@ -63,7 +56,7 @@
   padding: 18px; 
 } */
 
-/* RESPONSIVE ------------------------------------- */
+/* ========== RESPONSIVE ========== */
 /* tailwind-small 640px */
 @media (min-width: 640px) {
   .header nav {
@@ -81,10 +74,7 @@
 /* tw-lg 1024 */
 @media (min-width: 1024px) {
   .header #companyName {
-    /* color: #111; */
     font-size: 2.5rem;
-    /* font-weight: 400; */
-    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
   }
 
   .worldLogo {

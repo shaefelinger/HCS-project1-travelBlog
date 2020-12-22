@@ -1,22 +1,12 @@
 .banner-panel {
-  /* max-height: 535px; */
-  /* min-height: fit-content; */
-  /* min-width: 1024px; */
-  /* height: fit-content; */
-
   height: 200px;
-  /* width: 100%; */
   background-size: cover;
   background-position: center;
-  /* background-repeat: no-repeat; */
-  /* background-size: 100%; */
   margin: 2rem 2rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  /* background-color: red; */
 }
 
 .mainBanner {
@@ -28,14 +18,12 @@
   font-weight: 200;
   color: white;
   z-index: 1001;
-
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .banner-panel button {
   color: white;
   padding: 0.4rem 2.5rem;
-  /* margin-top: 3rem; */
   text-transform: uppercase;
   letter-spacing: 0.3em;
   font-size: 0.8rem;
@@ -51,17 +39,20 @@
   cursor: pointer;
 }
 
+/* .banner-panel button i {
+  padding-right: 5rem;
+  font-size: 4rem;
+  color: aqua;
+} */
+
+/* ========== RESPONSIVE ========== */
 @media (min-width: 640px) {
   .bannerText {
     font-size: 3rem;
-    /* margin-top: 100px;
-      margin-bottom: 100px; */
   }
 
   .banner-panel {
     height: 335px;
-    /* margin-left: 5%;
-    margin-right: 5%; */
   }
 }
 

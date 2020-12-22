@@ -5,13 +5,14 @@
 @import 'footer_style.css';
 @import 'blogpage_style.css';
 
-/* input:focus,
+input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
-} */
+  outline: none;
+}
 
+/* ========== MAIN-PAGE LAYOUT ========== */
 .container {
   display: grid;
   grid-template-areas:
@@ -37,23 +38,28 @@ button:focus {
 .footer {
   grid-area: ft;
   min-height: 400px;
-  /* height: 300px; */
 }
 
 #blogContainer {
   display: flex;
-  /* flex-wrap: wrap; */
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 }
 
-button:focus {
-  /* border: none;
-  border-radius: 9999px; */
-  outline: none;
+/* ========== BASIC STYLING ========== */
+h1,
+h2,
+h3,
+p {
+  color: #1f2937;
 }
-/* If Screen Is Wide Enough */
+
+h4 {
+  color: #666;
+  /* color: #1f2937; */
+}
+/* ========== RESPONSIVE ========== */
+
 /* tailwind-small 640px */
 @media (min-width: 640px) {
   #blogContainer {
