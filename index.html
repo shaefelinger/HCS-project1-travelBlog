@@ -20,9 +20,16 @@
             <nav>
                 <a href="#">places</a>
                 <a href="#">years</a>
-                <a href="#">about</a>
+                <a href="./subpages/about.html">about</a>
             </nav>
-            <a class="burger" href="#"><i class="fas fa-bars"></i></a>
+            <a id="burger" class="burger" href="#"><i class="fas fa-bars"></i></a>
+            <div id="sideMenu" class="sideMenu-hiding">
+                <div>
+                    <a href="#">places</a>
+                    <a href="#">years</a>
+                    <a href="#">About</a>
+                </div>
+            </div>
         </header>
 
         <main class="main box">
@@ -48,9 +55,9 @@
                         <div class="cardBottom">
                             <div>
                                 <div class="authorPic">
-                                    <img src="assets/jonathan.jpg">
+                                    <img src="assets/jane_doe.jpg">
                                 </div>
-                                <p class="author">John Doe</p>
+                                <p class="author">Jane Doe</p>
                             </div>
                         </div>
                     </a>
@@ -122,47 +129,6 @@
                     </a>
                 </article>
 
-                <article class="blogPost" id="post5">
-                    <a href=" #">
-                        <div class="blogImage"></div>
-                        <div class="blogTextWrapper">
-                            <h2>At vero eos et accusam et justo duo dolores et ea rebum</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
-                                Maiores et
-                                perferendis eaque, exercitationem praesentium nihil.</p>
-
-                        </div>
-                        <div class="cardBottom">
-                            <div>
-                                <div class="authorPic">
-                                    <img src="assets/jonathan.jpg">
-                                </div>
-                                <p class="author">John Doe</p>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="blogPost" id="post6">
-                    <a href=" #">
-                        <div class="blogImage"></div>
-                        <div class="blogTextWrapper">
-                            <h2>Pork chop tongue filet mignon, pastrami kevin fatback shank</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
-                                Maiores et
-                                perferendis eaque, exercitationem praesentium nihil.</p>
-
-                        </div>
-                        <div class="cardBottom">
-                            <div>
-                                <div class="authorPic">
-                                    <img src="assets/jonathan.jpg">
-                                </div>
-                                <p class="author">John Doe</p>
-                            </div>
-                        </div>
-                    </a>
-                </article>
             </div>
         </main>
         <footer class="footer" id="footer">
@@ -188,7 +154,7 @@
 
         </footer>
     </div>
-    </div>
+    <script src='/js/index.js'></script>
 </body>
 
 </html>

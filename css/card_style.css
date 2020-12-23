@@ -52,6 +52,14 @@
   margin: 4px 16px 0 0;
 }
 
+.largePic img {
+  height: 120px;
+  /* border-radius: 50%;
+  float: left;
+  bottom: 0;
+  margin: 4px 16px 0 0; */
+}
+
 p.author {
   color: #4a5568;
 }

@@ -33,8 +33,8 @@
 
 .header nav a {
   text-transform: uppercase;
-  color: #155e39;
   font-size: 0.8rem;
+  color: #155e39;
   margin: 0 1rem;
   display: inline-block;
   transition: color 800ms ease-in-out, transform 800ms ease-in-out;
@@ -52,6 +52,43 @@
   font-size: 1.2rem;
 }
 
+/* SIDE-MENU  */
+#sideMenu {
+  background-color: #fff;
+  display: block;
+  width: 5rem;
+  position: fixed;
+  right: 0;
+  top: 5px;
+  /* height: 100%; */
+  z-index: 100000;
+  /* box-shadow: 5px 5px 5px #ccc; */
+  transition: 1s;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  text-align: right;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+
+#sideMenu a {
+  display: block;
+  padding: 0.2rem;
+  text-decoration: none;
+  color: #155e39;
+}
+
+#sideMenu a:hover {
+  font-weight: bold;
+}
+
+.sideMenu-hiding {
+  margin-right: -320px;
+  /* margin-right: 0; */
+}
+
 /* ========== RESPONSIVE ========== */
 /* tailwind-small 640px */
 @media (min-width: 640px) {
@@ -60,6 +97,9 @@
   }
 
   .header .burger {
+    display: none;
+  }
+  #sideMenu {
     display: none;
   }
 }

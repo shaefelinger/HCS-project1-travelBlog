@@ -46,6 +46,10 @@ figcaption {
   height: auto;
 }
 
+.blogpageArticle a:hover {
+  text-decoration: underline;
+}
+
 .imageRight {
   width: 100%;
   height: auto;
@@ -57,10 +61,11 @@ figcaption {
   margin-top: 5rem;
 }
 
+/* AUTHOR  */
 .blogpageAuthorInfo {
   display: flex;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   margin-top: 1rem;
   padding-left: 30%;
   padding-right: 30%;
@@ -71,11 +76,14 @@ figcaption {
 
 .blogpageAuthorInfo p {
   font-size: 1.2rem;
+  padding-top: 1rem;
 }
 
 .blogpageAuthorInfo .author {
-  align-items: center;
+  /* align-items: center; */
 }
+
+/* SHARE THIS ARTICLE... */
 
 .blogpageShare {
   display: flex;
@@ -89,6 +97,12 @@ figcaption {
   color: #666;
   font-size: 2.2rem;
   margin: 0 0.6rem;
+  transition: all 250ms ease-in-out;
+  display: inline-block;
+}
+
+.blogpageShare a:hover {
+  transform: scale(1.1) translateY(-1px);
 }
 
 #blogpageContainer {

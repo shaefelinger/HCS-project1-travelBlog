@@ -1,8 +1,6 @@
 # TODO layout #
-* add blog page
-* make burger menu working  
-* color of bottom link
-* about page
+* make author responsive
+* make burger menu working?
 * clean up
 * rest of blogpages
 
