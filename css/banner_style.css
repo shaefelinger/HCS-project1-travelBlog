@@ -2,7 +2,7 @@
   height: 200px;
   background-size: cover;
   background-position: center;
-  margin: 2rem 2rem 3rem;
+  margin: 2rem 0 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,6 +53,7 @@
 
   .banner-panel {
     height: 335px;
+    margin: 2rem 2rem 3rem;
   }
 }
 
