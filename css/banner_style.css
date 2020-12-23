@@ -1,4 +1,6 @@
-.banner-panel {
+/* ========== BANNER ========== */
+
+.bannerPanel {
   height: 200px;
   background-size: cover;
   background-position: center;
@@ -21,7 +23,7 @@
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.banner-panel button {
+.bannerPanel button {
   color: white;
   padding: 0.4rem 2.5rem;
   text-transform: uppercase;
@@ -33,17 +35,11 @@
   background-color: rgba(55, 55, 55, 0.2);
 }
 
-.banner-panel button:hover {
+.bannerPanel button:hover {
   color: #111;
   background-color: white;
   cursor: pointer;
 }
-
-/* .banner-panel button i {
-  padding-right: 5rem;
-  font-size: 4rem;
-  color: aqua;
-} */
 
 /* ========== RESPONSIVE ========== */
 @media (min-width: 640px) {
@@ -51,14 +47,14 @@
     font-size: 3rem;
   }
 
-  .banner-panel {
+  .bannerPanel {
     height: 335px;
     margin: 2rem 2rem 3rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .banner-panel {
+  .bannerPanel {
     height: 535px;
   }
 

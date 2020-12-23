@@ -52,26 +52,19 @@
   font-size: 1.2rem;
 }
 
-/* .header .burger img {
-  padding: 18px; 
-} */
-
 /* ========== RESPONSIVE ========== */
 /* tailwind-small 640px */
 @media (min-width: 640px) {
   .header nav {
-    /* float: right; */
     display: block;
-    /* margin-right: 26px; */
   }
 
   .header .burger {
     display: none;
-    /* float: right; */
   }
 }
 
-/* tw-lg 1024 */
+/* lg 1024 */
 @media (min-width: 1024px) {
   .header #companyName {
     font-size: 2.5rem;

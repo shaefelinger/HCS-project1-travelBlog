@@ -2,11 +2,7 @@
   background-image: url('https://picsum.photos/id/10/1800/535');
 }
 
-
-/* ARTICLE  */
-h4 {
-  font-size: 1.4rem;
-}
+/* ========== ARTICLE ========== */
 
 figcaption {
   font-size: 0.8rem;
@@ -17,11 +13,8 @@ figcaption {
 }
 
 .blogpageArticle {
-  /* border-radius: 4px; */
-  /* overflow: hidden; */
   width: 90%;
   color: #333;
-
 }
 
 .blogpageArticle p {
@@ -54,13 +47,11 @@ figcaption {
 }
 
 .imageRight {
-  /* margin: 1rem 0 1rem 2rem; */
-  /* float: right; */
   width: 100%;
   height: auto;
 }
 
-/* BOTTOM SECTION  */
+/* ========== BLOGPAGE-BOTTOM SECTION ========== */
 
 .blogpageBottom {
   margin-top: 5rem;
@@ -80,7 +71,6 @@ figcaption {
 
 .blogpageAuthorInfo p {
   font-size: 1.2rem;
-  /* align: center; */
 }
 
 .blogpageAuthorInfo .author {
@@ -101,37 +91,6 @@ figcaption {
   margin: 0 0.6rem;
 }
 
-.bottomNavigationButtons {
-  text-align: center;
-  margin-bottom: 5rem;
-}
-
-.bottomNavigationButtons a {
-  color: white;
-}
-
-
-.bottomNavigationButtons button  {
-  /* color: white; */
-  padding: 0.4rem 2.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-size: 0.8rem;
-  font-weight: 500;
-  /* border: solid 2px white; */
-  transition: all 300ms ease;
-  /* background-color: rgba(55, 55, 55, 0.2); */
-  background-color: #155e39;
-  border: solid 2px #155e39;
-}
-
-.bottomNavigationButtons button:hover {
-  background-color:#fff;
-  cursor: pointer;
-  color: #155e39;
-}
-
-
 #blogpageContainer {
   display: flex;
   justify-content: center;
@@ -148,10 +107,10 @@ figcaption {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    /* background-color: aquamarine; */
-}
-.imageRight {
-  margin: 1rem 0 0rem 1rem;
-  float: right;
-  width: 50%;
+  }
+  .imageRight {
+    margin: 1rem 0 0rem 1rem;
+    float: right;
+    width: 50%;
+  }
 }
