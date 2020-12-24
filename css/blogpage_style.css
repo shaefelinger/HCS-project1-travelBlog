@@ -64,7 +64,9 @@ figcaption {
 /* AUTHOR  */
 .blogpageAuthorInfo {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: left;
   margin-top: 1rem;
   padding-left: 30%;
@@ -79,8 +81,16 @@ figcaption {
   padding-top: 1rem;
 }
 
-.blogpageAuthorInfo .author {
-  /* align-items: center; */
+.blogpageAuthorText {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  margin-top: 1rem;
+  padding-left: 30%;
+  padding-right: 30%;
+  font-size: 0.8rem;
+  color: #888;
+  height: 100%;
 }
 
 /* SHARE THIS ARTICLE... */
@@ -126,5 +136,9 @@ figcaption {
     margin: 1rem 0 0rem 1rem;
     float: right;
     width: 50%;
+  }
+
+  .blogpageAuthorInfo {
+    flex-direction: row;
   }
 }
