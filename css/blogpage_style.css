@@ -96,6 +96,7 @@ figcaption {
   font-size: 0.8rem;
   color: #888;
   height: 100%;
+  text-align: center;
 }
 
 .blogpageAuthorTitle {
@@ -106,7 +107,6 @@ figcaption {
 }
 
 /* SHARE THIS ARTICLE... */
-
 .blogpageShare {
   display: flex;
   flex-direction: column;
@@ -152,7 +152,7 @@ figcaption {
 
   .blogpageAuthorInfo {
     flex-direction: row;
-    text-align: left;
+    /* text-align: left; */
   }
   .blogpageAuthorText {
     padding-left: 30%;
