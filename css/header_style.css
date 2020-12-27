@@ -27,9 +27,6 @@
 }
 
 /* ========== NAV  ========== */
-.header nav {
-  /* display: none; */
-}
 
 .header nav a {
   text-transform: uppercase;
@@ -42,59 +39,13 @@
 }
 
 .header nav a:hover {
-  /* transform: scale(1.1) translateY(-1px); */
   color: #111;
   transition: color 250ms ease-in-out, transform 250ms ease-in-out;
 }
 
-/* BURGER-MENU for small screens */
-.header .burger {
-  display: block;
-  font-size: 1.2rem;
-}
-
-/* SIDE-MENU  */
-/* #sideMenu {
-
-  background-color: #fff;
-  display: block;
-  width: 5rem;
-  position: fixed;
-  right: 0;
-  top: 5px;
-  z-index: 100000;
-  transition: 1s;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  text-align: right;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  height: 100px;
-} */
-
-/* #sideMenu a {
-  display: block;
-  padding: 0.2rem;
-  text-decoration: none;
-  color: #155e39;
-}
-
-#sideMenu a:hover {
-  font-weight: bold;
-}
-
-.sideMenu-hiding {
-  margin-right: -320px;
-} */
-
 /* ========== RESPONSIVE ========== */
-/* tailwind-small 640px */
+/* small 640px */
 @media (min-width: 640px) {
-  /* .header nav {
-    display: block;
-  } */
-
   .header nav a {
     display: inline-block;
     margin: 0 1rem;
@@ -106,16 +57,9 @@
     color: #111;
     transition: color 250ms ease-in-out, transform 250ms ease-in-out;
   }
-
-  /* .header .burger {
-    display: none;
-  }
-  #sideMenu {
-    display: none;
-  } */
 }
 
-/* lg 1024 */
+/* lg 1024px */
 @media (min-width: 1024px) {
   .header #companyName {
     font-size: 2.5rem;

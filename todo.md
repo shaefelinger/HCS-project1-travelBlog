@@ -1,11 +1,8 @@
 # TODO layout #
-* make author responsive
 * clean up
 * rest of blogpages
+* steffen links working
 
 
 
-
-
-q
 original breakpoint @640 

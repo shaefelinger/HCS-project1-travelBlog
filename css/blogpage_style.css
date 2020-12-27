@@ -1,6 +1,15 @@
 #blogpage1Banner {
   background-image: url('https://picsum.photos/id/10/1800/535');
 }
+#blogpage2Banner {
+  background-image: url('https://picsum.photos/id/1016/1800/535');
+}
+#blogpage3Banner {
+  background-image: url('https://picsum.photos/id/155/1800/535');
+}
+#blogpage4Banner {
+  background-image: url('https://picsum.photos/id/249/1800/535');
+}
 
 /* ========== ARTICLE ========== */
 
@@ -68,7 +77,6 @@ figcaption {
   justify-content: center;
   align-items: center;
   text-align: center;
-  /* margin-top: 1rem; */
   padding-left: 30%;
   padding-right: 30%;
   font-size: 0.8rem;
@@ -79,15 +87,10 @@ figcaption {
 .blogpageAuthorInfo .author {
   font-size: 1.2rem;
   margin-bottom: 0;
-  /* padding-top: 1rem; */
 }
 
 .blogpageAuthorText {
-  /* display: flex; */
-  /* justify-content: center;
-  text-align: center; */
   margin-top: 0;
-
   padding-left: 15%;
   padding-right: 15%;
   font-size: 0.8rem;

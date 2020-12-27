@@ -62,7 +62,7 @@ h4 {
 
 /* ========== RESPONSIVE ========== */
 
-/* tailwind-small 640px */
+/* 640px */
 @media (min-width: 640px) {
   #blogContainer {
     display: flex;
@@ -70,8 +70,4 @@ h4 {
     flex-direction: row;
     justify-content: center;
   }
-}
-
-/* tw-lg 1024 */
-@media (min-width: 1024px) {
 }
