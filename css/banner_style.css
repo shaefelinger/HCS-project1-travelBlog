@@ -1,5 +1,26 @@
 /* ========== BANNER ========== */
 
+.mainBanner {
+  background-image: url('https://picsum.photos/id/116/1000/535');
+}
+
+#blogpage1Banner {
+  background-image: url('https://picsum.photos/id/10/1800/535');
+}
+#blogpage2Banner {
+  background-image: url('https://picsum.photos/id/1016/1800/535');
+}
+#blogpage3Banner {
+  background-image: url('https://picsum.photos/id/155/1800/535');
+}
+#blogpage4Banner {
+  background-image: url('https://picsum.photos/id/249/1800/535');
+}
+
+#aboutBanner {
+  background-image: url('https://picsum.photos/id/123/1000/535');
+}
+
 .bannerPanel {
   height: 200px;
   background-size: cover;
@@ -9,14 +30,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.mainBanner {
-  background-image: url('https://picsum.photos/id/116/1000/535');
-}
-
-.aboutBanner {
-  background-image: url('https://picsum.photos/id/123/1000/535');
 }
 
 .bannerText {
@@ -57,6 +70,7 @@
   }
 }
 
+/* large 1024px */
 @media (min-width: 1024px) {
   .bannerPanel {
     height: 535px;
