@@ -1,3 +1,10 @@
+#map {
+  height: 420px;
+  width: 100%;
+  margin-top: 4rem;
+  /* background-color: aqua; */
+}
+
 /* ========== ARTICLE ========== */
 
 figcaption {
@@ -14,13 +21,12 @@ figcaption {
 }
 
 .blogpageArticle p {
-  /* color: #666; */
-  color: red;
+  color: #666;
 }
 
 .blogpageArticle h2 {
   margin-bottom: 2rem;
-  font-size: 2rem;
+  /* font-size: 2rem; */
 }
 
 .blogpageArticeImage {
@@ -76,6 +82,10 @@ figcaption {
 .blogpageAuthorInfo .author {
   font-size: 1.2rem;
   margin-bottom: 0;
+}
+
+.largePic {
+  width: 4rem;
 }
 
 .blogpageAuthorText {
