@@ -4,6 +4,7 @@
 @import 'banner_style.css';
 @import 'footer_style.css';
 @import 'blogpage_style.css';
+@import 'add_location_style.css';
 
 input:focus,
 select:focus,
@@ -47,6 +48,11 @@ button:focus {
   align-items: center;
 }
 
+/* .contentContainer {
+  display: flex;
+  justify-content: center;
+} */
+
 /* ========== BASIC STYLING ========== */
 h1,
 h2,
@@ -60,12 +66,17 @@ h4 {
   font-size: 1.4rem;
 }
 
+button {
+  margin: 0;
+  padding: 0;
+}
+
 /* ========== RESPONSIVE ========== */
 
 /* 640px */
 @media (min-width: 640px) {
   #blogContainer {
-    display: flex;
+    /* display: flex; */
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;

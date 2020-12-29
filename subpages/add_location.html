@@ -6,7 +6,21 @@
     <title>Exercise 1</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
     <script src="https://kit.fontawesome.com/3bc63d2309.js" crossorigin="anonymous"></script>
+
+
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&callback=initMap&libraries=places&v=weekly"
+        defer></script> -->
+
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs"
+        type="text/javascript"></script>
+
+
     <link rel="stylesheet" href="../css/style.css">
+    <!-- <script src="../js/app.js"></script> -->
+
+
 </head>
 
 <body>
@@ -24,17 +38,58 @@
             </nav>
         </header>
 
-        <main class="main ">
-            <div class="bannerPanel" id="blogpage2Banner">
-                <p class="bannerText">Labore et dolore</p>
+        <main class="main">
+            <div class="bannerPanel" id="blogpage4Banner">
+                <p class="bannerText">Add new Post</p>
                 <a href="../index.html"><button>
                         <i class="fas fa-angle-left"></i>
                         back</button></a>
+
             </div>
 
-            <div id="blogpageContainer">
-                <article class="blogpageArticle">
-                    <h2>Labore et dolore magna aliquyam erat, sed diam</h2>
+            <!-- <div>
+                <div>
+                    <input id="pac-input" class="controls" type="text" placeholder="Enter a location" />
+                </div>
+                <div id="map"></div>
+                <div id="infowindow-content">
+                    <span id="place-name" class="title"></span><br />
+                    <strong>Place ID:</strong> <span id="place-id"></span><br />
+                    <span id="place-address"></span>
+                </div>
+                <div id="resultContainer"></div>
+                <div id="watchContainer"></div>
+            </div>
+
+            <div>
+                <form action="">
+                    <input type="text" placeholder="Enter a Title for your post" id="">
+                    <input type="date" placeholder="Enter the travel date" id="">
+            <textarea name="" rows="10" cols="80" placeholder="Enter a description about your trip">
+                    </textarea>
+            </form>
+    </div> -->
+
+            <div>
+
+                <form action="" class="formContainer">
+                    <input required id="searchTextField" type="text" size="50" placeholder="Enter a location"
+                        autocomplete="on">
+                    <input type="text" placeholder="Enter a Title for your post" id="">
+                    <input class="dateInput" type="date" placeholder="Enter the start date" id="startDate">
+                    <!-- <input class="dateInput" type="date" placeholder="Enter the end date" id="endDate"> -->
+                    <textarea name="post" rows="5" cols="80"
+                        placeholder="Enter a description about your trip"></textarea>
+                    <button type="submit">submit</button>
+                </form>
+
+
+
+
+
+
+                <!-- <article class="blogpageArticle">
+                    <h2>Lorem ipsum dolor sit amet, consetetur sadipscing</h2>
                     <p><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
                             Maiores et perferendis eaque, exercitationem praesentium nihil.</i></p>
                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
@@ -53,7 +108,7 @@
                         est Lorem ipsum dolor sit amet.
                     </p>
 
-                    <img class="blogpageArticleImage" src="https://picsum.photos/id/1012/800/400" alt="">
+                    <img class="blogpageArticleImage" src="https://picsum.photos/id/1016/800/400" alt="">
                     <figcaption>Lorem ipsum</figcaption>
                     <p> qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem
                         ipsum
@@ -64,7 +119,7 @@
                     </p>
                     <h3><u>Invidunt ut labore</u></h3>
                     <div class="imageRight">
-                        <img src="https://picsum.photos/id/1006/300/200" alt="">
+                        <img src="https://picsum.photos/id/1015/300/200" alt="">
                         <figcaption>Dolor sit amet</figcaption>
                     </div>
                     <p>
@@ -99,9 +154,12 @@
                         sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
                         tempor.
                     </p>
-                </article>
+                </article> -->
+
+
+
             </div>
-            <section class="blogpageBottom">
+            <!-- <section class="blogpageBottom">
                 <div class="blogpageAuthorInfo">
                     <div class="authorPic largePic">
                         <img src="../assets/jane_doe.jpg">
@@ -129,7 +187,7 @@
                         </a>
                     </div>
                 </section>
-            </section>
+            </section> -->
 
         </main>
         <footer class="footer" id="footer">
@@ -141,6 +199,22 @@
         </footer>
     </div>
     </div>
+    <script src='../js/app.js'></script>
+
+
+    <!-- <script type="text/javascript">
+
+        function initialize() {
+            var options = {
+                types: ['(regions)'],
+            };
+            var input = document.getElementById('searchTextField');
+            var autocomplete = new google.maps.places.Autocomplete(input, options);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script> -->
+
 </body>
 
 </html>

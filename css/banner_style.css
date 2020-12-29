@@ -38,6 +38,8 @@
   color: white;
   z-index: 1001;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+  text-shadow: 0 0 10px black;
 }
 
 .bannerPanel button {
@@ -73,7 +75,7 @@
 /* large 1024px */
 @media (min-width: 1024px) {
   .bannerPanel {
-    height: 535px;
+    height: 335px;
   }
 
   .bannerText {

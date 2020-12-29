@@ -14,11 +14,13 @@ figcaption {
 }
 
 .blogpageArticle p {
-  color: #666;
+  /* color: #666; */
+  color: red;
 }
 
 .blogpageArticle h2 {
   margin-bottom: 2rem;
+  font-size: 2rem;
 }
 
 .blogpageArticeImage {
