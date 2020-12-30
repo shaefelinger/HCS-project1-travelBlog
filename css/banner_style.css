@@ -51,7 +51,8 @@
   font-weight: 700;
   border: solid 2px white;
   transition: all 800ms ease;
-  background-color: rgba(55, 55, 55, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 20px black;
 }
 
 .bannerPanel button:hover {

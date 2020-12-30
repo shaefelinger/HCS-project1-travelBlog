@@ -1,12 +1,12 @@
-/* location autocomplete  */
-// function initialize() {
-//   var options = {
-//     types: ['(regions)'],
-//   };
-//   var input = document.getElementById('searchTextField');
-//   var autocomplete = new google.maps.places.Autocomplete(input, options);
-// }
-// google.maps.event.addDomListener(window, 'load', initialize);
+/* location autocomplete for New Post-Page */
+function initialize() {
+  var options = {
+    types: ['(regions)'],
+  };
+  var input = document.getElementById('searchTextField');
+  var autocomplete = new google.maps.places.Autocomplete(input, options);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
 
 /* ================================ */
 const blogPosts = [
@@ -75,8 +75,9 @@ const blogPosts = [
   },
 ];
 
-// console.log(blogPosts);
-
+/*
+ ***** ALL POSTS AS OVERVIEW *****
+ */
 function printAllPosts() {
   // blogPosts.forEach((element) => {
   //   console.log(element.name);
@@ -86,7 +87,7 @@ function printAllPosts() {
 
 printAllPosts();
 
-/* ***** ALL POSTS AS OVERVIEW ***** */
+/* ***** ADD SINGLE POSTS AS CARD TO DOM ***** */
 function addOnePost(element, index) {
   const blogContainer = document.getElementById('blogContainer');
   const newArticle = document.createElement('div');
@@ -138,8 +139,9 @@ function addOnePost(element, index) {
 // background-size: 100%;">
 // </div> --!>
 
-/* ===================== SINGLE POST-BLOGPAGE ===================== */
+/* ===================== SINGLE POST-BLOGPAGE => RESULT  ===================== */
 function onClick(object) {
+  console.log(object);
   const id = object.path[1].id;
   const element = blogPosts[id];
 
@@ -248,9 +250,9 @@ function initMap(coords) {
   const uluru = { lat: coords[0], lng: coords[1] };
   console.log(uluru);
   const options = {
-    zoom: 8,
+    zoom: 6,
     center: uluru,
-    // mapTypeId: 'hybrid',
+    mapTypeId: 'hybrid',
     disableDefaultUI: true,
   };
   // The map, centered at Uluru
