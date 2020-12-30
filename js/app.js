@@ -18,6 +18,7 @@ const blogPosts = [
     postDescription:
       'mir geht es gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla!Schluss',
     rating: '4',
+    date: 'Visited in May 2019',
     postImage1URL:
       'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwJr07k53jQW9IvYkW1H-muAZc8BrLM7WbpBKxfr6jWqzl-gpXwlNCUpLdd4Hw2-2y6QxzwAMYyk6fBHecgFjwF07DWiPcxI9QI674x9iy5KKAwoRGgWRiKetr0DovD7A3--8PHf0TIjBvJu8RHRwzqmYJrPEolskNKaAmTaxvchkiaG&3u1599&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=67626',
     postImage2URL: 'https://picsum.photos/id/249/500',
@@ -32,9 +33,10 @@ const blogPosts = [
     postDescription:
       'mir geht es nocht so gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia',
     rating: '2',
+    date: 'Visited in August 1989',
     postImage1URL:
       'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwI2OePT8IOxK_qO1okxl-aY233Z1cL6RW3xgShigsuxKrtO2Vd6V-Sy_2igVEodwlXwq4fHNuoZR1tjEvBfUlwMmYR0VF2gxiWJZCNWvJ_q6U6aWzzFkGxJmIgWXy94sbF5n3x4IPN4IrRi8yzMNi5LGjFyeBudT-FU9E6e4Q0GOSpN&3u4208&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=49277',
-    postImage2URL: 'https://picsum.photos/id/250/500',
+    postImage2URL: 'https://picsum.photos/id/356/500',
     postImage3URL: 'https://picsum.photos/id/351/500',
     postImage4URL: 'https://picsum.photos/id/451/500',
     postAuthor: 'Guest',
@@ -47,8 +49,9 @@ const blogPosts = [
     postDescription:
       'mir geht es nocht so gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil',
     rating: '3',
+    date: 'Visited in May 2019',
     postImage1URL: 'https://picsum.photos/id/15/500',
-    postImage2URL: 'https://picsum.photos/id/251/500',
+    postImage2URL: 'https://picsum.photos/id/353/500',
     postImage3URL: 'https://picsum.photos/id/351/500',
     postImage4URL: 'https://picsum.photos/id/451/500',
 
@@ -62,9 +65,10 @@ const blogPosts = [
     postDescription:
       'mir geht es nocht so gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil',
     rating: '1',
-    postImage1URL: 'https://picsum.photos/id/5/500',
-    postImage2URL: 'https://picsum.photos/id/51/500',
-    postImage3URL: 'https://picsum.photos/id/61/500',
+    date: '',
+    postImage1URL: 'https://picsum.photos/id/600/500',
+    postImage2URL: 'https://picsum.photos/id/151/500',
+    postImage3URL: 'https://picsum.photos/id/161/500',
     postImage4URL: 'https://picsum.photos/id/161/500',
 
     postAuthor: 'Guest',
@@ -144,10 +148,14 @@ function onClick(object) {
 
   const bannerImage = document.getElementById('bannerImage');
   const bannerTitle = document.getElementById('bannerTitle');
+  const bannerButton = document.getElementById('bannerButton');
+  const bannerLink = document.getElementById('bannerLink');
 
   bannerImage.style.backgroundImage = `url(${element.postImage1URL})`;
-
+  bannerButton.innerText = '< Back';
+  bannerLink.setAttribute('href', './index.html');
   bannerTitle.innerHTML = element.name;
+
   window.scrollTo(0, 0);
 
   const newArticle = document.createElement('div');
@@ -159,7 +167,14 @@ function onClick(object) {
  
 <div class="blogpageTextWrapper">
     <h3>${element.postTitle}</h3>
-    
+    <div class="blogpageArticeImage" 
+      style="background-image: url(${element.postImage2URL}); 
+      width: 100%;
+      height: 400px;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      margin-bottom: 2rem">
+    </div>
     <div class="authorPic largePic">
       <img src="../assets/jane_doe.jpg">
   </div>
@@ -170,24 +185,14 @@ function onClick(object) {
     <svg class="ratingContainer">
       <use xlink:href="#starRating${element.rating}">
     </svg>
-    <div class="blogImage" 
-    style="background-image: url(${element.postImage2URL}); 
-    width: 40%;
-    height: 400px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    float: right">
-  </div>
+    <p>${element.date}</p>
+
+  
+
     <p>${element.postDescription}</p>
 </div>
    
-<div class="blogImage" 
-  style="background-image: url(${element.postImage3URL}); 
-  width: 50%;
-  height: 300px;
-  background-repeat: no-repeat;
-  background-size: 100%;">
-</div>
+
   
 <div id="map">map</div>
 <section class="blogpageBottom">
@@ -210,6 +215,17 @@ function onClick(object) {
       </a>
   </div>
 </section> */
+  }
+
+  {
+    /* <div class="blogpageArticeImage" 
+  style="background-image: url(${element.postImage2URL}); 
+  width: 40%;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  float: right">
+</div> */
   }
 
   blogContainer.appendChild(newArticle);
