@@ -14,6 +14,7 @@
 </head>
 
 <body>
+
     <!-- ===== SVGs FOR STAR-RATING ===== -->
     <svg id="stars" style="display: none;" version="1.1">
         <symbol id="stars-full-star" viewBox="0 0 102 18">
@@ -79,13 +80,35 @@
                 <a id="bannerLink" href="./subpages/add_location.html"><button id="bannerButton">+ new post</button></a>
             </div>
 
-
-
-
             <div id="blogContainer"></div>
 
 
+            <div>
+
+                <form action="" class="formContainer" id="addPostForm">
+                    <input required id="searchTextField" type="text" size="50" placeholder="Enter a location"
+                        autocomplete="on">
+                    <input type="text" placeholder="Enter a Title for your post" id="titleField">
+                    <!-- <input class="dateInput" type="date" placeholder="Enter the start date" id="startDate"> -->
+                    <textarea id="descriptionField" name="post" rows="5" cols="80"
+                        placeholder="Enter a description about your trip"></textarea>
+                    <!-- <input type="number" id="ratingField" placeholder="rating"> -->
+                    <select name="rating" id="ratingField">
+                        <option value="1">⭐️</option>
+                        <option value="2">⭐️⭐️</option>
+                        <option value="3">⭐️⭐️⭐️</option>
+                        <option value="4">⭐️⭐️⭐⭐</option>
+                        <option selected="selected" value="5">⭐️⭐️⭐️⭐️⭐️</option>
+                    </select>
+                    <button type="submit">submit</button>
+                </form>
+            </div>
+
         </main>
+
+
+
+
         <footer class="footer" id="footer">
             <div class="companyLink">
                 <a href="#">
@@ -109,6 +132,8 @@
 
         </footer>
     </div>
+
+
     <script src='./js/app.js'></script>
     <!-- <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&callback=initMap&libraries=&v=weekly"
