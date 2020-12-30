@@ -89,13 +89,14 @@ printAllPosts();
 
 /* ***** ADD SINGLE POSTS AS CARD TO DOM ***** */
 function addOnePost(element, index) {
+  // console.log(element, index);
   const blogContainer = document.getElementById('blogContainer');
   const newArticle = document.createElement('div');
   newArticle.classList.add('blogPost');
-  newArticle.setAttribute('id', `${index}`);
+  // newArticle.setAttribute('id', `${index}`);
 
   newArticle.innerHTML = `
-   <div class="overlayButton"></div>
+  <div class="overlayButton" id="${index}"></div>
     <div class="blogImage" 
       style="background-image: url(${element.postImage1URL}); 
       width: 100%;
@@ -125,8 +126,12 @@ function addOnePost(element, index) {
     </div>
 `;
   // console.log(newArticle);
-  newArticle.addEventListener('click', onClick);
+
   blogContainer.appendChild(newArticle);
+  // const overlayButton = blogContainer.querySelector('.overlayButton');
+  const overlayButton = document.getElementById(index);
+  console.log(overlayButton);
+  overlayButton.addEventListener('click', onClick);
 }
 
 //
