@@ -130,7 +130,7 @@ function addOnePost(element, index) {
   blogContainer.appendChild(newArticle);
   // const overlayButton = blogContainer.querySelector('.overlayButton');
   const overlayButton = document.getElementById(index);
-  console.log(overlayButton);
+  // console.log(overlayButton);
   overlayButton.addEventListener('click', onClick);
 }
 
@@ -146,8 +146,11 @@ function addOnePost(element, index) {
 
 /* ===================== SINGLE POST-BLOGPAGE => RESULT  ===================== */
 function onClick(object) {
-  console.log(object);
-  const id = object.path[1].id;
+  // console.log(object);
+  console.log(object.srcElement.id);
+
+  // const id = object.path[0].id;
+  const id = object.srcElement.id;
   const element = blogPosts[id];
 
   const blogContainer = document.getElementById('blogContainer');
@@ -251,9 +254,9 @@ function onClick(object) {
 
 function initMap(coords) {
   // The location of Uluru
-  console.log(coords);
+  // console.log(coords);
   const uluru = { lat: coords[0], lng: coords[1] };
-  console.log(uluru);
+  // console.log(uluru);
   const options = {
     zoom: 6,
     center: uluru,
