@@ -17,6 +17,7 @@ const blogPosts = [
     postTitle: 'The lovely City i used to live in',
     postDescription:
       'mir geht es gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla!Schluss',
+    rating: '4',
     postImage1URL:
       'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwJr07k53jQW9IvYkW1H-muAZc8BrLM7WbpBKxfr6jWqzl-gpXwlNCUpLdd4Hw2-2y6QxzwAMYyk6fBHecgFjwF07DWiPcxI9QI674x9iy5KKAwoRGgWRiKetr0DovD7A3--8PHf0TIjBvJu8RHRwzqmYJrPEolskNKaAmTaxvchkiaG&3u1599&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=67626',
     postImage2URL: 'https://picsum.photos/id/249/500',
@@ -30,6 +31,7 @@ const blogPosts = [
     postTitle: 'Schlicktown i used to live in',
     postDescription:
       'mir geht es nocht so gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia',
+    rating: '2',
     postImage1URL:
       'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwI2OePT8IOxK_qO1okxl-aY233Z1cL6RW3xgShigsuxKrtO2Vd6V-Sy_2igVEodwlXwq4fHNuoZR1tjEvBfUlwMmYR0VF2gxiWJZCNWvJ_q6U6aWzzFkGxJmIgWXy94sbF5n3x4IPN4IrRi8yzMNi5LGjFyeBudT-FU9E6e4Q0GOSpN&3u4208&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=49277',
     postImage2URL: 'https://picsum.photos/id/250/500',
@@ -44,6 +46,7 @@ const blogPosts = [
     postTitle: 'The ole Schlicktown i used to live in',
     postDescription:
       'mir geht es nocht so gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil',
+    rating: '3',
     postImage1URL: 'https://picsum.photos/id/15/500',
     postImage2URL: 'https://picsum.photos/id/251/500',
     postImage3URL: 'https://picsum.photos/id/351/500',
@@ -58,6 +61,7 @@ const blogPosts = [
     postTitle: 'The ole Schlicktown i used to live in',
     postDescription:
       'mir geht es nocht so gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil',
+    rating: '1',
     postImage1URL: 'https://picsum.photos/id/5/500',
     postImage2URL: 'https://picsum.photos/id/51/500',
     postImage3URL: 'https://picsum.photos/id/61/500',
@@ -78,7 +82,7 @@ function printAllPosts() {
 
 printAllPosts();
 
-/* ALL POSTS AS OVERVIEW */
+/* ***** ALL POSTS AS OVERVIEW ***** */
 function addOnePost(element, index) {
   const blogContainer = document.getElementById('blogContainer');
   const newArticle = document.createElement('div');
@@ -96,16 +100,23 @@ function addOnePost(element, index) {
     </div>
     <div class="blogTextWrapper">
         <h2>${element.name}</h2>
+      
         <h3>${element.postTitle}</h3>
         <p>${element.postDescription}</p>
     </div>
+    
     <div class="cardBottom">
+      
         <div>
             <div class="authorPic">
                 <img src="assets/jane_doe.jpg">
             </div>
             <p class="author">${element.postAuthor}</p>
+            <svg class="ratingContainer">
+              <use xlink:href="#starRating${element.rating}">
+            </svg>
         </div>
+       
     </div>
 `;
   // console.log(newArticle);
@@ -123,7 +134,7 @@ function addOnePost(element, index) {
 // background-size: 100%;">
 // </div> --!>
 
-/* ===================== SINGLE POST ===================== */
+/* ===================== SINGLE POST-BLOGPAGE ===================== */
 function onClick(object) {
   const id = object.path[1].id;
   const element = blogPosts[id];
@@ -146,49 +157,42 @@ function onClick(object) {
   // <div class="overlayButton"></div>
   newArticle.innerHTML = `
  
-   <div class="blogpageTextWrapper">
-       <h3>${element.postTitle}</h3>
-       <div class="blogImage" 
-        style="background-image: url(${element.postImage2URL}); 
-        width: 40%;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: 100%;
-        float: right">
-      </div>
-       <p>${element.postDescription}</p>
-   </div>
-   
-   <div class="blogImage" 
-    style="background-image: url(${element.postImage3URL}); 
-    width: 50%;
-    height: 300px;
-    background-repeat: no-repeat;
-    background-size: 100%;">
+<div class="blogpageTextWrapper">
+    <h3>${element.postTitle}</h3>
+    
+    <div class="authorPic largePic">
+      <img src="../assets/jane_doe.jpg">
   </div>
-  
- 
+  <div>
+      <p class="author">${element.postAuthor}</p>
+  </div>
 
-  <div id="map">map</div>
-
-  
-  <section class="blogpageBottom">
-
-    <div class="blogpageAuthorInfo">
-      <div class="authorPic largePic">
-        <img src="../assets/jane_doe.jpg">
-      </div>
-        <div>
-            <p class="author">${element.postAuthor}</p>
-        </div>
-      </div>
-  
+    <svg class="ratingContainer">
+      <use xlink:href="#starRating${element.rating}">
+    </svg>
+    <div class="blogImage" 
+    style="background-image: url(${element.postImage2URL}); 
+    width: 40%;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    float: right">
+  </div>
+    <p>${element.postDescription}</p>
+</div>
    
-  </section>
-   
+<div class="blogImage" 
+  style="background-image: url(${element.postImage3URL}); 
+  width: 50%;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: 100%;">
+</div>
+  
+<div id="map">map</div>
+<section class="blogpageBottom">
+</section>
 
-
-   
 `;
 
   {

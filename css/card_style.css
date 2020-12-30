@@ -10,6 +10,12 @@
   z-index: 20000;
 }
 
+.ratingContainer {
+  height: 1rem;
+  /* border: aqua solid 2px; */
+  width: 85px;
+}
+
 /* ========== BLOG POST ========== */
 
 .blogPost {
