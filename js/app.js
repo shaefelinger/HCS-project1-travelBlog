@@ -198,6 +198,7 @@ function onClick(object) {
 
     <p>${element.postDescription}</p>
     <p id="weatherContainer">Temperature: </p> 
+    <p id="watchContainer">Clock: </p> 
 </div>
    
 
@@ -228,6 +229,7 @@ function onClick(object) {
   // console.log(element.coords);
   initMap(element.coords);
   let weather = getWeather(element.name);
+  setInterval(watch, 1000);
   // console.log(weather);
 }
 
@@ -269,6 +271,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 const addPostForm = document.getElementById('addPostForm');
 
+/* 
+===== HANDLING OF NEW ENTRY ===== 
+*/
+
 // alert(addPostForm);
 addPostForm.addEventListener('submit', onSubmit);
 
@@ -289,7 +295,10 @@ function onSubmit(event) {
   addPostForm.reset();
 }
 
-/* ===== WEATHER =====  */
+/* 
+===== WEATHER =====  
+*/
+
 function addWeatherToPage(temperature) {
   console.log('bla:', temperature);
   const weatherContainer = document.getElementById('weatherContainer');
@@ -319,4 +328,27 @@ function getWeather(city) {
     .catch((error) => {
       return 'Something went wrong...' + error;
     });
+}
+
+function watch(offset) {
+  const watchContainer = document.getElementById('watchContainer');
+  const now = new Date();
+  // console.log(now);
+
+  const seconds = now.getUTCSeconds();
+  //   const secondsDegrees = ((seconds / 60) * 360) + 90;
+  //   secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+  const mins = now.getUTCMinutes();
+  //   const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
+  //   minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+  const hour = now.getUTCHours();
+  //   const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) + 90;
+  //   hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+  const time = now.getTime();
+
+  // console.log(hour, mins, seconds, time);
+  watchContainer.innerHTML = `UTC Time is: ${hour}:${mins}:${seconds}`;
+  return `${hour}:${mins}:${seconds} - ${offset} - ${time}`;
 }
