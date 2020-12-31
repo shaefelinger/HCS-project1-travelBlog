@@ -41,32 +41,62 @@ const blogPosts = [
   },
 ];
 
-// localStorage.setItem('allLocations', JSON.stringify(blogPosts));
+/* ===== HANDLE LOCAL STORAGE ===== */
+
+function resetLocalStorage() {
+  localStorage.setItem('allLocations', JSON.stringify(blogPosts));
+}
+// resetLocalStorage();
+
+function addToLocalStorage(newElement) {
+  // let array = [];
+  // array = JSON.parse(localStorage.getItem('allLocations'));
+  array = getArrayFromLocalStorage();
+  array.push(newElement);
+  // localStorage.setItem('allLocations', JSON.stringify(array));
+  pushArrayToLocalStorage(array);
+  blogContainer.innerHTML = '';
+  printAllPosts();
+}
+
+function getArrayFromLocalStorage() {
+  let array = [];
+  array = JSON.parse(localStorage.getItem('allLocations'));
+  return array;
+}
+
+function pushArrayToLocalStorage(array) {
+  localStorage.setItem('allLocations', JSON.stringify(array));
+}
+
+function eraseEntryFromLocalStorage(id) {
+  const array = getArrayFromLocalStorage();
+  // console.log(array);
+  array.splice(id, 1);
+  // console.log(array);
+  pushArrayToLocalStorage(array);
+  window.open('./index.html');
+  // printAllPosts();
+}
 
 const blogContainer = document.getElementById('blogContainer');
+
 /*
  ***** ALL POSTS AS OVERVIEW *****
  */
 function printAllPosts() {
-  // blogPosts.forEach((element) => {
-  //   console.log(element.name);
-  // });
+  blogContainer.innerHTML = '';
   const allLocations = localStorage.getItem('allLocations');
   allLocationsParsed = JSON.parse(allLocations);
-  // console.log(allLocationsParsed);
-  // blogPosts.forEach(addOnePost);
-  allLocationsParsed.forEach(addOnePost);
+  allLocationsParsed.forEach(printOnePost);
 }
 
 printAllPosts();
 
 /* ***** ADD SINGLE POSTS AS CARD TO DOM ***** */
-function addOnePost(element, index) {
-  // console.log(element, index);
-  // const blogContainer = document.getElementById('blogContainer');
+function printOnePost(element, index) {
   const newArticle = document.createElement('div');
   newArticle.classList.add('blogPost');
-  // newArticle.setAttribute('id', `${index}`);
 
   newArticle.innerHTML = `
   <div class="overlayButton" id="${index}"></div>
@@ -75,6 +105,7 @@ function addOnePost(element, index) {
       width: 100%;
       height: 200px;
       background-repeat: no-repeat;
+      background-position: center;
       background-size: 100%;">
     </div>
     <div class="blogTextWrapper">
@@ -107,22 +138,11 @@ function addOnePost(element, index) {
   overlayButton.addEventListener('click', onClick);
 }
 
-//
-
-// <!--   <div class="blogImage"
-// style="background-image: url(${element.postImage2URL});
-// width: 25%;
-// height: 220px;
-// background-repeat: no-repeat;
-// background-size: 100%;">
-// </div> --!>
-
 /* ===================== SINGLE POST-BLOGPAGE => RESULT  ===================== */
 function onClick(object) {
-  console.log(object);
-  console.log(object.srcElement.id);
+  // console.log(object);
+  // console.log(object.srcElement.id);
 
-  // const id = object.path[0].id;
   const id = object.srcElement.id;
   const array = JSON.parse(localStorage.getItem('allLocations'));
   // const element = blogPosts[id];
@@ -131,6 +151,8 @@ function onClick(object) {
   // const blogContainer = document.getElementById('blogContainer');
   blogContainer.innerHTML = '';
 
+  const addPostForm = document.getElementById('addPostForm');
+  addPostForm.classList.toggle('hidden');
   const bannerImage = document.getElementById('bannerImage');
   const bannerTitle = document.getElementById('bannerTitle');
   const bannerButton = document.getElementById('bannerButton');
@@ -146,8 +168,6 @@ function onClick(object) {
   const newArticle = document.createElement('div');
 
   newArticle.classList.add('blogpageArticle');
-
-  // <div class="overlayButton"></div>
   newArticle.innerHTML = `
  
 <div class="blogpageTextWrapper">
@@ -155,12 +175,14 @@ function onClick(object) {
     
     <div class="blogpageArticeImage" 
       style="background-image: url(${element.postImage2URL}); 
-      width: 100%;
+      width: 75%;
       height: 400px;
       background-repeat: no-repeat;
       background-size: 100%;
+      background-position: center;
       margin-bottom: 2rem">
     </div>
+    <button onclick="eraseEntryFromLocalStorage(${id})">Delete Entry</button>
 
     <div class="authorPic largePic">
       <img src="../assets/jane_doe.jpg">
@@ -175,6 +197,7 @@ function onClick(object) {
     <p>${element.date}</p>
 
     <p>${element.postDescription}</p>
+    <p id="weatherContainer">Temperature: </p> 
 </div>
    
 
@@ -182,7 +205,6 @@ function onClick(object) {
 <div id="map">map</div>
 <section class="blogpageBottom">
 </section>
-
 `;
 
   {
@@ -205,24 +227,14 @@ function onClick(object) {
   blogContainer.appendChild(newArticle);
   // console.log(element.coords);
   initMap(element.coords);
+  let weather = getWeather(element.name);
+  // console.log(weather);
 }
-
-// addOnePost(blogPosts[0]);
-
-// const newArticle = document.createElement('div');
-// newArticle.classList.add('blogPost');
-
-// console.log(newArticle);
 
 // ----
 
 function initMap(coords) {
-  // The location of Uluru
-  // console.log(coords);
-  // const uluru = { lat: coords[0], lng: coords[1] };
   const uluru = coords;
-  // const uluru = '40.712775,-74.005973';
-  // console.log(uluru);
   const options = {
     zoom: 6,
     center: uluru,
@@ -232,7 +244,6 @@ function initMap(coords) {
   // The map, centered at Uluru
   const map = new google.maps.Map(document.getElementById('map'), options);
   const marker = new google.maps.Marker({
-    // position: uluru,
     position: uluru,
     map: map,
   });
@@ -251,33 +262,7 @@ function initialize() {
   autocomplete.addListener('place_changed', () => {
     // infowindow.close();
     const place = autocomplete.getPlace();
-    // console.log(place);
     currentPlace = place;
-    // if (!place.geometry) {
-    //   return;
-    // }
-
-    // if (place.geometry.viewport) {
-    //   map.fitBounds(place.geometry.viewport);
-    // } else {
-    //   map.setCenter(place.geometry.location);
-    //   map.setZoom(17);
-    // }
-    // // Set the position of the marker using the place ID and location.
-    // marker.setPlace({
-    //   placeId: place.place_id,
-    //   location: place.geometry.location,
-    // });
-    // marker.setVisible(true);
-    // infowindowContent.children.namedItem('place-name').textContent = place.name;
-    // infowindowContent.children.namedItem('place-id').textContent =
-    //   place.place_id;
-    // infowindowContent.children.namedItem('place-address').textContent =
-    //   place.formatted_address;
-    // console.log(place);
-
-    // storeResult(place, input.value);
-    // printResult(place, input.value);
   });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -289,14 +274,6 @@ addPostForm.addEventListener('submit', onSubmit);
 
 function onSubmit(event) {
   event.preventDefault();
-  // console.log(currentPlace, titleField.value, descriptionField.value);
-  // const place = autocomplete.getPlace();
-  // console.log(place);
-  // const location = searchTextField.value;
-  // getInfoFromGoogleApi(location);
-  // getMap(location);
-  // userInputForm.reset();
-  // console.log(currentPlace);
   const newEntry = {
     name: currentPlace.formatted_address,
     coords: currentPlace.geometry.location.toJSON(),
@@ -308,21 +285,38 @@ function onSubmit(event) {
     postImage2URL: currentPlace.photos[1].getUrl(),
     postAuthor: 'Guest',
   };
-
-  // const stringifiedNewEntry = JSON.stringify(newEntry);
-  // console.log(stringifiedNewEntry);
   addToLocalStorage(newEntry);
+  addPostForm.reset();
 }
 
-function addToLocalStorage(newElement) {
-  let array = [];
-  array = JSON.parse(localStorage.getItem('allLocations'));
-  array.push(newElement);
-  // blogPosts = array;
-  // console.log(blogPosts);
+/* ===== WEATHER =====  */
+function addWeatherToPage(temperature) {
+  console.log('bla:', temperature);
+  const weatherContainer = document.getElementById('weatherContainer');
+  console.log(weatherContainer);
+  weatherContainer.innerHTML = `The current Temperature is ${temperature} degrees Celsius`;
+}
 
-  localStorage.setItem('allLocations', JSON.stringify(array));
-  blogContainer.innerHTML = '';
-
-  printAllPosts();
+function getWeather(city) {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=80ab875a41f65bcfc23fdbad56346559&units=metric`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log(data);
+      const actualTemperature = data.main.temp;
+      // const feelsLike = data.main.feels_like;
+      // console.log(actualTemperature);
+      // const resultText = createWeatherInformation(
+      //   city,
+      //   actualTemperature,
+      //   feelsLike
+      // );
+      // console.log(resultText);
+      addWeatherToPage(actualTemperature);
+      return actualTemperature;
+    })
+    .catch((error) => {
+      return 'Something went wrong...' + error;
+    });
 }
