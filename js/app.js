@@ -191,7 +191,7 @@ function onClick(object) {
   <div>
       <p class="author">${element.postAuthor}</p>
   </div>
-
+<
     <svg class="ratingContainer">
       <use xlink:href="#starRating${element.rating}">
     </svg>
@@ -279,8 +279,7 @@ const addPostForm = document.getElementById('addPostForm');
 ===== HANDLING OF NEW ENTRY ===== 
 */
 
-// alert(addPostForm);
-addPostForm.addEventListener('submit', onSubmit);
+addPostForm.addEventListener('submit', onSubmit2);
 
 function onSubmit(event) {
   event.preventDefault();
@@ -371,8 +370,7 @@ function getWikipedia(name) {
     .then((response) => response.json())
     .then((data) => {
       const pageID = Object.keys(data.query.pages);
-      console.log(data.query.pages[pageID].extract);
-      return data.query.pages[pageID].extract;
+      const wiki = data.query.pages[pageID].extract;
     });
 }
 
@@ -384,3 +382,39 @@ function getWikipedia(name) {
 //   const pageID = Object.keys(data.query.pages);
 //   return data.query.pages[pageID].extract;
 // };
+
+function onSubmit2(event) {
+  event.preventDefault();
+  const name = currentPlace.name;
+  console.log(name);
+  fetch(
+    `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      const pageID = Object.keys(data.query.pages);
+
+      const wiki = data.query.pages[pageID].extract;
+      // console.log(wiki);
+      // if (wiki === `${currentPlace.name} most commonly refers to:`) {
+      //   // wiki = 'bla';
+      //   console.log('sljasd');
+      // }
+
+      const newEntry = {
+        name: currentPlace.formatted_address,
+        coords: currentPlace.geometry.location.toJSON(),
+        postTitle: titleField.value,
+        postDescription: descriptionField.value,
+        rating: ratingField.value,
+        date: 'Visited in May 2019',
+        postImage1URL: currentPlace.photos[0].getUrl(),
+        postImage2URL: currentPlace.photos[1].getUrl(),
+        postAuthor: 'Guest',
+        wiki: wiki,
+      };
+      addToLocalStorage(newEntry);
+      addPostForm.reset();
+    });
+}
