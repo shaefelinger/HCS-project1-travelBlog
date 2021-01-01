@@ -113,6 +113,7 @@ function printOnePost(element, index) {
       
         <h3>${element.postTitle}</h3>
         <p>${element.postDescription}</p>
+        <p>${element.wiki}</p>
     </div>
     
     <div class="cardBottom">
@@ -197,8 +198,10 @@ function onClick(object) {
     <p>${element.date}</p>
 
     <p>${element.postDescription}</p>
+    <p>${element.wiki}</p>
     <p id="weatherContainer">Temperature: </p> 
     <p id="watchContainer">Clock: </p> 
+    
 </div>
    
 
@@ -231,6 +234,7 @@ function onClick(object) {
   let weather = getWeather(element.name);
   setInterval(watch, 1000);
   // console.log(weather);
+  getWikipedia(element.name);
 }
 
 // ----
@@ -280,6 +284,8 @@ addPostForm.addEventListener('submit', onSubmit);
 
 function onSubmit(event) {
   event.preventDefault();
+  const wiki = getWikipedia(currentPlace.name);
+  console.log(wiki);
   const newEntry = {
     name: currentPlace.formatted_address,
     coords: currentPlace.geometry.location.toJSON(),
@@ -290,6 +296,7 @@ function onSubmit(event) {
     postImage1URL: currentPlace.photos[0].getUrl(),
     postImage2URL: currentPlace.photos[1].getUrl(),
     postAuthor: 'Guest',
+    wiki: 'no wiki',
   };
   addToLocalStorage(newEntry);
   addPostForm.reset();
@@ -352,3 +359,28 @@ function watch(offset) {
   watchContainer.innerHTML = `UTC Time is: ${hour}:${mins}:${seconds}`;
   return `${hour}:${mins}:${seconds} - ${offset} - ${time}`;
 }
+
+/* 
+===== wiki =====
+ */
+
+function getWikipedia(name) {
+  fetch(
+    `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      const pageID = Object.keys(data.query.pages);
+      console.log(data.query.pages[pageID].extract);
+      return data.query.pages[pageID].extract;
+    });
+}
+
+// const getWikipedia = async (name) => {
+//   const response = await fetch(
+//     `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
+//   );
+//   const data = await response.json();
+//   const pageID = Object.keys(data.query.pages);
+//   return data.query.pages[pageID].extract;
+// };
