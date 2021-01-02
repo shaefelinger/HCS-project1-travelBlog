@@ -7,8 +7,7 @@ const blogPosts = [
       'mir geht es gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla!Schluss',
     rating: '4',
     date: 'Visited in May 2019',
-    postImage1URL:
-      'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwJr07k53jQW9IvYkW1H-muAZc8BrLM7WbpBKxfr6jWqzl-gpXwlNCUpLdd4Hw2-2y6QxzwAMYyk6fBHecgFjwF07DWiPcxI9QI674x9iy5KKAwoRGgWRiKetr0DovD7A3--8PHf0TIjBvJu8RHRwzqmYJrPEolskNKaAmTaxvchkiaG&3u1599&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=67626',
+    postImage1URL: 'https://picsum.photos/id/248/500',
     postImage2URL: 'https://picsum.photos/id/249/500',
     postAuthor: 'Steffen Häfelinger',
   },
@@ -21,8 +20,7 @@ const blogPosts = [
       'mir geht es nocht so gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia',
     rating: '2',
     date: 'Visited in August 1989',
-    postImage1URL:
-      'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwI2OePT8IOxK_qO1okxl-aY233Z1cL6RW3xgShigsuxKrtO2Vd6V-Sy_2igVEodwlXwq4fHNuoZR1tjEvBfUlwMmYR0VF2gxiWJZCNWvJ_q6U6aWzzFkGxJmIgWXy94sbF5n3x4IPN4IrRi8yzMNi5LGjFyeBudT-FU9E6e4Q0GOSpN&3u4208&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=49277',
+    postImage1URL: 'https://picsum.photos/id/449/500',
     postImage2URL: 'https://picsum.photos/id/356/500',
     postAuthor: 'Guest',
   },
@@ -97,7 +95,12 @@ printAllPosts();
 function printOnePost(element, index) {
   const newArticle = document.createElement('div');
   newArticle.classList.add('blogPost');
-
+  let overwiewText = 'nananan';
+  if (element.postDescription === '') {
+    overwiewText = element.wiki;
+  } else {
+    overwiewText = element.postDescription;
+  }
   newArticle.innerHTML = `
   <div class="overlayButton" id="${index}"></div>
     <div class="blogImage" 
@@ -112,8 +115,7 @@ function printOnePost(element, index) {
         <h2>${element.name}</h2>
       
         <h3>${element.postTitle}</h3>
-        <p>${element.postDescription}</p>
-        <p>${element.wiki}</p>
+        <p>${overwiewText}</p>
     </div>
     
     <div class="cardBottom">
@@ -169,9 +171,10 @@ function onClick(object) {
   const newArticle = document.createElement('div');
 
   newArticle.classList.add('blogpageArticle');
+
   newArticle.innerHTML = `
  
-<div class="blogpageTextWrapper">
+  <div class="blogpageTextWrapper">
     <h3>${element.postTitle}</h3>
     
     <div class="blogpageArticeImage" 
@@ -191,7 +194,7 @@ function onClick(object) {
   <div>
       <p class="author">${element.postAuthor}</p>
   </div>
-<
+
     <svg class="ratingContainer">
       <use xlink:href="#starRating${element.rating}">
     </svg>
@@ -202,13 +205,10 @@ function onClick(object) {
     <p id="weatherContainer">Temperature: </p> 
     <p id="watchContainer">Clock: </p> 
     
-</div>
-   
-
-  
-<div id="map">map</div>
-<section class="blogpageBottom">
-</section>
+  </div>
+  <div id="map">map</div>
+  <section class="blogpageBottom">
+  </section>
 `;
 
   {
@@ -424,6 +424,7 @@ function onSubmit2(event) {
     });
 }
 
+/* remove the 'listen'-text from the wiki - only works, when inside () */
 function removeUnwantedWiki(text) {
   // console.log('dasjasklsdakdasjklad', text);
   return text.replaceAll('(listen)', '');
