@@ -1,0 +1,48 @@
+.aboutAuthorPic img {
+  height: 120px;
+}
+
+.aboutAuthorInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-left: 30%;
+  padding-right: 30%;
+  font-size: 0.8rem;
+  color: #888;
+  height: 100%;
+}
+
+.aboutAuthorInfo .author {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+
+.aboutAuthorText {
+  margin-top: 0;
+  padding: 0 15%;
+  font-size: 0.8rem;
+  color: #888;
+  height: 100%;
+  text-align: center;
+}
+
+.aboutBottom {
+  margin-top: 3rem;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (min-width: 640px) {
+  .aboutAuthorInfo {
+    flex-direction: row;
+  }
+
+  .aboutAuthorText {
+    padding-left: 30%;
+    padding-right: 30%;
+    text-align: center;
+    margin-top: 2rem;
+  }
+}

@@ -26,21 +26,19 @@ const blogPosts = [
   },
 ];
 
-/* ===== HANDLE LOCAL STORAGE ===== */
+/* 
+===== HANDLE LOCAL STORAGE ===== 
+*/
 
 function resetLocalStorage() {
   alert('Reset Locat Storage');
   localStorage.setItem('allLocations', JSON.stringify(blogPosts));
   window.open('./index.html');
 }
-// resetLocalStorage();
 
 function addToLocalStorage(newElement) {
-  // let array = [];
-  // array = JSON.parse(localStorage.getItem('allLocations'));
   array = getArrayFromLocalStorage();
   array.push(newElement);
-  // localStorage.setItem('allLocations', JSON.stringify(array));
   pushArrayToLocalStorage(array);
   blogContainer.innerHTML = '';
   printAllPosts();
@@ -58,12 +56,9 @@ function pushArrayToLocalStorage(array) {
 
 function eraseEntryFromLocalStorage(id) {
   const array = getArrayFromLocalStorage();
-  // console.log(array);
   array.splice(id, 1);
-  // console.log(array);
   pushArrayToLocalStorage(array);
   window.open('./index.html');
-  // printAllPosts();
 }
 
 const blogContainer = document.getElementById('blogContainer');
