@@ -259,6 +259,7 @@ function initMap(coords) {
 
 /* location autocomplete for New Post-Page */
 let currentPlace = 'currentPlace';
+
 function initialize() {
   var options = {
     types: ['(regions)'],
@@ -266,7 +267,6 @@ function initialize() {
   var input = document.getElementById('searchTextField');
   var autocomplete = new google.maps.places.Autocomplete(input, options);
   autocomplete.addListener('place_changed', () => {
-    // infowindow.close();
     const place = autocomplete.getPlace();
     currentPlace = place;
   });
@@ -281,25 +281,25 @@ const addPostForm = document.getElementById('addPostForm');
 
 addPostForm.addEventListener('submit', onSubmit2);
 
-function onSubmit(event) {
-  event.preventDefault();
-  const wiki = getWikipedia(currentPlace.name);
-  console.log(wiki);
-  const newEntry = {
-    name: currentPlace.formatted_address,
-    coords: currentPlace.geometry.location.toJSON(),
-    postTitle: titleField.value,
-    postDescription: descriptionField.value,
-    rating: ratingField.value,
-    date: 'Visited in May 2019',
-    postImage1URL: currentPlace.photos[0].getUrl(),
-    postImage2URL: currentPlace.photos[1].getUrl(),
-    postAuthor: 'Guest',
-    wiki: 'no wiki',
-  };
-  addToLocalStorage(newEntry);
-  addPostForm.reset();
-}
+// function onSubmit(event) {
+//   event.preventDefault();
+//   const wiki = getWikipedia(currentPlace.name);
+//   console.log(wiki);
+//   const newEntry = {
+//     name: currentPlace.formatted_address,
+//     coords: currentPlace.geometry.location.toJSON(),
+//     postTitle: titleField.value,
+//     postDescription: descriptionField.value,
+//     rating: ratingField.value,
+//     date: 'Visited in May 2019',
+//     postImage1URL: currentPlace.photos[0].getUrl(),
+//     postImage2URL: currentPlace.photos[1].getUrl(),
+//     postAuthor: 'Guest',
+//     wiki: 'no wiki',
+//   };
+//   addToLocalStorage(newEntry);
+//   addPostForm.reset();
+// }
 
 /* 
 ===== WEATHER =====  
@@ -386,21 +386,32 @@ function getWikipedia(name) {
 function onSubmit2(event) {
   event.preventDefault();
   const name = currentPlace.name;
-  console.log(name);
+  console.log(event);
+  // console.log(name);
   fetch(
     `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       const pageID = Object.keys(data.query.pages);
+      let wiki;
 
-      const wiki = data.query.pages[pageID].extract;
-      // console.log(wiki);
-      // if (wiki === `${currentPlace.name} most commonly refers to:`) {
-      //   // wiki = 'bla';
-      //   console.log('sljasd');
-      // }
+      // console.log(pageID, typeof pageID);
+      if (pageID[0] == '-1') {
+        wiki = '';
+      } else {
+        wiki = data.query.pages[pageID].extract;
+        // console.log(wiki.length);
+        // if (wiki === `${currentPlace.name} most commonly refers to:`) {
+        //   wiki = 'bla';
+        //   console.log('sljasd');
+        // }
+        if (wiki.length < 100) {
+          wiki = '';
+          console.log('no wiki answer');
+        }
+      }
 
       const newEntry = {
         name: currentPlace.formatted_address,
