@@ -116,26 +116,16 @@ function printOnePost(element, index) {
   // console.log(newArticle);
 
   blogContainer.appendChild(newArticle);
-  // const overlayButton = blogContainer.querySelector('.overlayButton');
   const overlayButton = document.getElementById(index);
-  // console.log(overlayButton);
   overlayButton.addEventListener('click', onClick);
 }
 
 /* ===================== SINGLE POST-BLOGPAGE => RESULT  ===================== */
 function onClick(object) {
-  // console.log(object);
-  // console.log(object.srcElement.id);
-
   const id = object.srcElement.id;
   const array = JSON.parse(localStorage.getItem('allLocations'));
-  // const element = blogPosts[id];
   const element = array[id];
-
-  // const blogContainer = document.getElementById('blogContainer');
   blogContainer.innerHTML = '';
-
-  // const addPostForm = document.getElementById('addPostForm');
 
   /* ===== STYLE BANNER ===== */
   const bannerImage = document.getElementById('bannerImage');
@@ -211,11 +201,9 @@ function onClick(object) {
   }
 
   blogContainer.appendChild(newArticle);
-  // console.log(element.coords);
   initMap(element.coords);
   let weather = getWeather(element.name);
   setInterval(watch, 1000);
-  // console.log(weather);
   getWikipedia(element.name);
 }
 
@@ -245,18 +233,24 @@ let currentPlace = 'noValidPlace';
 function initialize() {
   var options = {
     // types: ['(regions)'],
-    // fields: ['geometry', 'name', 'photos'],
+    fields: ['geometry', 'name', 'photos'],
   };
   var input = document.getElementById('searchTextField');
   var autocomplete = new google.maps.places.Autocomplete(input, options);
   autocomplete.addListener('place_changed', () => {
-    // autocomplete.setFields(['geometry', 'name']);
     const place = autocomplete.getPlace();
     console.log(place.photos);
-    if (place.photos === undefined) {
-      // alert('select a location from the list');
-      // searchTextField.value = '';
-    } else {
+
+    /* check if place is valid from google  */
+
+    // if (place.photos === undefined) {
+
+    // } else {
+    //   currentPlace = place;
+    //   getWiki(place.name);
+    // }
+
+    if (place.photos) {
       currentPlace = place;
       getWiki(place.name);
     }
@@ -315,16 +309,7 @@ function getWeather(city) {
   )
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data);
       const actualTemperature = data.main.temp;
-      // const feelsLike = data.main.feels_like;
-      // console.log(actualTemperature);
-      // const resultText = createWeatherInformation(
-      //   city,
-      //   actualTemperature,
-      //   feelsLike
-      // );
-      // console.log(resultText);
       addWeatherToPage(actualTemperature);
       return actualTemperature;
     })
@@ -336,7 +321,6 @@ function getWeather(city) {
 function watch(offset) {
   const watchContainer = document.getElementById('watchContainer');
   const now = new Date();
-  // console.log(now);
 
   const seconds = now.getUTCSeconds();
   //   const secondsDegrees = ((seconds / 60) * 360) + 90;
@@ -387,15 +371,6 @@ function getWiki(name) {
     });
 }
 
-// const getWikipedia = async (name) => {
-//   const response = await fetch(
-//     `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
-//   );
-//   const data = await response.json();
-//   const pageID = Object.keys(data.query.pages);
-//   return data.query.pages[pageID].extract;
-// };
-
 // kann wohl weg
 function onSubmit2(event) {
   event.preventDefault();
@@ -435,25 +410,19 @@ function onSubmit2(event) {
       };
       addToLocalStorage(newEntry);
       addPostForm.reset();
-      // const addPostForm = document.getElementById('addPostForm');
       addPostForm.classList.toggle('hidden');
     });
 }
 
 /* remove the 'listen'-text from the wiki - only works, when inside () */
 function removeUnwantedWiki(text) {
-  // console.log('dasjasklsdakdasjklad', text);
   return text.replaceAll('(listen)', '');
 }
 
 // ==========================================
+/* PAGE: ADD POSTS  */
 function addPost() {
-  // const addPostForm = document.getElementById('addPostForm');
-  // addPostForm.classList.toggle('hidden');
-
-  // const blogContainer = document.getElementById('blogContainer');
   blogContainer.innerHTML = '';
-  // alert('dddd');
 
   /* ===== STYLE BANNER ===== */
   const bannerImage = document.getElementById('bannerImage');
@@ -466,7 +435,6 @@ function addPost() {
   bannerLink.setAttribute('href', './index.html');
   bannerTitle.innerHTML = 'Add new post...';
 
-  // const addPostForm = document.getElementById('addPostForm');
   addPostForm.classList.remove('hidden');
   window.scrollTo(0, 0);
 }
