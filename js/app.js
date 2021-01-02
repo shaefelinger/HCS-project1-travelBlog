@@ -249,15 +249,16 @@ let currentPlace = 'currentPlace';
 
 function initialize() {
   var options = {
-    types: ['(regions)'],
+    // types: ['(regions)'],
   };
   var input = document.getElementById('searchTextField');
   var autocomplete = new google.maps.places.Autocomplete(input, options);
   autocomplete.addListener('place_changed', () => {
+    // autocomplete.setFields(['geometry', 'name']);
     const place = autocomplete.getPlace();
     currentPlace = place;
-    console.log(place.name);
-    // getWiki(place.name);
+    console.log(place);
+    getWiki(place.name);
   });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -273,7 +274,7 @@ addPostForm.addEventListener('submit', onSubmit);
 function onSubmit(event) {
   event.preventDefault();
   const newEntry = {
-    name: currentPlace.formatted_address,
+    name: currentPlace.name,
     coords: currentPlace.geometry.location.toJSON(),
     postTitle: titleField.value,
     postDescription: descriptionField.value,
