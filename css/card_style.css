@@ -16,6 +16,18 @@
   width: 85px;
 }
 
+.formContainer {
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+  /* flex-direction: row; */
+  align-items: center;
+}
+
+#addPostForm {
+  width: 80%;
+}
+
 /* ========== BLOG POST ========== */
 
 .blogPost {

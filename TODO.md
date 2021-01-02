@@ -1,14 +1,14 @@
-* implement add new post -> make nicer
+* cleanup css
+
 * implement weather -> icon
 * local time mit nullen oder als uhr
 * date-input & create string
-* wiki-info
+
 * links: google, wiki, reiseportal
-* cleanup css
 
 * finetune layout
     * bilder sind zu klein  
-* overview for all locations
+* map-overview for all locations
 * check other browsers
 
 

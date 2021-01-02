@@ -95,12 +95,9 @@ printAllPosts();
 function printOnePost(element, index) {
   const newArticle = document.createElement('div');
   newArticle.classList.add('blogPost');
-  let overwiewText = 'nananan';
-  if (element.postDescription === '') {
-    overwiewText = element.wiki;
-  } else {
-    overwiewText = element.postDescription;
-  }
+  // use descricption text if available, otherwise use wiki
+  let overwiewText = element.postDescription || element.wiki;
+
   newArticle.innerHTML = `
   <div class="overlayButton" id="${index}"></div>
     <div class="blogImage" 
