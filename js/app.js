@@ -24,25 +24,13 @@ const blogPosts = [
     postImage2URL: 'https://picsum.photos/id/356/500',
     postAuthor: 'Guest',
   },
-  {
-    name: 'Los Angeles, USA',
-    coords: { lat: 34.052235, lng: -118.243683 },
-
-    postTitle: 'The ole Schlicktown i used to live in',
-    postDescription:
-      'mir geht es nocht so gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil',
-    rating: '1',
-    date: '',
-    postImage1URL: 'https://picsum.photos/id/600/500',
-    postImage2URL: 'https://picsum.photos/id/151/500',
-    postAuthor: 'Guest',
-  },
 ];
 
 /* ===== HANDLE LOCAL STORAGE ===== */
 
 function resetLocalStorage() {
   localStorage.setItem('allLocations', JSON.stringify(blogPosts));
+  window.open('./index.html');
 }
 // resetLocalStorage();
 
@@ -151,8 +139,8 @@ function onClick(object) {
   // const blogContainer = document.getElementById('blogContainer');
   blogContainer.innerHTML = '';
 
-  const addPostForm = document.getElementById('addPostForm');
-  addPostForm.classList.toggle('hidden');
+  // const addPostForm = document.getElementById('addPostForm');
+  // addPostForm.classList.toggle('hidden');
   const bannerImage = document.getElementById('bannerImage');
   const bannerTitle = document.getElementById('bannerTitle');
   const bannerButton = document.getElementById('bannerButton');
@@ -418,6 +406,8 @@ function onSubmit2(event) {
       };
       addToLocalStorage(newEntry);
       addPostForm.reset();
+      // const addPostForm = document.getElementById('addPostForm');
+      addPostForm.classList.toggle('hidden');
     });
 }
 
@@ -425,4 +415,18 @@ function onSubmit2(event) {
 function removeUnwantedWiki(text) {
   // console.log('dasjasklsdakdasjklad', text);
   return text.replaceAll('(listen)', '');
+}
+
+// ==========================================
+function addPost() {
+  // const addPostForm = document.getElementById('addPostForm');
+  // addPostForm.classList.toggle('hidden');
+
+  // const blogContainer = document.getElementById('blogContainer');
+  blogContainer.innerHTML = '';
+  // alert('dddd');
+
+  const addPostForm = document.getElementById('addPostForm');
+  addPostForm.classList.remove('hidden');
+  window.scrollTo(0, 0);
 }

@@ -68,7 +68,9 @@
                 <span class="pageTitle">Around the World</span>
             </a>
             <nav>
-                <a href="#">+ new post</a>
+                <a onclick="addPost()">+ new
+                    post</a>
+                <a onclick="resetLocalStorage()" href="">reset all</a>
                 <!-- <a href="#">ipsum</a> -->
                 <a href="./subpages/about.html">about</a>
             </nav>
@@ -77,8 +79,7 @@
         <main class="main">
             <div class="bannerPanel mainBanner" id="bannerImage">
                 <p class="bannerText" id="bannerTitle">The Travel-Blog</p>
-                <a id="bannerLink" href="./subpages/add_location.html"><button id="bannerButton">+ new
-                        post</button></a>
+                <a id="bannerLink" href="./subpages/about.html"><button id="bannerButton">about</button></a>
             </div>
 
             <div id="blogContainer"></div>
@@ -86,7 +87,7 @@
 
             <div class="formContainer">
 
-                <form action="" id="addPostForm">
+                <form action="" id="addPostForm" class="hidden">
                     <input required id="searchTextField" type="text" size="50" placeholder="Enter a location"
                         autocomplete="on">
                     <input required type="text" placeholder="Enter a Title for your post" id="titleField">
