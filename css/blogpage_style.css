@@ -6,6 +6,14 @@
   /* background-color: aqua; */
 }
 
+/* AUTHOR INFO  */
+.aboutAuthorPic {
+  width: 4rem;
+}
+.aboutAuthorPic img {
+  height: 120px;
+}
+
 /* ========== ARTICLE ========== */
 
 figcaption {
@@ -96,13 +104,6 @@ figcaption {
   color: #888;
   height: 100%;
   text-align: center;
-}
-
-.blogpageAuthorTitle {
-  color: #999;
-  margin-top: 0;
-  font-size: 0.8rem;
-  text-transform: uppercase;
 }
 
 /* SHARE THIS ARTICLE... */

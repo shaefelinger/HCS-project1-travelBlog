@@ -28,6 +28,15 @@
   width: 80%;
 }
 
+#ratingField {
+  font-size: 0.8rem;
+}
+
+.starMenu {
+  background-color: aqua;
+  color: red;
+}
+
 /* ========== BLOG POST ========== */
 
 .blogPost {
