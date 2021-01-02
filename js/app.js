@@ -245,20 +245,26 @@ function initMap(coords) {
 // =================================================
 
 /* location autocomplete for New Post-Page */
-let currentPlace = 'currentPlace';
+let currentPlace = 'noValidPlace';
 
 function initialize() {
   var options = {
     // types: ['(regions)'],
+    // fields: ['geometry', 'name', 'photos'],
   };
   var input = document.getElementById('searchTextField');
   var autocomplete = new google.maps.places.Autocomplete(input, options);
   autocomplete.addListener('place_changed', () => {
     // autocomplete.setFields(['geometry', 'name']);
     const place = autocomplete.getPlace();
-    currentPlace = place;
-    console.log(place);
-    getWiki(place.name);
+    console.log(place.photos);
+    if (place.photos === undefined) {
+      alert('select a location from the list');
+      // searchTextField.value = '';
+    } else {
+      currentPlace = place;
+      getWiki(place.name);
+    }
   });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -273,20 +279,28 @@ addPostForm.addEventListener('submit', onSubmit);
 
 function onSubmit(event) {
   event.preventDefault();
-  const newEntry = {
-    name: currentPlace.name,
-    coords: currentPlace.geometry.location.toJSON(),
-    postTitle: titleField.value,
-    postDescription: descriptionField.value,
-    rating: ratingField.value,
-    date: 'Visited in May 2019',
-    postImage1URL: currentPlace.photos[0].getUrl(),
-    postImage2URL: currentPlace.photos[1].getUrl(),
-    postAuthor: 'Guest',
-    wiki: wikiField.value,
-  };
-  addToLocalStorage(newEntry);
-  addPostForm.reset();
+  console.log(currentPlace);
+  if (currentPlace === 'noValidPlace') {
+    alert('select from list');
+  } else {
+    const newEntry = {
+      name: currentPlace.name,
+      coords: currentPlace.geometry.location.toJSON(),
+      postTitle: titleField.value,
+      postDescription: descriptionField.value,
+      rating: ratingField.value,
+      date: 'Visited in May 2019',
+      postImage1URL: currentPlace.photos[0].getUrl(),
+      postImage2URL: currentPlace.photos[1].getUrl(),
+      postAuthor: 'Guest',
+      wiki: wikiField.value,
+    };
+    addToLocalStorage(newEntry);
+    addPostForm.reset();
+    addPostForm.classList.add('hidden');
+    currentPlace = 'noValidPlace';
+    wikiField.innerHTML = '';
+  }
 }
 
 /* 
@@ -372,7 +386,6 @@ function getWiki(name) {
         }
       }
       wiki = removeUnwantedWiki(wiki);
-
       // add to form-input- field
       const wikiField = document.getElementById('wikiField');
       wikiField.innerHTML = wiki;
@@ -457,7 +470,7 @@ function addPost() {
   bannerLink.setAttribute('href', './index.html');
   bannerTitle.innerHTML = 'Add new post...';
 
-  const addPostForm = document.getElementById('addPostForm');
+  // const addPostForm = document.getElementById('addPostForm');
   addPostForm.classList.remove('hidden');
   window.scrollTo(0, 0);
 }
