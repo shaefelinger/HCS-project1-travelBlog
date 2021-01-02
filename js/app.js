@@ -29,6 +29,7 @@ const blogPosts = [
 /* ===== HANDLE LOCAL STORAGE ===== */
 
 function resetLocalStorage() {
+  alert('Reset Locat Storage');
   localStorage.setItem('allLocations', JSON.stringify(blogPosts));
   window.open('./index.html');
 }
@@ -140,7 +141,8 @@ function onClick(object) {
   blogContainer.innerHTML = '';
 
   // const addPostForm = document.getElementById('addPostForm');
-  // addPostForm.classList.toggle('hidden');
+
+  /* ===== STYLE BANNER ===== */
   const bannerImage = document.getElementById('bannerImage');
   const bannerTitle = document.getElementById('bannerTitle');
   const bannerButton = document.getElementById('bannerButton');
@@ -254,6 +256,9 @@ function initialize() {
   autocomplete.addListener('place_changed', () => {
     const place = autocomplete.getPlace();
     currentPlace = place;
+    console.log(place.name);
+    // const descriptionField = document.getElementById('descriptionField');
+    // descriptionField.setAttribute('placeholder', place.name);
   });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -425,6 +430,17 @@ function addPost() {
   // const blogContainer = document.getElementById('blogContainer');
   blogContainer.innerHTML = '';
   // alert('dddd');
+
+  /* ===== STYLE BANNER ===== */
+  const bannerImage = document.getElementById('bannerImage');
+  const bannerTitle = document.getElementById('bannerTitle');
+  const bannerButton = document.getElementById('bannerButton');
+  const bannerLink = document.getElementById('bannerLink');
+
+  bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
+  bannerButton.innerText = '< Back';
+  bannerLink.setAttribute('href', './index.html');
+  bannerTitle.innerHTML = 'Add new post...';
 
   const addPostForm = document.getElementById('addPostForm');
   addPostForm.classList.remove('hidden');
