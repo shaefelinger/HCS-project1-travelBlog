@@ -259,7 +259,7 @@ function initialize() {
     const place = autocomplete.getPlace();
     console.log(place.photos);
     if (place.photos === undefined) {
-      alert('select a location from the list');
+      // alert('select a location from the list');
       // searchTextField.value = '';
     } else {
       currentPlace = place;
@@ -281,7 +281,7 @@ function onSubmit(event) {
   event.preventDefault();
   console.log(currentPlace);
   if (currentPlace === 'noValidPlace') {
-    alert('select from list');
+    alert('Please select a Location from the list');
   } else {
     const newEntry = {
       name: currentPlace.name,
@@ -401,6 +401,7 @@ function getWiki(name) {
 //   return data.query.pages[pageID].extract;
 // };
 
+// kann wohl weg
 function onSubmit2(event) {
   event.preventDefault();
   const name = currentPlace.name;
