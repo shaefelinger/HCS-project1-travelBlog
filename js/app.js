@@ -257,8 +257,7 @@ function initialize() {
     const place = autocomplete.getPlace();
     currentPlace = place;
     console.log(place.name);
-    // const descriptionField = document.getElementById('descriptionField');
-    // descriptionField.setAttribute('placeholder', place.name);
+    // getWiki(place.name);
   });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -269,27 +268,25 @@ const addPostForm = document.getElementById('addPostForm');
 ===== HANDLING OF NEW ENTRY ===== 
 */
 
-addPostForm.addEventListener('submit', onSubmit2);
+addPostForm.addEventListener('submit', onSubmit);
 
-// function onSubmit(event) {
-//   event.preventDefault();
-//   const wiki = getWikipedia(currentPlace.name);
-//   console.log(wiki);
-//   const newEntry = {
-//     name: currentPlace.formatted_address,
-//     coords: currentPlace.geometry.location.toJSON(),
-//     postTitle: titleField.value,
-//     postDescription: descriptionField.value,
-//     rating: ratingField.value,
-//     date: 'Visited in May 2019',
-//     postImage1URL: currentPlace.photos[0].getUrl(),
-//     postImage2URL: currentPlace.photos[1].getUrl(),
-//     postAuthor: 'Guest',
-//     wiki: 'no wiki',
-//   };
-//   addToLocalStorage(newEntry);
-//   addPostForm.reset();
-// }
+function onSubmit(event) {
+  event.preventDefault();
+  const newEntry = {
+    name: currentPlace.formatted_address,
+    coords: currentPlace.geometry.location.toJSON(),
+    postTitle: titleField.value,
+    postDescription: descriptionField.value,
+    rating: ratingField.value,
+    date: 'Visited in May 2019',
+    postImage1URL: currentPlace.photos[0].getUrl(),
+    postImage2URL: currentPlace.photos[1].getUrl(),
+    postAuthor: 'Guest',
+    wiki: wikiField.value,
+  };
+  addToLocalStorage(newEntry);
+  addPostForm.reset();
+}
 
 /* 
 ===== WEATHER =====  
@@ -353,16 +350,33 @@ function watch(offset) {
 ===== wiki =====
  */
 
-// function getWikipedia(name) {
-//   fetch(
-//     `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
-//   )
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const pageID = Object.keys(data.query.pages);
-//       const wiki = data.query.pages[pageID].extract;
-//     });
-// }
+function getWiki(name) {
+  fetch(
+    `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      const pageID = Object.keys(data.query.pages);
+      let wiki = data.query.pages[pageID].extract;
+
+      /* check if wiki is correct */
+      if (pageID[0] == '-1') {
+        wiki = '';
+        console.error('wiki is empty');
+      } else {
+        wiki = data.query.pages[pageID].extract;
+        if (wiki.length < 100) {
+          wiki = '';
+          console.error('no wiki answer');
+        }
+      }
+      wiki = removeUnwantedWiki(wiki);
+
+      // add to form-input- field
+      const wikiField = document.getElementById('wikiField');
+      wikiField.innerHTML = wiki;
+    });
+}
 
 // const getWikipedia = async (name) => {
 //   const response = await fetch(
@@ -446,3 +460,4 @@ function addPost() {
   addPostForm.classList.remove('hidden');
   window.scrollTo(0, 0);
 }
+// ==========================================
