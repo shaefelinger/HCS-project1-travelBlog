@@ -363,16 +363,16 @@ function watch(offset) {
 ===== wiki =====
  */
 
-function getWikipedia(name) {
-  fetch(
-    `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      const pageID = Object.keys(data.query.pages);
-      const wiki = data.query.pages[pageID].extract;
-    });
-}
+// function getWikipedia(name) {
+//   fetch(
+//     `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
+//   )
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const pageID = Object.keys(data.query.pages);
+//       const wiki = data.query.pages[pageID].extract;
+//     });
+// }
 
 // const getWikipedia = async (name) => {
 //   const response = await fetch(
@@ -387,31 +387,25 @@ function onSubmit2(event) {
   event.preventDefault();
   const name = currentPlace.name;
   console.log(event);
-  // console.log(name);
   fetch(
     `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
   )
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data);
       const pageID = Object.keys(data.query.pages);
       let wiki;
 
-      // console.log(pageID, typeof pageID);
+      /* check if wiki is correct */
       if (pageID[0] == '-1') {
         wiki = '';
       } else {
         wiki = data.query.pages[pageID].extract;
-        // console.log(wiki.length);
-        // if (wiki === `${currentPlace.name} most commonly refers to:`) {
-        //   wiki = 'bla';
-        //   console.log('sljasd');
-        // }
         if (wiki.length < 100) {
           wiki = '';
           console.log('no wiki answer');
         }
       }
+      wiki = removeUnwantedWiki(wiki);
 
       const newEntry = {
         name: currentPlace.formatted_address,
@@ -428,4 +422,9 @@ function onSubmit2(event) {
       addToLocalStorage(newEntry);
       addPostForm.reset();
     });
+}
+
+function removeUnwantedWiki(text) {
+  // console.log('dasjasklsdakdasjklad', text);
+  return text.replaceAll('(listen)', '');
 }
