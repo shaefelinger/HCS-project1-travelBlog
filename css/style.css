@@ -1,11 +1,32 @@
 @import 'sh_sanitize.css';
 @import 'card_style.css';
-@import 'header_style.css';
-@import 'banner_style.css';
-@import 'footer_style.css';
+/* @import 'header_style.css'; */
+/* @import 'banner_style.css'; */
+/* @import 'footer_style.css'; */
 @import 'blogpage_style.css';
 @import 'about_style.css';
 @import 'add_location_style.css';
+
+/* ==========================================================================
+   BASIC STYLING
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+p {
+  color: #1f2937;
+}
+
+h4 {
+  color: #666;
+  font-size: 1.4rem;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+}
 
 input:focus,
 select:focus,
@@ -46,40 +67,20 @@ button:focus {
   min-height: 400px;
 }
 
+.hidden {
+  display: none;
+}
+
 #blogContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.hidden {
-  display: none;
-}
-
-/* ==========================================================================
-   BASIC STYLING
+/* MAIN-PAGE RESPONSIVE
    ========================================================================== */
-
-h1,
-h2,
-h3,
-p {
-  color: #1f2937;
-}
-
-h4 {
-  color: #666;
-  font-size: 1.4rem;
-}
-
-button {
-  margin: 0;
-  padding: 0;
-}
-
-/* ========== RESPONSIVE ========== */
-
 /* 640px */
+
 @media (min-width: 640px) {
   #blogContainer {
     /* display: flex; */
@@ -87,4 +88,210 @@ button {
     flex-direction: row;
     justify-content: center;
   }
+}
+
+/* ========================================================================================== */
+/* HEADER  
+/* ========================================================================================== */
+
+.header {
+  background-color: #fff;
+  border-bottom: 0.125rem #155e39 solid;
+  box-shadow: 0 0px 20px 2px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 7%;
+}
+
+.header .logo {
+  height: 27px;
+}
+
+.header #companyName {
+  color: #111;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.worldLogo {
+  margin-bottom: 10px;
+  height: 2rem;
+}
+
+/*  NAV
+========================================================================== */
+
+.header nav a {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #155e39;
+  margin: 0.3rem 0rem;
+  display: block;
+  transition: color 800ms ease-in-out, transform 800ms ease-in-out;
+  text-align: right;
+}
+
+.header nav a:hover {
+  color: #111;
+  transition: color 250ms ease-in-out, transform 250ms ease-in-out;
+}
+
+/* HEADER RESPONSIVE
+   ========================================================================== */
+/* small 640px */
+@media (min-width: 640px) {
+  .header nav a {
+    display: inline-block;
+    margin: 0 1rem;
+    font-size: 0.8rem;
+  }
+
+  .header nav a:hover {
+    transform: scale(1.1) translateY(-1px);
+    color: #111;
+    transition: color 250ms ease-in-out, transform 250ms ease-in-out;
+  }
+}
+
+/* lg 1024px */
+@media (min-width: 1024px) {
+  .header #companyName {
+    font-size: 2.5rem;
+  }
+
+  .worldLogo {
+    margin-bottom: 10px;
+    height: 4rem;
+  }
+
+  .header nav a {
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================================================
+   BANNER
+   ========================================================================== */
+
+.mainBanner {
+  background-image: url('https://picsum.photos/id/116/1000/535');
+}
+
+#aboutBanner {
+  background-image: url('https://picsum.photos/id/123/1000/535');
+}
+
+.bannerPanel {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  margin: 2rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bannerText {
+  font-size: 2rem;
+  font-weight: 200;
+  color: white;
+  z-index: 1001;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-shadow: 0 0 10px black;
+}
+
+.bannerPanel button {
+  color: white;
+  padding: 0.4rem 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: solid 2px white;
+  transition: all 800ms ease;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 20px black;
+}
+
+.bannerPanel button:hover {
+  color: #111;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* BANNER RESPONSIVE 
+   ========================================================================== */
+
+@media (min-width: 640px) {
+  .bannerText {
+    font-size: 3rem;
+  }
+
+  .bannerPanel {
+    height: 335px;
+    margin: 2rem 2rem 3rem;
+  }
+}
+
+/* large 1024px */
+@media (min-width: 1024px) {
+  .bannerPanel {
+    height: 335px;
+  }
+
+  .bannerText {
+    font-size: 4rem;
+  }
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.footer {
+  margin-top: 4rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: linear-gradient(
+      to top,
+      rgba(255, 0, 0, 0.1),
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 1)
+    ),
+    url('https://picsum.photos/id/156/1000/1200');
+}
+
+.footerTitle {
+  color: #111;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: auto 2rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.footer {
+  text-align: center;
+  padding-top: 6rem;
+}
+
+.socialMediaFooter a {
+  color: #1f2937;
+  display: inline-block;
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  transition: transform 250ms ease-in-out;
+}
+
+.socialMediaFooter a:hover {
+  transform: scale(1.1) translateY(-1px);
+}
+
+.companyLink {
+  font-size: 0.8rem;
+  color: #1f2937;
 }
