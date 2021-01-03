@@ -5,7 +5,7 @@
 @import 'footer_style.css';
 @import 'blogpage_style.css';
 @import 'about_style.css';
-/* @import 'add_location_style.css'; */
+@import 'add_location_style.css';
 
 input:focus,
 select:focus,

@@ -20,7 +20,7 @@
   /* background-color: aqua; */
   display: flex;
   justify-content: center;
-  /* flex-direction: row; */
+  flex-direction: row;
   align-items: center;
 }
 
