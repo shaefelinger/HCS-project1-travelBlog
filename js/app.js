@@ -69,6 +69,10 @@ function eraseEntryFromLocalStorage(id) {
 
 const blogContainer = document.getElementById('blogContainer');
 
+// input form for new entry -> Submit-Button-> call onSubmit()
+const addPostForm = document.getElementById('addPostForm');
+addPostForm.addEventListener('submit', onSubmit);
+
 // ==========================================================================
 // ALL POSTS AS CARDS => OVERVIEW
 // ==========================================================================
@@ -266,14 +270,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 //  HANDLING OF NEW ENTRY
 // ==========================================================================
 
-const addPostForm = document.getElementById('addPostForm');
-addPostForm.addEventListener('submit', onSubmit);
-
 function onSubmit(event) {
-  event.preventDefault();
   // check, if the entered place is valid
   if (currentPlace === 'noValidPlace') {
     alert('Please select a Location from the list');
+    event.preventDefault();
   } else {
     // create and add new entry to Local Storage:
     const newEntry = {
@@ -356,7 +357,7 @@ function getWiki(name) {
       const pageID = Object.keys(data.query.pages);
       let wiki = data.query.pages[pageID].extract;
 
-      /* check if wiki is correct */
+      // check if wiki is correct
       if (pageID[0] == '-1') {
         wiki = '';
         console.error('wiki is empty');
