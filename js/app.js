@@ -6,7 +6,9 @@ const blogPosts = [
     postDescription:
       'mir geht es gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla!Schluss',
     rating: '4',
-    date: 'Visited in May 2019',
+    // date: 'Visited in May 2019',
+    month: 'May',
+    year: '1918',
     postImage1URL: 'https://picsum.photos/id/248/500',
     postImage2URL: 'https://picsum.photos/id/249/500',
     postAuthor: 'Steffen Häfelinger',
@@ -19,7 +21,9 @@ const blogPosts = [
     postDescription:
       'mir geht es nocht so gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia',
     rating: '2',
-    date: 'Visited in August 1989',
+    // date: 'Visited in August 1989',
+    month: 'May',
+    year: '2018',
     postImage1URL: 'https://picsum.photos/id/449/500',
     postImage2URL: 'https://picsum.photos/id/356/500',
     postAuthor: 'Guest',
@@ -62,10 +66,10 @@ function eraseEntryFromLocalStorage(id) {
 }
 
 const blogContainer = document.getElementById('blogContainer');
+// ==========================================================================
+// ALL POSTS AS OVERVIEW
+// ==========================================================================
 
-/*
- ***** ALL POSTS AS OVERVIEW *****
- */
 function printAllPosts() {
   blogContainer.innerHTML = '';
   const allLocations = localStorage.getItem('allLocations');
@@ -119,8 +123,9 @@ function printOnePost(element, index) {
   const overlayButton = document.getElementById(index);
   overlayButton.addEventListener('click', onClick);
 }
-
-/* ===================== SINGLE POST-BLOGPAGE => RESULT  ===================== */
+// ==========================================================================
+// SINGLE POST-BLOGPAGE => RESULT
+// ==========================================================================
 function onClick(object) {
   const id = object.srcElement.id;
   const array = JSON.parse(localStorage.getItem('allLocations'));
@@ -170,7 +175,7 @@ function onClick(object) {
     <svg class="ratingContainer">
       <use xlink:href="#starRating${element.rating}">
     </svg>
-    <p>${element.date}</p>
+    <p>Visited in ${element.month} ${element.year}</p>
 
     <p>${element.postDescription}</p>
     <p>${element.wiki}</p>
@@ -207,7 +212,9 @@ function onClick(object) {
   getWikipedia(element.name);
 }
 
-// ----
+// ==========================================================================
+// add mapp
+// ==========================================================================
 
 function initMap(coords) {
   const uluru = coords;
@@ -225,9 +232,9 @@ function initMap(coords) {
   });
 }
 
-// =================================================
-
-/* location autocomplete for New Post-Page */
+// ==========================================================================
+// location autocomplete for New Post-Page */
+// ==========================================================================
 let currentPlace = 'noValidPlace';
 
 function initialize() {
@@ -278,7 +285,8 @@ function onSubmit(event) {
       postTitle: titleField.value,
       postDescription: descriptionField.value,
       rating: ratingField.value,
-      date: 'Visited in May 2019',
+      month: monthField.value,
+      year: yearField.value,
       postImage1URL: currentPlace.photos[0].getUrl(),
       postImage2URL: currentPlace.photos[1].getUrl(),
       postAuthor: 'Guest',
@@ -372,47 +380,46 @@ function getWiki(name) {
 }
 
 // kann wohl weg
-function onSubmit2(event) {
-  event.preventDefault();
-  const name = currentPlace.name;
-  console.log(event);
-  fetch(
-    `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      const pageID = Object.keys(data.query.pages);
-      let wiki;
+// function onSubmit2(event) {
+//   event.preventDefault();
+//   const name = currentPlace.name;
+//   console.log(event);
+//   fetch(
+//     `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
+//   )
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const pageID = Object.keys(data.query.pages);
+//       let wiki;
 
-      /* check if wiki is correct */
-      if (pageID[0] == '-1') {
-        wiki = '';
-      } else {
-        wiki = data.query.pages[pageID].extract;
-        if (wiki.length < 100) {
-          wiki = '';
-          console.log('no wiki answer');
-        }
-      }
-      wiki = removeUnwantedWiki(wiki);
+//       if (pageID[0] == '-1') {
+//         wiki = '';
+//       } else {
+//         wiki = data.query.pages[pageID].extract;
+//         if (wiki.length < 100) {
+//           wiki = '';
+//           console.log('no wiki answer');
+//         }
+//       }
+//       wiki = removeUnwantedWiki(wiki);
 
-      const newEntry = {
-        name: currentPlace.formatted_address,
-        coords: currentPlace.geometry.location.toJSON(),
-        postTitle: titleField.value,
-        postDescription: descriptionField.value,
-        rating: ratingField.value,
-        date: 'Visited in May 2019',
-        postImage1URL: currentPlace.photos[0].getUrl(),
-        postImage2URL: currentPlace.photos[1].getUrl(),
-        postAuthor: 'Guest',
-        wiki: wiki,
-      };
-      addToLocalStorage(newEntry);
-      addPostForm.reset();
-      addPostForm.classList.toggle('hidden');
-    });
-}
+//       const newEntry = {
+//         name: currentPlace.formatted_address,
+//         coords: currentPlace.geometry.location.toJSON(),
+//         postTitle: titleField.value,
+//         postDescription: descriptionField.value,
+//         rating: ratingField.value,
+//         date: 'Visited in May 2019',
+//         postImage1URL: currentPlace.photos[0].getUrl(),
+//         postImage2URL: currentPlace.photos[1].getUrl(),
+//         postAuthor: 'Guest',
+//         wiki: wiki,
+//       };
+//       addToLocalStorage(newEntry);
+//       addPostForm.reset();
+//       addPostForm.classList.toggle('hidden');
+//     });
+// }
 
 /* remove the 'listen'-text from the wiki - only works, when inside () */
 function removeUnwantedWiki(text) {

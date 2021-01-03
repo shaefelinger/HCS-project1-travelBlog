@@ -1,12 +1,12 @@
 * cleanup css
-
+* add date to storage and card
 * implement weather -> icon
 * local time mit nullen oder als uhr
 * date-input & create string
 
 * links: google, wiki, reiseportal
 
-* finetune layout
+* finetune layout -> responsice and design
     * bilder sind zu klein  
 * map-overview for all locations
 * check other browsers

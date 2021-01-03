@@ -1,5 +1,55 @@
 /* ==========================================================================
-   Overview CARD
+   Input Form
+   ========================================================================== */
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  /* margin: 0 18rem; */
+}
+
+.formContainer input,
+.formContainer textarea {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.formContainer button {
+  width: 200px;
+  margin: 0 2rem;
+  align-self: center;
+}
+
+#addPostForm {
+  width: 40%;
+  min-width: 600px;
+  /* color: red; */
+  color: #333;
+}
+
+#ratingField {
+  /* font-size: 0.8rem; */
+  color: #777;
+}
+
+/* #ratingField select {
+  background-color: aqua;
+} */
+
+textarea {
+  resize: none;
+}
+
+#monthField,
+#yearField {
+  /* color: #bbb; */
+  width: 7rem;
+}
+
+/* ==========================================================================
+   Overview CARDS
    ========================================================================== */
 
 .overlayButton {
@@ -14,26 +64,6 @@
 .ratingContainer {
   height: 1rem;
   width: 85px;
-}
-
-/* .starMenu {
-  background-color: aqua;
-  color: red;
-} */
-
-.formContainer {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-}
-
-#addPostForm {
-  width: 80%;
-}
-
-#ratingField {
-  font-size: 0.8rem;
 }
 
 /* ========== BLOG POST ========== */
