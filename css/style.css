@@ -14,7 +14,10 @@ button:focus {
   outline: none;
 }
 
-/* ========== MAIN-PAGE LAYOUT ========== */
+/* ==========================================================================
+   MAIN-PAGE LAYOUT
+   ========================================================================== */
+
 .container {
   display: grid;
   grid-template-areas:
@@ -49,16 +52,14 @@ button:focus {
   align-items: center;
 }
 
-/* .contentContainer {
-  display: flex;
-  justify-content: center;
-} */
-
 .hidden {
   display: none;
 }
 
-/* ========== BASIC STYLING ========== */
+/* ==========================================================================
+   BASIC STYLING
+   ========================================================================== */
+
 h1,
 h2,
 h3,
