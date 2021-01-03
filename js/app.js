@@ -440,8 +440,6 @@ function initMapAll() {
     options
   );
 
-  // const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
-
   function addMarker(props) {
     const marker = new google.maps.Marker({
       position: props.coords,
@@ -456,14 +454,14 @@ function initMapAll() {
     });
 
     // check content
-    if (props.content) {
-      const infoWindow = new google.maps.InfoWindow({
-        content: props.content,
-      });
-      marker.addListener('click', function () {
-        infoWindow.open(map, marker);
-      });
-    }
+    // if (props.content) {
+    //   const infoWindow = new google.maps.InfoWindow({
+    //     content: props.content,
+    //   });
+    //   marker.addListener('click', function () {
+    //     infoWindow.open(map, marker);
+    //   });
+    // }
   }
 
   // array of markers
