@@ -418,11 +418,11 @@ function overviewMapPage() {
   bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
   bannerButton.innerText = '< Back';
   bannerLink.setAttribute('href', './index.html');
-  bannerTitle.innerHTML = 'Add new post...';
+  bannerTitle.innerHTML = 'Overview...';
 
   allMapContainer.classList.remove('hidden');
   blogContainer.classList.add('hidden');
-  window.scrollTo(0, 0);
+  window.scrollTo(0, 370);
 }
 
 function initMapAll() {
