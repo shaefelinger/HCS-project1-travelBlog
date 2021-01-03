@@ -70,10 +70,10 @@
                 <span class="pageTitle">Around the World</span>
             </a>
             <nav>
+                <a onclick="overviewMapPage()">overview</a>
                 <a onclick="addPost()">+ new
                     post</a>
                 <a onclick="resetLocalStorage()" href="">reset all</a>
-                <a href="./subpages/about.html">overview</a>
                 <a href="./subpages/about.html">about</a>
             </nav>
         </header>
@@ -89,7 +89,6 @@
 
 
             <div class="formContainer">
-
                 <form action="" id="addPostForm" class="hidden">
                     <input required id="searchTextField" type="text" size="50" placeholder="*Enter a location"
                         autocomplete="on">
@@ -130,6 +129,9 @@
                 </form>
             </div>
 
+            <div id="allMapContainer">
+                <div class="hidden" id="mapAll"></div>
+            </div>
         </main>
 
 

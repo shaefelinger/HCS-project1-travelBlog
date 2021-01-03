@@ -343,10 +343,19 @@ textarea {
   color: #155e39;
 }
 
-.star {
-  color: red !important;
-  background-color: aqua;
-}
 /* ==========================================================================
-   CARDS - all Posts
+   Overview-Map
    ========================================================================== */
+
+/* =========== */
+#mapAll {
+  height: 700px;
+  width: 90%;
+}
+#allMapContainer {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  /* align-items: center;  */
+  /* padding: 0 7%; */
+}

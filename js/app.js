@@ -68,6 +68,7 @@ function eraseEntryFromLocalStorage(id) {
 // ==========================================================================
 
 const blogContainer = document.getElementById('blogContainer');
+const allMapContainer = document.getElementById('mapAll');
 
 // input form for new entry -> Submit-Button-> call onSubmit()
 const addPostForm = document.getElementById('addPostForm');
@@ -131,7 +132,7 @@ function printOnePost(element, index) {
   // overlayButton makes the Card clickable and passes the index of the entry
   const overlayButton = document.getElementById(index);
   overlayButton.addEventListener('click', onClick);
-  overviewMap();
+  // overviewMap();
 }
 
 // ==========================================================================
@@ -406,8 +407,87 @@ function addPost() {
 // PAGE: Overview-Map
 // ==========================================================================
 
-function overviewMap() {
-  // blogContainer.innerHTML = '';
+function overviewMapPage() {
+  blogContainer.innerHTML = '';
+
+  const bannerImage = document.getElementById('bannerImage');
+  const bannerTitle = document.getElementById('bannerTitle');
+  const bannerButton = document.getElementById('bannerButton');
+  const bannerLink = document.getElementById('bannerLink');
+
+  bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
+  bannerButton.innerText = '< Back';
+  bannerLink.setAttribute('href', './index.html');
+  bannerTitle.innerHTML = 'Add new post...';
+
+  allMapContainer.classList.remove('hidden');
+  blogContainer.classList.add('hidden');
+  window.scrollTo(0, 0);
 }
 
-// ==========================================
+function initMapAll() {
+  // The location of Uluru
+  const uluru = { lat: 30, lng: 2 };
+  const options = {
+    zoom: 2,
+    center: uluru,
+    // mapTypeId: 'hybrid',
+    // disableDefaultUI: true,
+  };
+  // The map, centered at Uluru
+  const mapAll = new google.maps.Map(
+    document.getElementById('mapAll'),
+    options
+  );
+
+  // const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+
+  function addMarker(props) {
+    const marker = new google.maps.Marker({
+      position: props.coords,
+      map: mapAll,
+    });
+
+    const infoWindow = new google.maps.InfoWindow({
+      content: props.name,
+    });
+    marker.addListener('click', function () {
+      infoWindow.open(mapAll, marker);
+    });
+
+    // check content
+    if (props.content) {
+      const infoWindow = new google.maps.InfoWindow({
+        content: props.content,
+      });
+      marker.addListener('click', function () {
+        infoWindow.open(map, marker);
+      });
+    }
+  }
+
+  // array of markers
+  // const markers = [
+  //   {
+  //     coords: { lat: 53.551086, lng: 9.993682 },
+  //     iconImage:
+  //       'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+  //     content: '<h2>Hamburchh</h2>',
+  //   },
+  //   {
+  //     coords: { lat: 54.551086, lng: 8.993682 },
+  //     content: 'fick dich',
+  //   },
+  //   {
+  //     coords: { lat: 51.509865, lng: -0.118092 },
+  //   },
+  //   {
+  //     coords: { lat: 41.509865, lng: -2.118092 },
+  //   },
+  // ];
+  const markers = getArrayFromLocalStorage();
+
+  markers.forEach(addMarker);
+}
+
+initMapAll();
