@@ -6,7 +6,6 @@ const blogPosts = [
     postDescription:
       'mir geht es gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla!Schluss',
     rating: '4',
-    // date: 'Visited in May 2019',
     month: 'May',
     year: '1918',
     postImage1URL: 'https://picsum.photos/id/248/500',
@@ -16,24 +15,23 @@ const blogPosts = [
   {
     name: 'Wilhelmshaven, Germany',
     coords: { lat: 53.53234029999999, lng: 8.1068722 },
-
     postTitle: 'Schlicktown i used to live in',
     postDescription:
       'mir geht es nocht so gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia',
     rating: '2',
-    // date: 'Visited in August 1989',
     month: 'May',
     year: '2018',
-    postImage1URL: 'https://picsum.photos/id/449/500',
+    postImage1URL: 'https://picsum.photos/id/459/500',
     postImage2URL: 'https://picsum.photos/id/356/500',
     postAuthor: 'Guest',
   },
 ];
 
-/* 
-===== HANDLE LOCAL STORAGE ===== 
-*/
+// ==========================================================================
+// HANDLE LOCAL STORAGE
+// ==========================================================================
 
+// reset Local Storage and add default entries
 function resetLocalStorage() {
   alert('Reset Locat Storage');
   localStorage.setItem('allLocations', JSON.stringify(blogPosts));
@@ -65,9 +63,14 @@ function eraseEntryFromLocalStorage(id) {
   window.open('./index.html');
 }
 
-const blogContainer = document.getElementById('blogContainer');
 // ==========================================================================
-// ALL POSTS AS OVERVIEW
+// Get elements from dom
+// ==========================================================================
+
+const blogContainer = document.getElementById('blogContainer');
+
+// ==========================================================================
+// ALL POSTS AS CARDS => OVERVIEW
 // ==========================================================================
 
 function printAllPosts() {
@@ -76,16 +79,17 @@ function printAllPosts() {
   allLocationsParsed = JSON.parse(allLocations);
   allLocationsParsed.forEach(printOnePost);
 }
-
 printAllPosts();
 
-/* ***** ADD SINGLE POSTS AS CARD TO DOM ***** */
+/* ***** ADD SINGLE POST AS CARD TO DOM ***** */
 function printOnePost(element, index) {
   const newArticle = document.createElement('div');
   newArticle.classList.add('blogPost');
-  // use descricption text if available, otherwise use wiki
+
+  // use descricption text if available, otherwise use wiki:
   let overwiewText = element.postDescription || element.wiki;
 
+  // this is the Card:
   newArticle.innerHTML = `
   <div class="overlayButton" id="${index}"></div>
     <div class="blogImage" 
@@ -117,12 +121,14 @@ function printOnePost(element, index) {
        
     </div>
 `;
-  // console.log(newArticle);
 
   blogContainer.appendChild(newArticle);
+
+  // overlayButton makes the Card clickable and passes the index of the entry
   const overlayButton = document.getElementById(index);
   overlayButton.addEventListener('click', onClick);
 }
+
 // ==========================================================================
 // SINGLE POST-BLOGPAGE => RESULT
 // ==========================================================================
@@ -213,7 +219,7 @@ function onClick(object) {
 }
 
 // ==========================================================================
-// add mapp
+// add mapp to SinglePost
 // ==========================================================================
 
 function initMap(coords) {
@@ -235,6 +241,7 @@ function initMap(coords) {
 // ==========================================================================
 // location autocomplete for New Post-Page */
 // ==========================================================================
+
 let currentPlace = 'noValidPlace';
 
 function initialize() {
@@ -246,17 +253,7 @@ function initialize() {
   var autocomplete = new google.maps.places.Autocomplete(input, options);
   autocomplete.addListener('place_changed', () => {
     const place = autocomplete.getPlace();
-    console.log(place.photos);
-
-    /* check if place is valid from google  */
-
-    // if (place.photos === undefined) {
-
-    // } else {
-    //   currentPlace = place;
-    //   getWiki(place.name);
-    // }
-
+    // if photos is not empty it is a valid location ->
     if (place.photos) {
       currentPlace = place;
       getWiki(place.name);
@@ -265,20 +262,20 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
+// ==========================================================================
+//  HANDLING OF NEW ENTRY
+// ==========================================================================
+
 const addPostForm = document.getElementById('addPostForm');
-
-/* 
-===== HANDLING OF NEW ENTRY ===== 
-*/
-
 addPostForm.addEventListener('submit', onSubmit);
 
 function onSubmit(event) {
   event.preventDefault();
-  console.log(currentPlace);
+  // check, if the entered place is valid
   if (currentPlace === 'noValidPlace') {
     alert('Please select a Location from the list');
   } else {
+    // create and add new entry to Local Storage:
     const newEntry = {
       name: currentPlace.name,
       coords: currentPlace.geometry.location.toJSON(),
@@ -293,6 +290,7 @@ function onSubmit(event) {
       wiki: wikiField.value,
     };
     addToLocalStorage(newEntry);
+    // hide and reset form (and 'currentPlace')
     addPostForm.reset();
     addPostForm.classList.add('hidden');
     currentPlace = 'noValidPlace';
@@ -300,14 +298,13 @@ function onSubmit(event) {
   }
 }
 
-/* 
-===== WEATHER =====  
-*/
+// ==========================================================================
+// WEATHER
+// ==========================================================================
 
 function addWeatherToPage(temperature) {
-  console.log('bla:', temperature);
   const weatherContainer = document.getElementById('weatherContainer');
-  console.log(weatherContainer);
+  // console.log(weatherContainer);
   weatherContainer.innerHTML = `The current Temperature is ${temperature} degrees Celsius`;
 }
 
@@ -326,21 +323,19 @@ function getWeather(city) {
     });
 }
 
+// ==========================================================================
+// WATCH
+// ==========================================================================
+
 function watch(offset) {
   const watchContainer = document.getElementById('watchContainer');
   const now = new Date();
 
   const seconds = now.getUTCSeconds();
-  //   const secondsDegrees = ((seconds / 60) * 360) + 90;
-  //   secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
 
   const mins = now.getUTCMinutes();
-  //   const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
-  //   minsHand.style.transform = `rotate(${minsDegrees}deg)`;
 
   const hour = now.getUTCHours();
-  //   const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) + 90;
-  //   hourHand.style.transform = `rotate(${hourDegrees}deg)`;
   const time = now.getTime();
 
   // console.log(hour, mins, seconds, time);
@@ -348,9 +343,9 @@ function watch(offset) {
   return `${hour}:${mins}:${seconds} - ${offset} - ${time}`;
 }
 
-/* 
-===== wiki =====
- */
+// ==========================================================================
+// WIKI
+// ==========================================================================
 
 function getWiki(name) {
   fetch(

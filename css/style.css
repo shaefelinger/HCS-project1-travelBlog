@@ -98,7 +98,7 @@ button:focus {
   background-color: #fff;
   border-bottom: 0.125rem #155e39 solid;
   box-shadow: 0 0px 20px 2px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 30000;
   display: flex;
   justify-content: space-between;
   align-items: center;
