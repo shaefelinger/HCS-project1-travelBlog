@@ -295,3 +295,58 @@ button:focus {
   font-size: 0.8rem;
   color: #1f2937;
 }
+
+/* ==========================================================================
+   Input Form - Nwe Post
+   ========================================================================== */
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+.formContainer input,
+.formContainer textarea {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.formContainer button {
+  width: 200px;
+  margin: 0 2rem;
+  align-self: center;
+}
+
+#addPostForm {
+  width: 40%;
+  min-width: 600px;
+  /* color: red; */
+  color: #333;
+}
+
+#ratingField {
+  color: #777;
+}
+
+textarea {
+  resize: none;
+}
+
+#monthField,
+#yearField {
+  width: 7rem;
+}
+
+#ratingField i {
+  color: #155e39;
+}
+
+.star {
+  color: red !important;
+  background-color: aqua;
+}
+/* ==========================================================================
+   CARDS - all Posts
+   ========================================================================== */

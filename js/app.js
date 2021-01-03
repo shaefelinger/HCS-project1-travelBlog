@@ -131,6 +131,7 @@ function printOnePost(element, index) {
   // overlayButton makes the Card clickable and passes the index of the entry
   const overlayButton = document.getElementById(index);
   overlayButton.addEventListener('click', onClick);
+  overviewMap();
 }
 
 // ==========================================================================
@@ -291,7 +292,7 @@ function onSubmit(event) {
       wiki: wikiField.value,
     };
     addToLocalStorage(newEntry);
-    // hide and reset form (and 'currentPlace')
+    // hide and reset form and reset 'currentPlace'
     addPostForm.reset();
     addPostForm.classList.add('hidden');
     currentPlace = 'noValidPlace';
@@ -375,55 +376,14 @@ function getWiki(name) {
     });
 }
 
-// kann wohl weg
-// function onSubmit2(event) {
-//   event.preventDefault();
-//   const name = currentPlace.name;
-//   console.log(event);
-//   fetch(
-//     `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`
-//   )
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const pageID = Object.keys(data.query.pages);
-//       let wiki;
-
-//       if (pageID[0] == '-1') {
-//         wiki = '';
-//       } else {
-//         wiki = data.query.pages[pageID].extract;
-//         if (wiki.length < 100) {
-//           wiki = '';
-//           console.log('no wiki answer');
-//         }
-//       }
-//       wiki = removeUnwantedWiki(wiki);
-
-//       const newEntry = {
-//         name: currentPlace.formatted_address,
-//         coords: currentPlace.geometry.location.toJSON(),
-//         postTitle: titleField.value,
-//         postDescription: descriptionField.value,
-//         rating: ratingField.value,
-//         date: 'Visited in May 2019',
-//         postImage1URL: currentPlace.photos[0].getUrl(),
-//         postImage2URL: currentPlace.photos[1].getUrl(),
-//         postAuthor: 'Guest',
-//         wiki: wiki,
-//       };
-//       addToLocalStorage(newEntry);
-//       addPostForm.reset();
-//       addPostForm.classList.toggle('hidden');
-//     });
-// }
-
 /* remove the 'listen'-text from the wiki - only works, when inside () */
 function removeUnwantedWiki(text) {
   return text.replaceAll('(listen)', '');
 }
 
-// ==========================================
-/* PAGE: ADD POSTS  */
+// ==========================================================================
+// PAGE: Add Posts
+// ==========================================================================
 function addPost() {
   blogContainer.innerHTML = '';
 
@@ -441,4 +401,13 @@ function addPost() {
   addPostForm.classList.remove('hidden');
   window.scrollTo(0, 0);
 }
+
+// ==========================================================================
+// PAGE: Overview-Map
+// ==========================================================================
+
+function overviewMap() {
+  // blogContainer.innerHTML = '';
+}
+
 // ==========================================

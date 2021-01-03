@@ -11,6 +11,8 @@
         type="text/javascript"></script>
 
     <link rel="stylesheet" href="css/style.css">
+
+
 </head>
 
 <body>
@@ -82,6 +84,7 @@
                 <a id="bannerLink" href="./subpages/about.html"><button id="bannerButton">about</button></a>
             </div>
 
+            <!-- contains dynamic content: -->
             <div id="blogContainer"></div>
 
 
@@ -93,8 +96,7 @@
 
                     <input required type="text" placeholder="*Enter a Title for your post" id="titleField">
                     <select required name="monthInput" id="monthField">
-                        <!-- <option selected="selected" value="">---</option> -->
-                        <option selected="selected" value="January">January</option>
+                        <option value="January">January</option>
                         <option value="February">February</option>
                         <option value="March">March</option>
                         <option value="April">April</option>
@@ -112,12 +114,13 @@
                     <textarea id="descriptionField" name="post" rows="5" cols="80"
                         placeholder="Enter a description about your trip"></textarea>
                     <select name="rating" id="ratingField">
-                        <option selected="selected" value="0">enter Rating</option>
-                        <option value="1">⭐️</option>
-                        <option value="2">⭐️⭐️</option>
-                        <option value="3">⭐️⭐️⭐️</option>
-                        <option value="4">⭐️⭐️⭐⭐</option>
-                        <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+                        <option value="0" disabled="disabled" selected="selected">Enter Rating</option>
+                        <!-- <option value="0">enter Rating</option> -->
+                        <option class="star" value="1">★</option>
+                        <option value="2">★★</option>
+                        <option value="3">★★★</option>
+                        <option value="4">★★★★</option>
+                        <option value="5">★★★★★</option>
                     </select>
 
                     <textarea id="wikiField" name="post" rows="5" cols="80"
