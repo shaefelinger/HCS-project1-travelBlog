@@ -68,7 +68,7 @@ function eraseEntryFromLocalStorage(id) {
 // ==========================================================================
 
 const blogContainer = document.getElementById('blogContainer');
-const allMapContainer = document.getElementById('mapAll');
+const overviewMapContainer = document.getElementById('overviewMap');
 
 // input form for new entry -> Submit-Button-> call onSubmit()
 const addPostForm = document.getElementById('addPostForm');
@@ -420,24 +420,23 @@ function overviewMapPage() {
   bannerLink.setAttribute('href', './index.html');
   bannerTitle.innerHTML = 'Overview...';
 
-  allMapContainer.classList.remove('hidden');
+  overviewMapContainer.classList.remove('hidden');
   blogContainer.classList.add('hidden');
   window.scrollTo(0, 370);
 }
 
-function initMapAll() {
+function initOverviewMap() {
   // The location of Uluru
   const uluru = { lat: 30, lng: 2 };
 
   const options = {
-    zoom: 4,
+    zoom: 3,
     center: uluru,
     // mapTypeId: 'hybrid',
     // disableDefaultUI: true,
   };
-  // The map, centered at Uluru
-  const mapAll = new google.maps.Map(
-    document.getElementById('mapAll'),
+  const overviewMap = new google.maps.Map(
+    document.getElementById('overviewMap'),
     options
   );
 
@@ -449,19 +448,19 @@ function initMapAll() {
     console.log(markers[i].coords, bounds);
   }
 
-  // mapAll.fitBounds(bounds);
+  // overviewMap.fitBounds(bounds);
 
   function addMarker(props) {
     const marker = new google.maps.Marker({
       position: props.coords,
-      map: mapAll,
+      map: overviewMap,
     });
 
     const infoWindow = new google.maps.InfoWindow({
       content: props.name,
     });
     marker.addListener('click', function () {
-      infoWindow.open(mapAll, marker);
+      infoWindow.open(overviewMap, marker);
     });
 
     // check content
@@ -498,4 +497,4 @@ function initMapAll() {
   markers.forEach(addMarker);
 }
 
-initMapAll();
+initOverviewMap();

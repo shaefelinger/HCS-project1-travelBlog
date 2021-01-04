@@ -10,6 +10,7 @@
     * bilder sind zu klein  
 * map-overview for all locations -> auto zoom
 * check other browsers
+* check error of weather
 
 
 https://www.mediawiki.org/wiki/API:Main_page
