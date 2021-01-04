@@ -424,6 +424,7 @@ function addPost() {
 function gotoPostOverwiew() {
   window.open('./index.html', '_self');
   // window.scrollTo(0, 400);
+  overviewMapContainer.classList.remove('hidden');
 }
 
 // ==========================================================================
@@ -431,7 +432,7 @@ function gotoPostOverwiew() {
 // ==========================================================================
 
 function overviewMapPage() {
-  // blogContainer.innerHTML = '';
+  blogContainer.innerHTML = '';
 
   // const bannerImage = document.getElementById('bannerImage');
   // const bannerTitle = document.getElementById('bannerTitle');
@@ -441,12 +442,13 @@ function overviewMapPage() {
   bannerImage.style.backgroundImage = `url(https://images.unsplash.com/photo-1498354178607-a79df2916198?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2002&q=80)`;
   bannerButton.innerText = '< Back';
   bannerLink.setAttribute('href', './index.html');
-  bannerTitle.innerHTML = 'Overview';
+  bannerTitle.innerHTML = 'Map-Overview';
 
-  // overviewMapContainer.classList.remove('hidden');
   blogContainer.classList.add('hidden');
+  overviewMap.classList.remove('hidden');
   // window.scrollTo(0, 230);
-  window.open('#overviewMapContainer', '_self');
+  window.scrollTo(0, 0);
+  // window.open('#overviewMapContainer', '_self');
 }
 
 // ==========================================================================
@@ -456,8 +458,8 @@ function initOverviewMap() {
   const mapCenter = { lat: 30, lng: 2 };
 
   const options = {
-    zoom: 2.5,
-    center: mapCenter,
+    // zoom: 2.5,
+    // center: mapCenter,
     mapTypeControl: false,
     streetViewControl: false,
   };
