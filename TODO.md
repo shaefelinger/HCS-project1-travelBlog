@@ -1,16 +1,17 @@
+* map-overview for all locations -> auto zoom
 * cleanup css
 * implement weather -> icon
+    * check error of weather
 * local time mit nullen oder als uhr
 * icon and page title
 * burger menu
 
-* links: google, wiki, reiseportal
+* links: google, wiki, reiseportal?
 
 * finetune layout -> responsice and design
     * bilder sind zu klein  
-* map-overview for all locations -> auto zoom
+
 * check other browsers
-* check error of weather
 
 
 https://www.mediawiki.org/wiki/API:Main_page

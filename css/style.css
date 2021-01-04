@@ -35,6 +35,10 @@ button:focus {
   outline: none;
 }
 
+.hidden {
+  display: none;
+  /* visibility: hidden; */
+}
 /* ==========================================================================
    MAIN-PAGE LAYOUT
    ========================================================================== */
@@ -65,10 +69,6 @@ button:focus {
 .footer {
   grid-area: ft;
   min-height: 400px;
-}
-
-.hidden {
-  display: none;
 }
 
 #blogContainer {
@@ -351,6 +351,7 @@ textarea {
 #overviewMap {
   height: 700px;
   width: 90%;
+  margin-top: 4rem;
 }
 #overviewMapContainer {
   display: flex;

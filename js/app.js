@@ -1,29 +1,34 @@
 const blogPosts = [
   {
-    name: 'Tübingen, Germany',
-    coords: { lat: 48.5216364, lng: 9.0576448 },
-    postTitle: 'The lovely City i used to live in',
-    postDescription:
-      'mir geht es gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla! perferendis eaque, exercitationem praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! perferendis eaque, exercitationem praesentium nihil. Nulla!Schluss',
-    rating: '4',
+    name: 'Hamburg',
+    coords: { lat: 53.5510846, lng: 9.9936818 },
+    postTitle: 'The most beatiful city in the world',
+    postDescription: 'This is where i live...',
+    rating: '5',
     month: 'May',
-    year: '1918',
-    postImage1URL: 'https://picsum.photos/id/248/500',
-    postImage2URL: 'https://picsum.photos/id/249/500',
+    year: '1997',
+    postImage1URL:
+      'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwK6NLYi-_Ni4ir7MgAkg2DLGuzxv-AiM1x7lmPv0WWDPGWUMR-toZGWOG4o5Vee18oI7RvS2xJEruZUF7giIOb_wbLCDZN-jeXkgTM-eKKhzjsSDoDomfLan5XIT3HxGPsHaeHftCnQEB3EZvVoJdo3cr74q3kjDgAWA9Y_Anyy0LJb&3u900&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=78995',
+    postImage2URL:
+      'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwINqX6w5Njs_0f-RJ4lP8YCrDvXu0FYmgEUsnU5GfoOZ1jmztUZgc0Td1B4PrS2zff86bojGnKoYMO8YkcTw-r0F-Sq1vYK8jxJZMwPKQ3apAuZeNpdg-b4lPUx-pHo51lul7kJtS_xtyWuEcDglUkb89ncmDRm-M0sV5FeS5ip-tJg&3u3000&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=40008',
+    wiki: `Hamburg is the second-largest city in Germany after Berlin and 7th largest city in the European Union with a population of over 1.84 million.One of Germany's 16 federated states, it is surrounded by Schleswig-Holstein to the north and Lower Saxony to the south. The city's metropolitan region is home to more than five million people. Hamburg lies on the River Elbe and two of its tributaries, the River Alster and the River Bille.`,
     postAuthor: 'Steffen Häfelinger',
   },
   {
-    name: 'Wilhelmshaven, Germany',
-    coords: { lat: 53.53234029999999, lng: 8.1068722 },
-    postTitle: 'Schlicktown i used to live in',
-    postDescription:
-      'mir geht es nocht so gut, wie geht es dir? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia',
-    rating: '2',
+    name: 'Zürich',
+    coords: { lat: 47.3768866, lng: 8.541694 },
+    postTitle: 'Nice but expensive...',
+    postDescription: '',
+    rating: '3',
     month: 'May',
     year: '2018',
-    postImage1URL: 'https://picsum.photos/id/459/500',
-    postImage2URL: 'https://picsum.photos/id/356/500',
-    postAuthor: 'Guest',
+    postImage1URL:
+      'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwJ9T1xf8tVTnBXNyyoq5BUxoE2Y2OdWAB8-wgoOpDwtqFYExQZ4MNcEj71gWaVgtHz4pgmLi2TZR3ZpUL2OaxsoHR1p7KZNJAeAXPKEXCbWPZ4K7PO_r7j7CYmBHXLs-wMXMK8ez8CkWaty-y8TkDFzkd2bhILPHhGieJoMPjlNE1e8&3u640&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=87773',
+    postImage2URL:
+      'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwKe5ofb0PIf5pwVkbqOuYjkXruaOBHHwFeucMYMt0km9cP8dnRgX-XTz0RyXGRO9miHsjVxbDjJjkuwfSLfz2rhzvR4inOjfYhmaPyQOjoZ8P5fOuAd1W4MWLEiez1oXh8GaWHrV319DwSOXENg2YhjyOT4nfAo_PfSooU9tEIY_nTg&3u4600&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=26593',
+    postAuthor: 'Steffen Häfelinger',
+    wiki:
+      'Zürich is the largest city in Switzerland, and the capital of the canton of Zürich. It is located in north-central Switzerland, at the northwestern tip of Lake Zürich. As of January 2020, the municipality has 434,335 inhabitants, the urban area (agglomeration) 1.315 million (2009), and the Zürich metropolitan area 1.83 million (2011).',
   },
 ];
 
@@ -221,25 +226,25 @@ function onClick(object) {
   initMap(element.coords);
   let weather = getWeather(element.name);
   setInterval(watch, 1000);
-  getWikipedia(element.name);
+  // getWikipedia(element.name);
 }
 
 // ==========================================================================
-// add mapp to SinglePost
+// add map to SinglePost
 // ==========================================================================
 
 function initMap(coords) {
-  const uluru = coords;
+  const mapCenter = coords;
   const options = {
     zoom: 6,
-    center: uluru,
+    center: mapCenter,
     mapTypeId: 'hybrid',
     disableDefaultUI: true,
   };
   // The map, centered at Uluru
   const map = new google.maps.Map(document.getElementById('map'), options);
   const marker = new google.maps.Marker({
-    position: uluru,
+    position: mapCenter,
     map: map,
   });
 }
@@ -274,6 +279,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 function onSubmit(event) {
   // check, if the entered place is valid
+
   if (currentPlace === 'noValidPlace') {
     alert('Please select a Location from the list');
     event.preventDefault();
@@ -408,7 +414,7 @@ function addPost() {
 // ==========================================================================
 
 function overviewMapPage() {
-  blogContainer.innerHTML = '';
+  // blogContainer.innerHTML = '';
 
   const bannerImage = document.getElementById('bannerImage');
   const bannerTitle = document.getElementById('bannerTitle');
@@ -418,23 +424,26 @@ function overviewMapPage() {
   bannerImage.style.backgroundImage = `url(https://images.unsplash.com/photo-1498354178607-a79df2916198?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2002&q=80)`;
   bannerButton.innerText = '< Back';
   bannerLink.setAttribute('href', './index.html');
-  bannerTitle.innerHTML = 'Overview...';
+  bannerTitle.innerHTML = 'Overview';
 
-  overviewMapContainer.classList.remove('hidden');
-  blogContainer.classList.add('hidden');
-  window.scrollTo(0, 370);
+  // overviewMapContainer.classList.remove('hidden');
+  // blogContainer.classList.add('hidden');
+  window.scrollTo(0, 2200);
 }
 
+// ==========================================================================
+// init overview Map
+
 function initOverviewMap() {
-  // The location of Uluru
-  const uluru = { lat: 30, lng: 2 };
+  const mapCenter = { lat: 30, lng: 2 };
 
   const options = {
-    zoom: 3,
-    center: uluru,
-    // mapTypeId: 'hybrid',
-    // disableDefaultUI: true,
+    zoom: 2.5,
+    center: mapCenter,
+    mapTypeControl: false,
+    streetViewControl: false,
   };
+
   const overviewMap = new google.maps.Map(
     document.getElementById('overviewMap'),
     options
@@ -442,59 +451,32 @@ function initOverviewMap() {
 
   const markers = getArrayFromLocalStorage();
 
-  var bounds = new google.maps.LatLngBounds();
-  for (var i = 0; i < markers.length; i++) {
-    bounds.extend(markers[i].coords);
-    console.log(markers[i].coords, bounds);
-  }
+  let bounds = new google.maps.LatLngBounds();
+  // console.log('bounds start:', bounds);
 
-  // overviewMap.fitBounds(bounds);
-
-  function addMarker(props) {
+  function addMarker(location, i) {
     const marker = new google.maps.Marker({
-      position: props.coords,
+      position: location.coords,
       map: overviewMap,
     });
 
     const infoWindow = new google.maps.InfoWindow({
-      content: props.name,
+      content: location.name,
     });
     marker.addListener('click', function () {
       infoWindow.open(overviewMap, marker);
     });
 
-    // check content
-    // if (props.content) {
-    //   const infoWindow = new google.maps.InfoWindow({
-    //     content: props.content,
-    //   });
-    //   marker.addListener('click', function () {
-    //     infoWindow.open(map, marker);
-    //   });
-    // }
+    bounds.extend(location.coords);
   }
 
-  // array of markers
-  // const markers = [
-  //   {
-  //     coords: { lat: 53.551086, lng: 9.993682 },
-  //     iconImage:
-  //       'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-  //     content: '<h2>Hamburchh</h2>',
-  //   },
-  //   {
-  //     coords: { lat: 54.551086, lng: 8.993682 },
-  //     content: 'fick dich',
-  //   },
-  //   {
-  //     coords: { lat: 51.509865, lng: -0.118092 },
-  //   },
-  //   {
-  //     coords: { lat: 41.509865, lng: -2.118092 },
-  //   },
-  // ];
-
   markers.forEach(addMarker);
+  overviewMap.fitBounds(bounds);
+
+  // overviewMap.panToBounds(bounds);
+  // overviewMap.setCenter(bounds.getCenter());
+  overviewMap.setCenter(mapCenter);
 }
 
 initOverviewMap();
+// ==========================================================================
