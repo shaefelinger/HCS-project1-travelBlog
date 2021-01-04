@@ -38,7 +38,7 @@ const blogPosts = [
 
 // reset Local Storage and add default entries
 function resetLocalStorage() {
-  alert('Reset Locat Storage');
+  // alert('Reset Locat Storage');
   localStorage.setItem('allLocations', JSON.stringify(blogPosts));
   window.open('./index.html', '_self');
 }
@@ -47,7 +47,7 @@ function addToLocalStorage(newElement) {
   array = getArrayFromLocalStorage();
   array.push(newElement);
   pushArrayToLocalStorage(array);
-  blogContainer.innerHTML = '';
+  // blogContainer.innerHTML = '';
   printAllPosts();
 }
 
@@ -125,10 +125,7 @@ function printOnePost(element, index) {
     <div class="cardBottom">
       
         <div>
-            <div class="authorPic">
-                <img src="assets/jane_doe.jpg">
-            </div>
-            <p class="author">${element.postAuthor}</p>
+          
             <svg class="ratingContainer">
               <use xlink:href="#starRating${element.rating}">
             </svg>
@@ -136,6 +133,13 @@ function printOnePost(element, index) {
        
     </div>
 `;
+
+  {
+    /* <div class="authorPic">
+<img src="assets/jane_doe.jpg">
+</div>
+<p class="author">${element.postAuthor}</p> */
+  }
 
   blogContainer.appendChild(newArticle);
 
@@ -175,7 +179,23 @@ function onClick(object) {
  
   <div class="blogpageTextWrapper">
     <h3>${element.postTitle}</h3>
+    <h2>${element.name}</h2>
+  
+
+
     
+
+ 
+
+    <p>${element.postDescription}</p>
+    <p>${element.wiki}</p>
+    <svg class="ratingContainer">
+    <use xlink:href="#starRating${element.rating}">
+  </svg>
+  <p>Visited in ${element.month} ${element.year}</p>
+    <p id="weatherContainer">Temperature: </p> 
+    <p id="watchContainer">Clock: </p> 
+    <button onclick="eraseEntryFromLocalStorage(${id})">Delete Entry</button>
     <div class="blogpageArticeImage" 
       style="background-image: url(${element.postImage2URL}); 
       width: 75%;
@@ -187,29 +207,20 @@ function onClick(object) {
     </div>
     
 
-    <div class="authorPic largePic">
-      <img src="../assets/jane_doe.jpg">
-  </div>
-  <div>
-      <p class="author">${element.postAuthor}</p>
-  </div>
-
-    <svg class="ratingContainer">
-      <use xlink:href="#starRating${element.rating}">
-    </svg>
-    <p>Visited in ${element.month} ${element.year}</p>
-
-    <p>${element.postDescription}</p>
-    <p>${element.wiki}</p>
-    <p id="weatherContainer">Temperature: </p> 
-    <p id="watchContainer">Clock: </p> 
-    <button onclick="eraseEntryFromLocalStorage(${id})">Delete Entry</button>
-
   </div>
   <div id="map">map</div>
   <section class="blogpageBottom">
   </section>
 `;
+
+  {
+    /* <div class="authorPic largePic">
+<img src="../assets/jane_doe.jpg">
+</div>
+<div>
+<p class="author">${element.postAuthor}</p>
+</div> */
+  }
 
   {
     /* <section class="blogpageShare">
@@ -263,13 +274,20 @@ let currentPlace = 'noValidPlace';
 
 function initialize() {
   var options = {
-    // types: ['(regions)'],
-    fields: ['geometry', 'name', 'photos'],
+    types: ['(regions)'],
+    // fields: [
+    //   'geometry',
+    //   'name',
+    //   'photos',
+    //   'formatted_address',
+    //   'utc_offset_minutes',
+    // ],
   };
   var input = document.getElementById('searchTextField');
   var autocomplete = new google.maps.places.Autocomplete(input, options);
   autocomplete.addListener('place_changed', () => {
     const place = autocomplete.getPlace();
+    console.log(place);
     // if photos is not empty it is a valid location ->
     if (place.photos) {
       currentPlace = place;
@@ -407,7 +425,7 @@ function addPost() {
   // const bannerTitle = document.getElementById('bannerTitle');
   // const bannerButton = document.getElementById('bannerButton');
   // const bannerLink = document.getElementById('bannerLink');
-
+  bannerImage.classList.remove('hidden');
   bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
   bannerButton.innerText = '< Back';
   bannerLink.setAttribute('href', './index.html');
@@ -432,7 +450,8 @@ function gotoPostOverwiew() {
 // ==========================================================================
 
 function overviewMapPage() {
-  blogContainer.innerHTML = '';
+  // blogContainer.innerHTML = '';
+  initOverviewMap();
 
   // const bannerImage = document.getElementById('bannerImage');
   // const bannerTitle = document.getElementById('bannerTitle');
@@ -445,8 +464,14 @@ function overviewMapPage() {
   bannerTitle.innerHTML = 'Map-Overview';
 
   blogContainer.classList.add('hidden');
-  overviewMap.classList.remove('hidden');
+  // overviewMapContainer.classList.remove('hidden');
   // window.scrollTo(0, 230);
+
+  bannerImage.classList.add('hidden');
+
+  addPostForm.classList.add('hidden');
+  overviewMapContainer.classList.remove('hidden');
+
   window.scrollTo(0, 0);
   // window.open('#overviewMapContainer', '_self');
 }
@@ -455,10 +480,11 @@ function overviewMapPage() {
 // init overview Map
 
 function initOverviewMap() {
-  const mapCenter = { lat: 30, lng: 2 };
+  const mapCenter = { lat: 53.5510846, lng: 9.9936818 };
 
   const options = {
     // zoom: 2.5,
+    maxZoom: 10,
     // center: mapCenter,
     mapTypeControl: false,
     streetViewControl: false,
@@ -496,7 +522,10 @@ function initOverviewMap() {
   // overviewMap.panToBounds(bounds);
   // overviewMap.setCenter(bounds.getCenter());
   overviewMap.setCenter(mapCenter);
+
+  // overviewMap.setZoom(Math.max(6, overviewMap.getZoom()));
 }
 
-initOverviewMap();
+// initOverviewMap();
+overviewMapContainer.classList.add('hidden');
 // ==========================================================================

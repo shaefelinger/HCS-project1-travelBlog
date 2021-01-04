@@ -12,6 +12,7 @@
     * bilder sind zu klein  
 
 * check other browsers
+* check: wann werden neue fenster geöffnet?
 
 
 https://www.mediawiki.org/wiki/API:Main_page
