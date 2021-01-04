@@ -70,7 +70,8 @@
                 <span class="pageTitle">Around the World</span>
             </a>
             <nav>
-                <a onclick="overviewMapPage()">overview</a>
+                <a onclick="gotoPostOverwiew()">all posts</a>
+                <a onclick="overviewMapPage()">map</a>
                 <a onclick="addPost()">+ new
                     post</a>
                 <a onclick="resetLocalStorage()" href="">reset all</a>
@@ -87,6 +88,9 @@
             <!-- contains dynamic content: -->
             <div id="blogContainer"></div>
 
+            <div id="overviewMapContainer" class="hidden">
+                <div id="overviewMap"></div>
+            </div>
 
             <div class="formContainer">
                 <form action="" id="addPostForm" class="hidden">
@@ -129,9 +133,7 @@
                 </form>
             </div>
 
-            <div id="overviewMapContainer">
-                <div id="overviewMap"></div>
-            </div>
+
         </main>
 
 

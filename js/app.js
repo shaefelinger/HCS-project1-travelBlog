@@ -40,7 +40,7 @@ const blogPosts = [
 function resetLocalStorage() {
   alert('Reset Locat Storage');
   localStorage.setItem('allLocations', JSON.stringify(blogPosts));
-  window.open('./index.html');
+  window.open('./index.html', '_self');
 }
 
 function addToLocalStorage(newElement) {
@@ -65,15 +65,20 @@ function eraseEntryFromLocalStorage(id) {
   const array = getArrayFromLocalStorage();
   array.splice(id, 1);
   pushArrayToLocalStorage(array);
-  window.open('./index.html');
+  window.open('./index.html', '_self');
 }
 
 // ==========================================================================
-// Get elements from dom
+// Get elements from dom - GLOBAL
 // ==========================================================================
 
 const blogContainer = document.getElementById('blogContainer');
 const overviewMapContainer = document.getElementById('overviewMap');
+
+const bannerImage = document.getElementById('bannerImage');
+const bannerTitle = document.getElementById('bannerTitle');
+const bannerButton = document.getElementById('bannerButton');
+const bannerLink = document.getElementById('bannerLink');
 
 // input form for new entry -> Submit-Button-> call onSubmit()
 const addPostForm = document.getElementById('addPostForm');
@@ -150,10 +155,10 @@ function onClick(object) {
   blogContainer.innerHTML = '';
 
   /* ===== STYLE BANNER ===== */
-  const bannerImage = document.getElementById('bannerImage');
-  const bannerTitle = document.getElementById('bannerTitle');
-  const bannerButton = document.getElementById('bannerButton');
-  const bannerLink = document.getElementById('bannerLink');
+  // const bannerImage = document.getElementById('bannerImage');
+  // const bannerTitle = document.getElementById('bannerTitle');
+  // const bannerButton = document.getElementById('bannerButton');
+  // const bannerLink = document.getElementById('bannerLink');
 
   bannerImage.style.backgroundImage = `url(${element.postImage1URL})`;
   bannerButton.innerText = '< Back';
@@ -180,7 +185,7 @@ function onClick(object) {
       background-position: center;
       margin-bottom: 2rem">
     </div>
-    <button onclick="eraseEntryFromLocalStorage(${id})">Delete Entry</button>
+    
 
     <div class="authorPic largePic">
       <img src="../assets/jane_doe.jpg">
@@ -198,7 +203,8 @@ function onClick(object) {
     <p>${element.wiki}</p>
     <p id="weatherContainer">Temperature: </p> 
     <p id="watchContainer">Clock: </p> 
-    
+    <button onclick="eraseEntryFromLocalStorage(${id})">Delete Entry</button>
+
   </div>
   <div id="map">map</div>
   <section class="blogpageBottom">
@@ -279,10 +285,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 function onSubmit(event) {
   // check, if the entered place is valid
+  event.preventDefault();
 
   if (currentPlace === 'noValidPlace') {
     alert('Please select a Location from the list');
-    event.preventDefault();
   } else {
     // create and add new entry to Local Storage:
     const newEntry = {
@@ -304,6 +310,8 @@ function onSubmit(event) {
     addPostForm.classList.add('hidden');
     currentPlace = 'noValidPlace';
     wikiField.innerHTML = '';
+    window.open('./index.html');
+    // window.scrollTo(0, 0);
   }
 }
 
@@ -395,10 +403,10 @@ function addPost() {
   blogContainer.innerHTML = '';
 
   /* ===== STYLE BANNER ===== */
-  const bannerImage = document.getElementById('bannerImage');
-  const bannerTitle = document.getElementById('bannerTitle');
-  const bannerButton = document.getElementById('bannerButton');
-  const bannerLink = document.getElementById('bannerLink');
+  // const bannerImage = document.getElementById('bannerImage');
+  // const bannerTitle = document.getElementById('bannerTitle');
+  // const bannerButton = document.getElementById('bannerButton');
+  // const bannerLink = document.getElementById('bannerLink');
 
   bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
   bannerButton.innerText = '< Back';
@@ -406,7 +414,16 @@ function addPost() {
   bannerTitle.innerHTML = 'Add new post...';
 
   addPostForm.classList.remove('hidden');
+  overviewMapContainer.classList.add('hidden');
   window.scrollTo(0, 0);
+}
+
+// ==========================================================================
+// goto post overview
+// ==========================================================================
+function gotoPostOverwiew() {
+  window.open('./index.html', '_self');
+  // window.scrollTo(0, 400);
 }
 
 // ==========================================================================
@@ -416,10 +433,10 @@ function addPost() {
 function overviewMapPage() {
   // blogContainer.innerHTML = '';
 
-  const bannerImage = document.getElementById('bannerImage');
-  const bannerTitle = document.getElementById('bannerTitle');
-  const bannerButton = document.getElementById('bannerButton');
-  const bannerLink = document.getElementById('bannerLink');
+  // const bannerImage = document.getElementById('bannerImage');
+  // const bannerTitle = document.getElementById('bannerTitle');
+  // const bannerButton = document.getElementById('bannerButton');
+  // const bannerLink = document.getElementById('bannerLink');
 
   bannerImage.style.backgroundImage = `url(https://images.unsplash.com/photo-1498354178607-a79df2916198?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2002&q=80)`;
   bannerButton.innerText = '< Back';
@@ -427,8 +444,9 @@ function overviewMapPage() {
   bannerTitle.innerHTML = 'Overview';
 
   // overviewMapContainer.classList.remove('hidden');
-  // blogContainer.classList.add('hidden');
-  window.scrollTo(0, 2200);
+  blogContainer.classList.add('hidden');
+  // window.scrollTo(0, 230);
+  window.open('#overviewMapContainer', '_self');
 }
 
 // ==========================================================================

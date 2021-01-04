@@ -37,7 +37,6 @@ button:focus {
 
 .hidden {
   display: none;
-  /* visibility: hidden; */
 }
 /* ==========================================================================
    MAIN-PAGE LAYOUT
@@ -352,6 +351,8 @@ textarea {
   height: 700px;
   width: 90%;
   margin-top: 4rem;
+  top: 8rem;
+  margin-bottom: 8rem;
 }
 #overviewMapContainer {
   display: flex;
