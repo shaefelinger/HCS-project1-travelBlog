@@ -415,7 +415,7 @@ function overviewMapPage() {
   const bannerButton = document.getElementById('bannerButton');
   const bannerLink = document.getElementById('bannerLink');
 
-  bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
+  bannerImage.style.backgroundImage = `url(https://images.unsplash.com/photo-1498354178607-a79df2916198?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2002&q=80)`;
   bannerButton.innerText = '< Back';
   bannerLink.setAttribute('href', './index.html');
   bannerTitle.innerHTML = 'Overview...';
@@ -428,8 +428,9 @@ function overviewMapPage() {
 function initMapAll() {
   // The location of Uluru
   const uluru = { lat: 30, lng: 2 };
+
   const options = {
-    zoom: 2,
+    zoom: 4,
     center: uluru,
     // mapTypeId: 'hybrid',
     // disableDefaultUI: true,
@@ -439,6 +440,16 @@ function initMapAll() {
     document.getElementById('mapAll'),
     options
   );
+
+  const markers = getArrayFromLocalStorage();
+
+  var bounds = new google.maps.LatLngBounds();
+  for (var i = 0; i < markers.length; i++) {
+    bounds.extend(markers[i].coords);
+    console.log(markers[i].coords, bounds);
+  }
+
+  // mapAll.fitBounds(bounds);
 
   function addMarker(props) {
     const marker = new google.maps.Marker({
@@ -483,7 +494,6 @@ function initMapAll() {
   //     coords: { lat: 41.509865, lng: -2.118092 },
   //   },
   // ];
-  const markers = getArrayFromLocalStorage();
 
   markers.forEach(addMarker);
 }

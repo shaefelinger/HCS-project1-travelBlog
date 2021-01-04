@@ -1,14 +1,14 @@
 * cleanup css
-* add date to storage and card
 * implement weather -> icon
 * local time mit nullen oder als uhr
-* date-input & create string
+* icon and page title
+* burger menu
 
 * links: google, wiki, reiseportal
 
 * finetune layout -> responsice and design
     * bilder sind zu klein  
-* map-overview for all locations
+* map-overview for all locations -> auto zoom
 * check other browsers
 
 
