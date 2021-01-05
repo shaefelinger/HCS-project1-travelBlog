@@ -377,6 +377,7 @@ function locationIsValid() {
   titleField.focus();
   console.log(currentPlace.photos[0].getUrl());
   bannerImage.style.backgroundImage = `url(${currentPlace.photos[0].getUrl()})`;
+  bannerTitle.innerHTML = '';
   // bannerImage.style.backgroundImage = url(
   //   'https://picsum.photos/id/123/1000/535'
   // );
@@ -469,6 +470,7 @@ function resetInputForm() {
   wikiField.innerHTML = '';
   currentPlace = 'noValidPlace';
   bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
+  bannerTitle.innerHTML = 'Add new post...';
   // alert('reset');
 }
 
