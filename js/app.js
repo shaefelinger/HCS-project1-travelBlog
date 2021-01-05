@@ -270,29 +270,83 @@ function initMap(coords) {
 // location autocomplete for New Post-Page */
 // ==========================================================================
 
+// function testSubmit(event) {
+//   console.log(searchTextField.value);
+// }
+
 let currentPlace = 'noValidPlace';
 
 function initialize() {
   var options = {
     types: ['(regions)'],
-    // fields: [
-    //   'geometry',
-    //   'name',
-    //   'photos',
-    //   'formatted_address',
-    //   'utc_offset_minutes',
-    // ],
+    fields: [
+      // 'geometry',
+      // 'name',
+      // 'photos',
+      // 'formatted_address',
+      // 'utc_offset_minutes',
+      'place_id',
+    ],
   };
-  var input = document.getElementById('searchTextField');
-  var autocomplete = new google.maps.places.Autocomplete(input, options);
+  const input = document.getElementById('searchTextField');
+  const autocomplete = new google.maps.places.Autocomplete(input, options);
   autocomplete.addListener('place_changed', () => {
-    const place = autocomplete.getPlace();
+    let place = autocomplete.getPlace();
     console.log(place);
-    // if photos is not empty it is a valid location ->
-    if (place.photos) {
+    // ==========================================================================
+    // nur quqtsch
+
+    const googleDOMNodes = document.getElementsByClassName('pac-item');
+
+    // ==========================================================================
+    // if place_id is not empty => it is a valid location ->
+
+    let googlePlaceID = place.place_id;
+    console.log(googlePlaceID);
+
+    if (place.place_id) {
       currentPlace = place;
       getWiki(place.name);
+    } else {
+      console.error('inclomplete Location');
+      // console.log(googleDOMNodes);
+      const forcedResult =
+        googleDOMNodes[0].children[1].innerText +
+        ', ' +
+        googleDOMNodes[0].children[2].innerText;
+      searchTextField.value = forcedResult;
+
+      // const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+      // const url =
+      //   'https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&place_id=ChIJuRMYfoNhsUcRoDrWe_I9JgQ';
+
+      // function getGoogleInfo(placeID) {
+      //   fetch(proxyurl + url)
+      //     .then((res) => res.json())
+      //     .then((data) => {
+      //       console.log(data);
+      //     });
+      // }
+
+      // getGoogleInfo();
+
+      // fetch(
+      //   `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&input=London, UK`
+      // )
+      //   .then((res) => res.json())
+      //   .then(
+      //     (data) => {
+      //       console.log(data);
+      //     }
+      //     // .catch(onError);
+      //   );
+      /* get place-ID */
     }
+
+    /* get google info by placeID */
+
+    // currentPlace = place;
+    // getWiki(place.name);
   });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
