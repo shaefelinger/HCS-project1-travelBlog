@@ -302,7 +302,7 @@ function initialize() {
       // => this is a valid location
       // ==========================================================================
       console.log('complete Location');
-      getGoogleInfoByPlaceId(googlePlaceID);
+      // getGoogleInfoByPlaceId(googlePlaceID);
       currentPlace = place;
       // console.log(place);
       getWiki(place.name);
@@ -310,33 +310,32 @@ function initialize() {
     } else {
       // -> inclomplete location
       // ==========================================================================
-      console.log('inclomplete Location');
-      console.log(googleDOMNodes);
-      const forcedResult =
-        googleDOMNodes[0].children[1].innerText +
-        ', ' +
-        googleDOMNodes[0].children[2].innerText;
-      searchTextField.value = forcedResult;
-      console.log('checking...');
-      // get place-ID from Google-Places
-      // ==========================================================================
-      fetch(
-        proxyurl +
-          `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&input=${forcedResult}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          googlePlaceID = data.candidates[0].place_id;
-          getGoogleInfoByPlaceId(googlePlaceID);
-        })
-        .catch((onError) => {
-          locationIsOk.innerHTML = 'ERROR';
-          locationIsOk.style.color = 'red';
-        });
-    }
+      alert('select from list');
+      // console.log('inclomplete Location');
+      // console.log(googleDOMNodes);
+      // const forcedResult =
+      //   googleDOMNodes[0].children[1].innerText +
+      //   ', ' +
+      //   googleDOMNodes[0].children[2].innerText;
+      // searchTextField.value = forcedResult;
+      // console.log('checking...');
 
-    // currentPlace = place;
-    // getWiki(place.name);
+      // // get place-ID from Google-Places
+      // // ==========================================================================
+      // fetch(
+      //   proxyurl +
+      //     `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&input=${forcedResult}`
+      // )
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     googlePlaceID = data.candidates[0].place_id;
+      //     getGoogleInfoByPlaceId(googlePlaceID);
+      //   })
+      //   .catch((onError) => {
+      //     locationIsOk.innerHTML = 'ERROR';
+      //     locationIsOk.style.color = 'red';
+      //   });
+    }
   });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -374,27 +373,28 @@ function locationIsValid() {
   searchTextField.style.border = '0px';
   searchTextField.style.paddingLeft = '0px';
   titleField.focus();
+  window.scroll(0, 360);
 }
 
-// kann wahrscheinlihc weg
-function getPhotosfromPlace(place) {
-  console.log('jetzt die fotos', place.photos[0].photo_reference);
-  console.log('jetzt die fotos', place.photos[1].photo_reference);
+// // kann wahrscheinlihc weg
+// function getPhotosfromPlace(place) {
+//   console.log('jetzt die fotos', place.photos[0].photo_reference);
+//   console.log('jetzt die fotos', place.photos[1].photo_reference);
 
-  imageurl1 =
-    'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=' +
-    place.photos[0].photo_reference +
-    '&key=' +
-    'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
+//   imageurl1 =
+//     'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=' +
+//     place.photos[0].photo_reference +
+//     '&key=' +
+//     'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
 
-  console.log(imageurl1);
-  // let photo1 = fetch(
-  //   proxyurl +
-  //     `https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&maxwidth=1600&photoreference=ATtYBwLgxMdmBtbvTRUi4Yo2yt6UmZ97af6AWDzYamZXmY1SCUqzeMt576DDztmoBJCBM8h_fvISOkrV6PU-tdIieVxKDE0x62EL9ITkWjyn9GSYSOrq9xX5cmnZX2pz4tpCbKeBKXHlMzgeg3UiTtjgLFywC2xe4QjTBwVdzkMzlnr1K5R9`
-  // ).then((res) => {
-  //   console.log(photo1);
-  // });
-}
+//   console.log(imageurl1);
+//   // let photo1 = fetch(
+//   //   proxyurl +
+//   //     `https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&maxwidth=1600&photoreference=ATtYBwLgxMdmBtbvTRUi4Yo2yt6UmZ97af6AWDzYamZXmY1SCUqzeMt576DDztmoBJCBM8h_fvISOkrV6PU-tdIieVxKDE0x62EL9ITkWjyn9GSYSOrq9xX5cmnZX2pz4tpCbKeBKXHlMzgeg3UiTtjgLFywC2xe4QjTBwVdzkMzlnr1K5R9`
+//   // ).then((res) => {
+//   //   console.log(photo1);
+//   // });
+// }
 
 // ==========================================================================
 //  HANDLING OF NEW ENTRY
@@ -430,17 +430,17 @@ function onSubmit(event) {
 
     const newEntry = {
       name: currentPlace.name,
-      // coords: currentPlace.geometry.location.toJSON(),
+      coords: currentPlace.geometry.location.toJSON(),
       coords: currentPlace.geometry.location,
       postTitle: titleField.value,
       postDescription: descriptionField.value,
       rating: ratingField.value,
       month: monthField.value,
       year: yearField.value,
-      postImage1URL: Image1URL,
-      postImage2URL: Image2URL,
-      // postImage1URL: currentPlace.photos[0].getUrl(),
-      // postImage2URL: currentPlace.photos[1].getUrl(),
+      // postImage1URL: Image1URL,
+      // postImage2URL: Image2URL,
+      postImage1URL: currentPlace.photos[0].getUrl(),
+      postImage2URL: currentPlace.photos[1].getUrl(),
       postAuthor: 'Guest',
       wiki: wikiField.value,
     };
