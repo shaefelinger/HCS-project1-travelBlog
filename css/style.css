@@ -338,6 +338,11 @@ textarea {
   width: 7rem;
 }
 
+#searchTextField {
+  font-size: 1.8rem;
+  /* color: #333; */
+}
+
 #ratingField i {
   color: #155e39;
 }
