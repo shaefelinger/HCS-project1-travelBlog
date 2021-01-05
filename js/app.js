@@ -367,14 +367,16 @@ function getGoogleInfoByPlaceId(placeId) {
 function onSubmit(event) {
   // check, if the entered place is valid
   event.preventDefault();
-
+  console.log(currentPlace);
   if (currentPlace === 'noValidPlace') {
     alert('Please select a Location from the list');
   } else {
     // create and add new entry to Local Storage:
+
     const newEntry = {
       name: currentPlace.name,
-      coords: currentPlace.geometry.location.toJSON(),
+      // coords: currentPlace.geometry.location.toJSON(),
+      // coords: currentPlace.geometry.location,
       postTitle: titleField.value,
       postDescription: descriptionField.value,
       rating: ratingField.value,
