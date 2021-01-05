@@ -72,6 +72,7 @@ function eraseEntryFromLocalStorage(id) {
 // Get elements from dom & GLOBAL variables
 // ==========================================================================
 const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+// const proxyurl = '';
 
 const blogContainer = document.getElementById('blogContainer');
 const overviewMapContainer = document.getElementById('overviewMap');
@@ -87,6 +88,8 @@ addPostForm.addEventListener('submit', onSubmit);
 
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', onSubmit);
+
+const locationIsOk = document.getElementById('locationIsOk');
 // ==========================================================================
 // ALL POSTS AS CARDS => OVERVIEW
 // ==========================================================================
@@ -280,7 +283,7 @@ function initialize() {
     types: ['(regions)'],
     fields: [
       // 'geometry',
-      // 'name',
+      'name',
       // 'photos',
       // 'formatted_address',
       // 'utc_offset_minutes',
@@ -308,15 +311,14 @@ function initialize() {
       // -> inclomplete location
       // ==========================================================================
       console.log('inclomplete Location');
-      // console.log(googleDOMNodes);
+      console.log(googleDOMNodes);
       const forcedResult =
         googleDOMNodes[0].children[1].innerText +
         ', ' +
         googleDOMNodes[0].children[2].innerText;
       searchTextField.value = forcedResult;
-
-      // const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-
+      // const forcedResult = 'london';
+      console.log('checking...');
       // get place-ID from Google-Places
       // ==========================================================================
       fetch(
@@ -329,8 +331,14 @@ function initialize() {
             googlePlaceID = data.candidates[0].place_id;
             getGoogleInfoByPlaceId(googlePlaceID);
           }
-          // .catch(onError);
-        );
+          // .catch((onError) => () {
+          //   console.log('error')
+          // });
+        )
+        .catch((onError) => {
+          locationIsOk.innerHTML = 'ERROR';
+          locationIsOk.style.color = 'red';
+        });
       // getWiki(forcedResult);
       // console.log(googlePlaceID);
     }
@@ -345,24 +353,31 @@ google.maps.event.addDomListener(window, 'load', initialize);
 // get google info by placeID
 // ==========================================================================
 function getGoogleInfoByPlaceId(placeId) {
+  locationIsOk.innerHTML = 'searching Location...';
   console.log('get aufgerufen mit:', placeId);
   fetch(
     proxyurl +
       `https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&fields=name,geometry,photos,formatted_address,utc_offset,place_id&place_id=${placeId}`
   )
     .then((res) => res.json())
-    .then(
-      (data) => {
-        // console.log(data.result);
-        currentPlace = data.result;
-        getWiki(currentPlace.name);
-        // console.log('Photo0', currentPlace.photos[0].photo_reference);
-        // return currentPlace;
-        // getPhotosfromPlace(currentPlace);
-      }
+    .then((data) => {
+      // console.log(data.result);
+      currentPlace = data.result;
+      getWiki(currentPlace.name);
+      // searchTextField.value = searchTextField.value + ' 🆗';
+      locationIsOk.innerHTML = 'Location is valid';
+      searchTextField.setAttribute('disabled', true);
+      searchTextField.style.fontSize = '2rem';
+      titleField.focus();
 
-      // .catch(onError);
-    );
+      // console.log('Photo0', currentPlace.photos[0].photo_reference);
+      // return currentPlace;
+      // getPhotosfromPlace(currentPlace);
+    })
+    .catch((onError) => {
+      locationIsOk.innerHTML = 'ERROR';
+      locationIsOk.style.color = 'red';
+    });
 }
 
 function getPhotosfromPlace(place) {
@@ -440,6 +455,16 @@ function onSubmit(event) {
     wikiField.innerHTML = '';
     window.open('./index.html');
   }
+}
+
+function resetInputForm() {
+  addPostForm.reset();
+  locationIsOk.innerHTML = 'Enter a Location';
+  searchTextField.removeAttribute('disabled', true);
+  searchTextField.focus();
+  wikiField.innerHTML = '';
+  currentPlace = 'noValidPlace';
+  // alert('reset');
 }
 
 // ==========================================================================
@@ -543,6 +568,7 @@ function addPost() {
   addPostForm.classList.remove('hidden');
   overviewMapContainer.classList.add('hidden');
   window.scrollTo(0, 0);
+  searchTextField.focus();
 }
 
 // ==========================================================================

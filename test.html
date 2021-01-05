@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+        function logPlaceDetails() {
+            var service = new google.maps.places.PlacesService(document.getElementById('map'));
+            service.getDetails({
+                placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+            }, function (place, status) {
+                console.log('Place details:', place);
+            });
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&libraries=places&callback=logPlaceDetails"></script>
+
+</head>
+
+<body>
+    <div id="map"></div>
+
+
+
+
+</body>
+
+</html>

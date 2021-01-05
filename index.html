@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/style.css">
 
 
+
 </head>
 
 <body>
@@ -98,6 +99,8 @@
                     <!-- <input onchange="testSubmit()" type="text" placeholder="asdasd" id=""> -->
                     <input id="searchTextField" type="search" size="50" placeholder="*Enter a location"
                         autocomplete="on">
+                    <div id="locationIsOk">Enter Location...</div>
+                    <hr>
 
                     <input required type="text" placeholder="*Enter a Title for your post" id="titleField">
                     <select required name="monthInput" id="monthField">
@@ -132,6 +135,7 @@
                         placeholder="Edit Wikipedia Information"></textarea>
 
                     <button id="submitButton" type="button">submit2</button>
+                    <button onclick="resetInputForm()" type="button">reset</button>
                     <!-- <button type="submit">submit</button> -->
                 </form>
             </div>
