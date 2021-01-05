@@ -39,8 +39,10 @@ const blogPosts = [
 // reset Local Storage and add default entries
 function resetLocalStorage() {
   // alert('Reset Locat Storage');
-  localStorage.setItem('allLocations', JSON.stringify(blogPosts));
-  window.open('./index.html', '_self');
+  if (confirm('Reset Local Storage to default! Are you sure?')) {
+    localStorage.setItem('allLocations', JSON.stringify(blogPosts));
+    window.open('./index.html', '_self');
+  }
 }
 
 function addToLocalStorage(newElement) {
