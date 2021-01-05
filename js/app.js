@@ -393,14 +393,14 @@ function onSubmit(event) {
 
   // console.log(titleField.value);
   if (!titleField.value) {
-    alert('du ficker');
+    alert('Please enter a Title');
     return;
   }
   // check, if the entered place is valid
   // event.preventDefault();
   // console.log(currentPlace.photos[0]);
   if (currentPlace === 'noValidPlace') {
-    alert('Please select a Location from the list');
+    alert('Please enter a valid Location');
   } else {
     // create and add new entry to Local Storage:
 
@@ -438,7 +438,7 @@ function onSubmit(event) {
     addPostForm.classList.add('hidden');
     currentPlace = 'noValidPlace';
     wikiField.innerHTML = '';
-    // window.open('./index.html');
+    window.open('./index.html');
   }
 }
 
