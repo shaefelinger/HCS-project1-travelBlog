@@ -71,6 +71,7 @@ function eraseEntryFromLocalStorage(id) {
 // ==========================================================================
 // Get elements from dom - GLOBAL
 // ==========================================================================
+const proxyurl = 'https://cors-anywhere.herokuapp.com/';
 
 const blogContainer = document.getElementById('blogContainer');
 const overviewMapContainer = document.getElementById('overviewMap');
@@ -292,23 +293,25 @@ function initialize() {
   const autocomplete = new google.maps.places.Autocomplete(input, options);
   autocomplete.addListener('place_changed', () => {
     let place = autocomplete.getPlace();
-    console.log(place);
+    // console.log(place);
     // ==========================================================================
-    // nur quqtsch
 
     const googleDOMNodes = document.getElementsByClassName('pac-item');
 
     // ==========================================================================
-    // if place_id is not empty => it is a valid location ->
 
     let googlePlaceID = place.place_id;
-    console.log(googlePlaceID);
+    // console.log(googlePlaceID);
 
-    if (place.place_id) {
-      currentPlace = place;
-      getWiki(place.name);
+    // if place_id is not empty => it is a valid location ->
+    if (googlePlaceID) {
+      console.log('complete Location');
+      getGoogleInfoByPlaceId(googlePlaceID);
+      // currentPlace = place;
+      // console.log(place);
+      // getWiki(place.name);
     } else {
-      console.error('inclomplete Location');
+      console.error('SH: inclomplete Location');
       // console.log(googleDOMNodes);
       const forcedResult =
         googleDOMNodes[0].children[1].innerText +
@@ -316,31 +319,24 @@ function initialize() {
         googleDOMNodes[0].children[2].innerText;
       searchTextField.value = forcedResult;
 
-      // const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-      // const url =
-      //   'https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&place_id=ChIJuRMYfoNhsUcRoDrWe_I9JgQ';
+      const proxyurl = 'https://cors-anywhere.herokuapp.com/';
 
-      // function getGoogleInfo(placeID) {
-      //   fetch(proxyurl + url)
-      //     .then((res) => res.json())
-      //     .then((data) => {
-      //       console.log(data);
-      //     });
-      // }
-
-      // getGoogleInfo();
-
-      // fetch(
-      //   `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&input=London, UK`
-      // )
-      //   .then((res) => res.json())
-      //   .then(
-      //     (data) => {
-      //       console.log(data);
-      //     }
-      //     // .catch(onError);
-      //   );
       /* get place-ID */
+      fetch(
+        proxyurl +
+          `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&input=${forcedResult}`
+      )
+        .then((res) => res.json())
+        .then(
+          (data) => {
+            // console.log(data.candidates[0].place_id);
+            googlePlaceID = data.candidates[0].place_id;
+            getGoogleInfoByPlaceId(googlePlaceID);
+          }
+          // .catch(onError);
+        );
+      getWiki(forcedResult);
+      console.log(googlePlaceID);
     }
 
     /* get google info by placeID */
@@ -350,6 +346,10 @@ function initialize() {
   });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+
+function getGoogleInfoByPlaceId(placeId) {
+  console.log('get aufgerufen mit:', placeId);
+}
 
 // ==========================================================================
 //  HANDLING OF NEW ENTRY
