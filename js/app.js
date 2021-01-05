@@ -69,7 +69,7 @@ function eraseEntryFromLocalStorage(id) {
 }
 
 // ==========================================================================
-// Get elements from dom - GLOBAL
+// Get elements from dom & GLOBAL variables
 // ==========================================================================
 const proxyurl = 'https://cors-anywhere.herokuapp.com/';
 
@@ -85,6 +85,8 @@ const bannerLink = document.getElementById('bannerLink');
 const addPostForm = document.getElementById('addPostForm');
 addPostForm.addEventListener('submit', onSubmit);
 
+const submitButton = document.getElementById('submitButton');
+submitButton.addEventListener('click', onSubmit);
 // ==========================================================================
 // ALL POSTS AS CARDS => OVERVIEW
 // ==========================================================================
@@ -244,7 +246,7 @@ function onClick(object) {
   initMap(element.coords);
   let weather = getWeather(element.name);
   setInterval(watch, 1000);
-  // getWikipedia(element.name);
+  // // getWikipedia(element.name);
 }
 
 // ==========================================================================
@@ -353,11 +355,33 @@ function getGoogleInfoByPlaceId(placeId) {
       (data) => {
         // console.log(data.result);
         currentPlace = data.result;
-        console.log(currentPlace);
         getWiki(currentPlace.name);
+        // console.log('Photo0', currentPlace.photos[0].photo_reference);
+        // return currentPlace;
+        // getPhotosfromPlace(currentPlace);
       }
+
       // .catch(onError);
     );
+}
+
+function getPhotosfromPlace(place) {
+  console.log('jetzt die fotos', place.photos[0].photo_reference);
+  console.log('jetzt die fotos', place.photos[1].photo_reference);
+
+  imageurl1 =
+    'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=' +
+    place.photos[0].photo_reference +
+    '&key=' +
+    'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
+
+  console.log(imageurl1);
+  // let photo1 = fetch(
+  //   proxyurl +
+  //     `https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&maxwidth=1600&photoreference=ATtYBwLgxMdmBtbvTRUi4Yo2yt6UmZ97af6AWDzYamZXmY1SCUqzeMt576DDztmoBJCBM8h_fvISOkrV6PU-tdIieVxKDE0x62EL9ITkWjyn9GSYSOrq9xX5cmnZX2pz4tpCbKeBKXHlMzgeg3UiTtjgLFywC2xe4QjTBwVdzkMzlnr1K5R9`
+  // ).then((res) => {
+  //   console.log(photo1);
+  // });
 }
 
 // ==========================================================================
@@ -365,25 +389,46 @@ function getGoogleInfoByPlaceId(placeId) {
 // ==========================================================================
 
 function onSubmit(event) {
+  // console.log(descriptionField.value);
+
+  // console.log(titleField.value);
+  if (!titleField.value) {
+    alert('du ficker');
+    return;
+  }
   // check, if the entered place is valid
-  event.preventDefault();
-  console.log(currentPlace);
+  // event.preventDefault();
+  // console.log(currentPlace.photos[0]);
   if (currentPlace === 'noValidPlace') {
     alert('Please select a Location from the list');
   } else {
     // create and add new entry to Local Storage:
 
+    const Image1URL =
+      'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=' +
+      currentPlace.photos[0].photo_reference +
+      '&key=' +
+      'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
+
+    const Image2URL =
+      'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=' +
+      currentPlace.photos[1].photo_reference +
+      '&key=' +
+      'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
+
     const newEntry = {
       name: currentPlace.name,
       // coords: currentPlace.geometry.location.toJSON(),
-      // coords: currentPlace.geometry.location,
+      coords: currentPlace.geometry.location,
       postTitle: titleField.value,
       postDescription: descriptionField.value,
       rating: ratingField.value,
       month: monthField.value,
       year: yearField.value,
-      postImage1URL: currentPlace.photos[0].getUrl(),
-      postImage2URL: currentPlace.photos[1].getUrl(),
+      postImage1URL: Image1URL,
+      postImage2URL: Image2URL,
+      // postImage1URL: currentPlace.photos[0].getUrl(),
+      // postImage2URL: currentPlace.photos[1].getUrl(),
       postAuthor: 'Guest',
       wiki: wikiField.value,
     };
@@ -393,8 +438,7 @@ function onSubmit(event) {
     addPostForm.classList.add('hidden');
     currentPlace = 'noValidPlace';
     wikiField.innerHTML = '';
-    window.open('./index.html');
-    // window.scrollTo(0, 0);
+    // window.open('./index.html');
   }
 }
 
