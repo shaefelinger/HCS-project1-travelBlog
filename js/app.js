@@ -373,7 +373,12 @@ function locationIsValid() {
   searchTextField.style.border = '0px';
   searchTextField.style.paddingLeft = '0px';
   titleField.focus();
-  window.scroll(0, 360);
+  console.log(currentPlace.photos[0].getUrl());
+  bannerImage.style.backgroundImage = `url(${currentPlace.photos[0].getUrl()})`;
+  // bannerImage.style.backgroundImage = url(
+  //   'https://picsum.photos/id/123/1000/535'
+  // );
+  // window.scroll(0, 360);
 }
 
 // // kann wahrscheinlihc weg
@@ -461,6 +466,7 @@ function resetInputForm() {
   searchTextField.focus();
   wikiField.innerHTML = '';
   currentPlace = 'noValidPlace';
+  bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
   // alert('reset');
 }
 
