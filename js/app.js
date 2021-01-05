@@ -271,10 +271,6 @@ function initMap(coords) {
 // location autocomplete for New Post-Page */
 // ==========================================================================
 
-// function testSubmit(event) {
-//   console.log(searchTextField.value);
-// }
-
 let currentPlace = 'noValidPlace';
 
 function initialize() {
@@ -293,25 +289,23 @@ function initialize() {
   const autocomplete = new google.maps.places.Autocomplete(input, options);
   autocomplete.addListener('place_changed', () => {
     let place = autocomplete.getPlace();
-    // console.log(place);
-    // ==========================================================================
 
     const googleDOMNodes = document.getElementsByClassName('pac-item');
 
-    // ==========================================================================
-
     let googlePlaceID = place.place_id;
-    // console.log(googlePlaceID);
 
-    // if place_id is not empty => it is a valid location ->
     if (googlePlaceID) {
+      // => this is a valid location
+      // ==========================================================================
       console.log('complete Location');
       getGoogleInfoByPlaceId(googlePlaceID);
       // currentPlace = place;
       // console.log(place);
       // getWiki(place.name);
     } else {
-      console.error('SH: inclomplete Location');
+      // -> inclomplete location
+      // ==========================================================================
+      console.log('inclomplete Location');
       // console.log(googleDOMNodes);
       const forcedResult =
         googleDOMNodes[0].children[1].innerText +
@@ -319,9 +313,10 @@ function initialize() {
         googleDOMNodes[0].children[2].innerText;
       searchTextField.value = forcedResult;
 
-      const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+      // const proxyurl = 'https://cors-anywhere.herokuapp.com/';
 
-      /* get place-ID */
+      // get place-ID from Google-Places
+      // ==========================================================================
       fetch(
         proxyurl +
           `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&input=${forcedResult}`
@@ -329,17 +324,14 @@ function initialize() {
         .then((res) => res.json())
         .then(
           (data) => {
-            // console.log(data.candidates[0].place_id);
             googlePlaceID = data.candidates[0].place_id;
             getGoogleInfoByPlaceId(googlePlaceID);
           }
           // .catch(onError);
         );
-      getWiki(forcedResult);
-      console.log(googlePlaceID);
+      // getWiki(forcedResult);
+      // console.log(googlePlaceID);
     }
-
-    /* get google info by placeID */
 
     // currentPlace = place;
     // getWiki(place.name);
@@ -347,8 +339,25 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
+// ==========================================================================
+// get google info by placeID
+// ==========================================================================
 function getGoogleInfoByPlaceId(placeId) {
   console.log('get aufgerufen mit:', placeId);
+  fetch(
+    proxyurl +
+      `https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&fields=name,geometry,photos,formatted_address,utc_offset,place_id&place_id=${placeId}`
+  )
+    .then((res) => res.json())
+    .then(
+      (data) => {
+        // console.log(data.result);
+        currentPlace = data.result;
+        console.log(currentPlace);
+        getWiki(currentPlace.name);
+      }
+      // .catch(onError);
+    );
 }
 
 // ==========================================================================
