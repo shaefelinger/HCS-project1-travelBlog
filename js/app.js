@@ -15,7 +15,6 @@ const blogPosts = [
     postImage2URL:
       'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwINqX6w5Njs_0f-RJ4lP8YCrDvXu0FYmgEUsnU5GfoOZ1jmztUZgc0Td1B4PrS2zff86bojGnKoYMO8YkcTw-r0F-Sq1vYK8jxJZMwPKQ3apAuZeNpdg-b4lPUx-pHo51lul7kJtS_xtyWuEcDglUkb89ncmDRm-M0sV5FeS5ip-tJg&3u3000&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=40008',
     wiki: `Hamburg is the second-largest city in Germany after Berlin and 7th largest city in the European Union with a population of over 1.84 million.One of Germany's 16 federated states, it is surrounded by Schleswig-Holstein to the north and Lower Saxony to the south. The city's metropolitan region is home to more than five million people. Hamburg lies on the River Elbe and two of its tributaries, the River Alster and the River Bille.`,
-    postAuthor: 'Steffen Häfelinger',
     utc_offset: 60,
   },
   {
@@ -30,7 +29,6 @@ const blogPosts = [
       'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwJ9T1xf8tVTnBXNyyoq5BUxoE2Y2OdWAB8-wgoOpDwtqFYExQZ4MNcEj71gWaVgtHz4pgmLi2TZR3ZpUL2OaxsoHR1p7KZNJAeAXPKEXCbWPZ4K7PO_r7j7CYmBHXLs-wMXMK8ez8CkWaty-y8TkDFzkd2bhILPHhGieJoMPjlNE1e8&3u640&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=87773',
     postImage2URL:
       'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwKe5ofb0PIf5pwVkbqOuYjkXruaOBHHwFeucMYMt0km9cP8dnRgX-XTz0RyXGRO9miHsjVxbDjJjkuwfSLfz2rhzvR4inOjfYhmaPyQOjoZ8P5fOuAd1W4MWLEiez1oXh8GaWHrV319DwSOXENg2YhjyOT4nfAo_PfSooU9tEIY_nTg&3u4600&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=26593',
-    postAuthor: 'Steffen Häfelinger',
     wiki:
       'Zürich is the largest city in Switzerland, and the capital of the canton of Zürich. It is located in north-central Switzerland, at the northwestern tip of Lake Zürich. As of January 2020, the municipality has 434,335 inhabitants, the urban area (agglomeration) 1.315 million (2009), and the Zürich metropolitan area 1.83 million (2011).',
     utc_offset: 60,
@@ -152,35 +150,21 @@ function printOnePost(element, index) {
     </div>
 `;
 
-  {
-    /* <div class="authorPic">
-<img src="assets/jane_doe.jpg">
-</div>
-<p class="author">${element.postAuthor}</p> */
-  }
-
   blogContainer.appendChild(newArticle);
 
   // overlayButton makes the Card clickable and passes the index of the entry
   const overlayButton = document.getElementById(index);
   overlayButton.addEventListener('click', onClick);
-  // overviewMap();
 }
 
 // ==========================================================================
-// SINGLE POST-BLOGPAGE => RESULT
+//  => IF CARD IS CLICKED: DISPLAY SINGLE POST
 // ==========================================================================
 function onClick(object) {
   const id = object.srcElement.id;
   const array = JSON.parse(localStorage.getItem('allLocations'));
   const element = array[id];
   blogContainer.innerHTML = '';
-
-  /* ===== STYLE BANNER ===== */
-  // const bannerImage = document.getElementById('bannerImage');
-  // const bannerTitle = document.getElementById('bannerTitle');
-  // const bannerButton = document.getElementById('bannerButton');
-  // const bannerLink = document.getElementById('bannerLink');
 
   bannerImage.style.backgroundImage = `url(${element.postImage1URL})`;
   bannerButton.innerText = '< Back';
@@ -220,22 +204,11 @@ function onClick(object) {
       background-position: center;
       margin-bottom: 2rem">
     </div>
-    
-
   </div>
   <div id="map">map</div>
   <section class="blogpageBottom">
   </section>
 `;
-
-  {
-    /* <div class="authorPic largePic">
-<img src="../assets/jane_doe.jpg">
-</div>
-<div>
-<p class="author">${element.postAuthor}</p>
-</div> */
-  }
 
   {
     /* <section class="blogpageShare">
@@ -256,10 +229,8 @@ function onClick(object) {
 
   blogContainer.appendChild(newArticle);
   initMap(element.coords);
-  let weather = getWeather(element.name);
+  getWeather(element.name);
   setInterval(watch, 1000, element.utc_offset);
-
-  // // getWikipedia(element.name);
 }
 
 // ==========================================================================
@@ -274,7 +245,7 @@ function initMap(coords) {
     mapTypeId: 'hybrid',
     disableDefaultUI: true,
   };
-  // The map, centered at Uluru
+  // The map
   const map = new google.maps.Map(document.getElementById('map'), options);
   const marker = new google.maps.Marker({
     position: mapCenter,
@@ -320,61 +291,33 @@ function initialize() {
     } else {
       // -> inclomplete location
       // ==========================================================================
-      alert('select from list');
-      // console.log('inclomplete Location');
-      // console.log(googleDOMNodes);
-      // const forcedResult =
-      //   googleDOMNodes[0].children[1].innerText +
-      //   ', ' +
-      //   googleDOMNodes[0].children[2].innerText;
-      // searchTextField.value = forcedResult;
-      // console.log('checking...');
-
-      // // get place-ID from Google-Places
-      // // ==========================================================================
-      // fetch(
-      //   proxyurl +
-      //     `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&input=${forcedResult}`
-      // )
-      //   .then((res) => res.json())
-      //   .then((data) => {
-      //     googlePlaceID = data.candidates[0].place_id;
-      //     getGoogleInfoByPlaceId(googlePlaceID);
-      //   })
-      //   .catch((onError) => {
-      //     locationIsOk.innerHTML = 'ERROR';
-      //     locationIsOk.style.color = 'red';
-      //   });
+      alert('Please select a Location from the list');
     }
   });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
 // ==========================================================================
-// get google info by placeID
+// get google info by placeID -> unused???
 // ==========================================================================
-function getGoogleInfoByPlaceId(placeId) {
-  locationIsOk.innerHTML = 'searching Location...';
-  console.log('get aufgerufen mit:', placeId);
-  fetch(
-    proxyurl +
-      `https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&fields=name,geometry,photos,formatted_address,utc_offset,place_id&place_id=${placeId}`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      currentPlace = data.result;
-      getWiki(currentPlace.name);
-      locationIsValid();
-      // locationIsOk.innerHTML = 'Location is valid';
-      // searchTextField.setAttribute('disabled', true);
-      // searchTextField.style.color = '#111';
-      // titleField.focus();
-    })
-    .catch((onError) => {
-      locationIsOk.innerHTML = 'ERROR';
-      locationIsOk.style.color = 'red';
-    });
-}
+// function getGoogleInfoByPlaceId(placeId) {
+//   locationIsOk.innerHTML = 'searching Location...';
+//   console.log('get aufgerufen mit:', placeId);
+//   fetch(
+//     proxyurl +
+//       `https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&fields=name,geometry,photos,formatted_address,utc_offset,place_id&place_id=${placeId}`
+//   )
+//     .then((res) => res.json())
+//     .then((data) => {
+//       currentPlace = data.result;
+//       getWiki(currentPlace.name);
+//       locationIsValid();
+//     })
+//     .catch((onError) => {
+//       locationIsOk.innerHTML = 'ERROR';
+//       locationIsOk.style.color = 'red';
+//     });
+// }
 
 function locationIsValid() {
   locationIsOk.innerHTML = 'Location is valid';
@@ -385,11 +328,7 @@ function locationIsValid() {
   titleField.focus();
   console.log(currentPlace.photos[0].getUrl());
   bannerImage.style.backgroundImage = `url(${currentPlace.photos[0].getUrl()})`;
-  bannerTitle.innerHTML = '';
-  // bannerImage.style.backgroundImage = url(
-  //   'https://picsum.photos/id/123/1000/535'
-  // );
-  // window.scroll(0, 360);
+  bannerTitle.innerHTML = `${currentPlace.name}`;
 }
 
 // // kann wahrscheinlihc weg
@@ -579,11 +518,7 @@ function removeUnwantedWiki(text) {
 // ==========================================================================
 function addPost() {
   blogContainer.innerHTML = '';
-  /* ===== STYLE BANNER ===== */
-  // const bannerImage = document.getElementById('bannerImage');
-  // const bannerTitle = document.getElementById('bannerTitle');
-  // const bannerButton = document.getElementById('bannerButton');
-  // const bannerLink = document.getElementById('bannerLink');
+
   bannerImage.classList.remove('hidden');
   bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
   bannerButton.innerText = '< Back';
@@ -597,12 +532,11 @@ function addPost() {
 }
 
 // ==========================================================================
-// goto post overview
+// goto post overview-page
 // ==========================================================================
 function gotoPostOverwiew() {
   window.open('./index.html', '_self');
-  // window.scrollTo(0, 400);
-  overviewMapContainer.classList.remove('hidden');
+  // overviewMapContainer.classList.remove('hidden');
 }
 
 // ==========================================================================
@@ -610,13 +544,7 @@ function gotoPostOverwiew() {
 // ==========================================================================
 
 function overviewMapPage() {
-  // blogContainer.innerHTML = '';
   initOverviewMap();
-
-  // const bannerImage = document.getElementById('bannerImage');
-  // const bannerTitle = document.getElementById('bannerTitle');
-  // const bannerButton = document.getElementById('bannerButton');
-  // const bannerLink = document.getElementById('bannerLink');
 
   bannerImage.style.backgroundImage = `url(https://images.unsplash.com/photo-1498354178607-a79df2916198?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2002&q=80)`;
   bannerButton.innerText = '< Back';
@@ -624,8 +552,6 @@ function overviewMapPage() {
   bannerTitle.innerHTML = 'Map-Overview';
 
   blogContainer.classList.add('hidden');
-  // overviewMapContainer.classList.remove('hidden');
-  // window.scrollTo(0, 230);
 
   bannerImage.classList.add('hidden');
 
@@ -633,15 +559,11 @@ function overviewMapPage() {
   overviewMapContainer.classList.remove('hidden');
 
   window.scrollTo(0, 0);
-  // window.open('#overviewMapContainer', '_self');
 }
 
-// ==========================================================================
-// init overview Map
-
+// CREATE THE MAP
 function initOverviewMap() {
-  const mapCenter = { lat: 53.5510846, lng: 9.9936818 };
-
+  const mapCenter = { lat: 53.5, lng: 9.9 };
   const options = {
     maxZoom: 10,
     mapTypeControl: false,
@@ -653,14 +575,14 @@ function initOverviewMap() {
     options
   );
 
-  const markers = getArrayFromLocalStorage();
-
   let bounds = new google.maps.LatLngBounds();
+
+  // CREATE MARKERS
+  const markers = getArrayFromLocalStorage();
 
   function addMarker(location, i) {
     const marker = new google.maps.Marker({
       position: location.coords,
-
       map: overviewMap,
     });
 
@@ -678,7 +600,6 @@ function initOverviewMap() {
         background-size: 100%;">
       </div>
       </div>
-      
       `,
     });
     marker.addListener('click', function () {
@@ -691,11 +612,12 @@ function initOverviewMap() {
   markers.forEach(addMarker);
   overviewMap.fitBounds(bounds);
 
+  // console.log(overviewMap.getZoom());
   // overviewMap.setCenter(bounds.getCenter());
-  overviewMap.setCenter(mapCenter);
+  // overviewMap.setCenter(mapCenter);
   // overviewMap.setZoom(overviewMap.getZoom() - 1);
 }
 
-// initOverviewMap();
 // ==========================================================================
+// HIDE OVERVIEW MAP ON PAGE LOAD
 overviewMapContainer.classList.add('hidden');

@@ -1,4 +1,4 @@
-* local time mit nullen oder als uhr
+* edit post?
 
 * implement weather -> icon?
     * check error of weather
