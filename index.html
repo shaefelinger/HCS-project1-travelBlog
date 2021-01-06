@@ -11,9 +11,6 @@
         type="text/javascript"></script>
 
     <link rel="stylesheet" href="css/style.css">
-
-
-
 </head>
 
 <body>
@@ -63,7 +60,6 @@
     </svg>
 
     <div class="container">
-
         <header class="header">
             <a id="companyName" href="./index.html">
                 <img class="worldLogo" src="./assets/world.png" alt="logo">
@@ -85,7 +81,7 @@
                 <a id="bannerLink" href="./subpages/about.html"><button id="bannerButton">about</button></a>
             </div>
 
-            <!-- contains dynamic content: -->
+            <!-- THIS CONTAINS THE DYNAMIC CONTENT: -->
             <div id="blogContainer"></div>
 
             <div id="overviewMapContainer">
@@ -96,13 +92,15 @@
 
 
                 <form action="" id="addPostForm" class="hidden">
-                    <!-- <input onchange="testSubmit()" type="text" placeholder="asdasd" id=""> -->
+
                     <input id="searchTextField" type="search" size="50" placeholder="*Enter a location"
                         autocomplete="on">
                     <div id="locationIsOk">Enter Location...</div>
+                    <!-- <label for="searchTextField">Enter Location...</label> -->
                     <hr>
 
                     <input required type="text" placeholder="*Enter a Title for your post" id="titleField">
+                    <label for="monthInput">Enter the Month and Year </label>
                     <select required name="monthInput" id="monthField">
                         <option value="January">January</option>
                         <option value="February">February</option>
@@ -123,7 +121,6 @@
                         placeholder="Enter a description about your trip"></textarea>
                     <select name="rating" id="ratingField">
                         <option value="0" disabled="disabled" selected="selected">Enter Rating</option>
-                        <!-- <option value="0">enter Rating</option> -->
                         <option class="star" value="1">★</option>
                         <option value="2">★★</option>
                         <option value="3">★★★</option>
@@ -134,12 +131,13 @@
                     <textarea id="wikiField" name="post" rows="5" cols="80"
                         placeholder="Edit Wikipedia Information"></textarea>
 
-                    <!-- <button onclick="resetInputForm()" type="button">cancel</button> -->
                     <button onclick="resetInputForm()" type="button">reset</button>
+                    <button onclick="gotoPostOverwiew()" type="button">cancel</button>
                     <button id="submitButton" type="button">submit2</button>
                     <!-- <button id="submitButton" type="submit">submit</button> -->
                 </form>
             </div>
+
 
 
         </main>

@@ -329,8 +329,19 @@ button:focus {
   color: #777;
 }
 
+label {
+  /* font-size: 0.8rem; */
+  color: #aaa;
+  margin: 0;
+}
+
 textarea {
   resize: none;
+}
+
+.fieldDisabled {
+  border: 0;
+  padding-left: 0;
 }
 
 #monthField,
@@ -350,6 +361,7 @@ textarea {
 #locationIsOk {
   font-size: 0.6rem;
   color: #aaa;
+  display: none;
 }
 
 /* ==========================================================================
@@ -380,6 +392,14 @@ textarea {
 }
 
 .watchDisplay {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #333;
 }
+
+#weatherContainer {
+  font-size: 0.7rem;
+}
+
+/* ==========================================================================
+   test
+   ========================================================================== */

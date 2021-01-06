@@ -86,7 +86,6 @@ function eraseEntryFromLocalStorage(id) {
 // ==========================================================================
 // GLOBAL variables & Get global elements from dom
 // ==========================================================================
-// const proxyurl = 'https://cors-anywhere.herokuapp.com/'; // no longer needed
 
 const blogContainer = document.getElementById('blogContainer');
 const overviewMapContainer = document.getElementById('overviewMap');
@@ -103,7 +102,7 @@ addPostForm.addEventListener('submit', onSubmit);
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', onSubmit);
 
-// maybe not needed
+// maybe not needed ???
 const locationIsOk = document.getElementById('locationIsOk');
 // ==========================================================================
 //  => PRINT OVERVIEW OF ALL POSTS AS CARDS
@@ -123,7 +122,7 @@ function printOnePost(element, index) {
   newArticle.classList.add('blogPost');
 
   // use descricption text if available, otherwise use wiki:
-  let overwiewText = element.postDescription || element.wiki;
+  let overviewText = element.postDescription || element.wiki;
 
   // this is the Card:
   newArticle.innerHTML = `
@@ -139,7 +138,7 @@ function printOnePost(element, index) {
     <div class="blogTextWrapper">
         <h2>${element.name}</h2>
         <h3>${element.postTitle}</h3>
-        <p>${overwiewText}</p>
+        <p>${overviewText}</p>
     </div>
     <div class="cardBottom">
         <div>
@@ -176,24 +175,39 @@ function onClick(object) {
   const newArticle = document.createElement('div');
 
   newArticle.classList.add('blogpageArticle');
+  // <p id="weatherDisplay">Temperature: </p>
 
   newArticle.innerHTML = `
- 
+  
+  
+
   <div class="blogpageTextWrapper">
-    <h3>${element.postTitle}</h3>
+  
+  <div id="weatherContainer">
+    <p>Local Weather</br>
+    <span  id="weatherDisplay" class="watchDisplay">--:--:--</span>
+    </p>
+  </div>
+  
+  <div id="watchContainer">
+    <p>Local Time</br>
+    <span class="watchDisplay">--:--:--</span>
+    </p>
+  </div>
+
     <h2>${element.name}</h2>
-    <p>${element.postDescription}</p>
-    <p>${element.wiki}</p>
-    <svg class="ratingContainer">
-    <use xlink:href="#starRating${element.rating}">
-  </svg>
-  <p>Visited in ${element.month} ${element.year}</p>
-    <p id="weatherContainer">Temperature: </p> 
-    <div id="watchContainer">
-      <p>Local Time</br>
-      <span class="watchDisplay">--:--:--</span>
-      </p>
+    <div>
+        <h3>${element.postTitle}</h3>
+        <p>${element.postDescription}</p>
+        <p>${element.wiki}</p>
     </div>
+    <div>
+        <svg class="ratingContainer">
+          <use xlink:href="#starRating${element.rating}">
+        </svg>
+        <p>Visited in ${element.month} ${element.year}</p>
+    </div>
+    
     <button onclick="eraseEntryFromLocalStorage(${id})">Delete Entry</button>
     <div class="blogpageArticeImage" 
       style="background-image: url(${element.postImage2URL}); 
@@ -204,11 +218,19 @@ function onClick(object) {
       background-position: center;
       margin-bottom: 2rem">
     </div>
+
   </div>
   <div id="map">map</div>
   <section class="blogpageBottom">
   </section>
 `;
+
+  // <div class="">
+  //     <input required type="text" value="${element.postTitle}" id="titleEdit" style="width: 100%">
+  //     <textarea id="descriptionField" name="post" rows="5" cols="80" style="width: 100%">${element.postDescription}</textarea>
+  //     <textarea id="wikiEdit" name="post" rows="5" cols="80" style="width: 100%"
+  //         >${element.wiki}</textarea>
+  // </div>
 
   {
     /* <section class="blogpageShare">
@@ -233,7 +255,6 @@ function onClick(object) {
   setInterval(watch, 1000, element.utc_offset);
 }
 
-// ==========================================================================
 // add map to SinglePost
 // ==========================================================================
 
@@ -276,7 +297,7 @@ function initialize() {
   autocomplete.addListener('place_changed', () => {
     let place = autocomplete.getPlace();
 
-    const googleDOMNodes = document.getElementsByClassName('pac-item');
+    // const googleDOMNodes = document.getElementsByClassName('pac-item');
 
     let googlePlaceID = place.place_id;
     if (googlePlaceID) {
@@ -297,34 +318,13 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
-// ==========================================================================
-// get google info by placeID -> unused???
-// ==========================================================================
-// function getGoogleInfoByPlaceId(placeId) {
-//   locationIsOk.innerHTML = 'searching Location...';
-//   console.log('get aufgerufen mit:', placeId);
-//   fetch(
-//     proxyurl +
-//       `https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&fields=name,geometry,photos,formatted_address,utc_offset,place_id&place_id=${placeId}`
-//   )
-//     .then((res) => res.json())
-//     .then((data) => {
-//       currentPlace = data.result;
-//       getWiki(currentPlace.name);
-//       locationIsValid();
-//     })
-//     .catch((onError) => {
-//       locationIsOk.innerHTML = 'ERROR';
-//       locationIsOk.style.color = 'red';
-//     });
-// }
-
 function locationIsValid() {
   locationIsOk.innerHTML = 'Location is valid';
   searchTextField.setAttribute('disabled', true);
-  searchTextField.style.color = '#111';
-  searchTextField.style.border = '0px';
-  searchTextField.style.paddingLeft = '0px';
+  // searchTextField.style.color = '#111';
+  // searchTextField.style.border = '0px';
+  // searchTextField.style.paddingLeft = '0px';
+  searchTextField.classList.add('fieldDisabled');
   titleField.focus();
   console.log(currentPlace.photos[0].getUrl());
   bannerImage.style.backgroundImage = `url(${currentPlace.photos[0].getUrl()})`;
@@ -371,17 +371,17 @@ function onSubmit(event) {
   } else {
     // create and add new entry to Local Storage:
 
-    const Image1URL =
-      'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=' +
-      currentPlace.photos[0].photo_reference +
-      '&key=' +
-      'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
+    // const Image1URL =
+    //   'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=' +
+    //   currentPlace.photos[0].photo_reference +
+    //   '&key=' +
+    //   'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
 
-    const Image2URL =
-      'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=' +
-      currentPlace.photos[1].photo_reference +
-      '&key=' +
-      'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
+    // const Image2URL =
+    //   'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=' +
+    //   currentPlace.photos[1].photo_reference +
+    //   '&key=' +
+    //   'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
 
     const newEntry = {
       name: currentPlace.name,
@@ -419,6 +419,9 @@ function resetInputForm() {
   currentPlace = 'noValidPlace';
   bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
   bannerTitle.innerHTML = 'Add new post...';
+  // searchTextField.style.border = '10px';
+  searchTextField.classList.remove('fieldDisabled');
+  // searchTextField.style.paddingLeft = '10.8px';
   // alert('reset');
 }
 
@@ -427,9 +430,9 @@ function resetInputForm() {
 // ==========================================================================
 
 function addWeatherToPage(temperature) {
-  const weatherContainer = document.getElementById('weatherContainer');
-  // console.log(weatherContainer);
-  weatherContainer.innerHTML = `The current Temperature is ${temperature} degrees Celsius`;
+  const weatherDisplay = document.getElementById('weatherDisplay');
+  // weatherDisplay.innerHTML = `${temperature} °C`;
+  weatherDisplay.innerHTML = temperature;
 }
 
 function getWeather(city) {
@@ -438,9 +441,12 @@ function getWeather(city) {
   )
     .then((response) => response.json())
     .then((data) => {
-      const actualTemperature = data.main.temp;
+      console.log(data);
+      const actualTemperature =
+        data.main.temp + ' °C - ' + data.weather[0].description;
+
       addWeatherToPage(actualTemperature);
-      return actualTemperature;
+      // return actualTemperature;
     })
     .catch((error) => {
       return 'Something went wrong...' + error;
@@ -621,3 +627,17 @@ function initOverviewMap() {
 // ==========================================================================
 // HIDE OVERVIEW MAP ON PAGE LOAD
 overviewMapContainer.classList.add('hidden');
+
+// ==========================================================================
+// function customAlert(msg) {
+//   msg = 'hallo';
+
+//   const mainContainter = document.querySelector('.main');
+//   // console.log(mainContainter);
+//   const alert = document.createElement('div');
+//   alert.innerHTML =
+//     "<div style='position: fixed; top: 20px; left: 20px;'>" + msg + '</div>';
+//   mainContainter.appendChild(alert);
+// }
+
+// customAlert();
