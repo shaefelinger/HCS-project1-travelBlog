@@ -636,9 +636,7 @@ function initOverviewMap() {
   const mapCenter = { lat: 53.5510846, lng: 9.9936818 };
 
   const options = {
-    // zoom: 2.5,
     maxZoom: 10,
-    // center: mapCenter,
     mapTypeControl: false,
     streetViewControl: false,
   };
@@ -651,16 +649,30 @@ function initOverviewMap() {
   const markers = getArrayFromLocalStorage();
 
   let bounds = new google.maps.LatLngBounds();
-  // console.log('bounds start:', bounds);
 
   function addMarker(location, i) {
     const marker = new google.maps.Marker({
       position: location.coords,
+
       map: overviewMap,
     });
 
     const infoWindow = new google.maps.InfoWindow({
-      content: location.name,
+      content: `
+      <div style="width: 300px;"</div>
+      <h3>${location.name}</h3>
+      <p>${location.postTitle}</p>
+      <div
+        style="background-image: url(${location.postImage1URL});
+        width: 100%;
+        height: 80px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;">
+      </div>
+      </div>
+      
+      `,
     });
     marker.addListener('click', function () {
       infoWindow.open(overviewMap, marker);
