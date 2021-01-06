@@ -13,6 +13,7 @@ const blogPosts = [
       'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwINqX6w5Njs_0f-RJ4lP8YCrDvXu0FYmgEUsnU5GfoOZ1jmztUZgc0Td1B4PrS2zff86bojGnKoYMO8YkcTw-r0F-Sq1vYK8jxJZMwPKQ3apAuZeNpdg-b4lPUx-pHo51lul7kJtS_xtyWuEcDglUkb89ncmDRm-M0sV5FeS5ip-tJg&3u3000&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=40008',
     wiki: `Hamburg is the second-largest city in Germany after Berlin and 7th largest city in the European Union with a population of over 1.84 million.One of Germany's 16 federated states, it is surrounded by Schleswig-Holstein to the north and Lower Saxony to the south. The city's metropolitan region is home to more than five million people. Hamburg lies on the River Elbe and two of its tributaries, the River Alster and the River Bille.`,
     postAuthor: 'Steffen Häfelinger',
+    utc_offset: 60,
   },
   {
     name: 'Zürich',
@@ -29,6 +30,7 @@ const blogPosts = [
     postAuthor: 'Steffen Häfelinger',
     wiki:
       'Zürich is the largest city in Switzerland, and the capital of the canton of Zürich. It is located in north-central Switzerland, at the northwestern tip of Lake Zürich. As of January 2020, the municipality has 434,335 inhabitants, the urban area (agglomeration) 1.315 million (2009), and the Zürich metropolitan area 1.83 million (2011).',
+    utc_offset: 60,
   },
 ];
 
@@ -127,6 +129,7 @@ function printOnePost(element, index) {
         <h2>${element.name}</h2>
       
         <h3>${element.postTitle}</h3>
+        
         <p>${overwiewText}</p>
     </div>
     
@@ -188,13 +191,6 @@ function onClick(object) {
   <div class="blogpageTextWrapper">
     <h3>${element.postTitle}</h3>
     <h2>${element.name}</h2>
-  
-
-
-    
-
- 
-
     <p>${element.postDescription}</p>
     <p>${element.wiki}</p>
     <svg class="ratingContainer">
@@ -250,7 +246,8 @@ function onClick(object) {
   blogContainer.appendChild(newArticle);
   initMap(element.coords);
   let weather = getWeather(element.name);
-  setInterval(watch, 1000);
+  setInterval(watch, 1000, element.utc_offset);
+
   // // getWikipedia(element.name);
 }
 
@@ -451,6 +448,7 @@ function onSubmit(event) {
       postImage2URL: currentPlace.photos[1].getUrl(),
       postAuthor: 'Guest',
       wiki: wikiField.value,
+      utc_offset: currentPlace.utc_offset_minutes,
     };
     addToLocalStorage(newEntry);
     // hide and reset form and reset 'currentPlace'
@@ -505,18 +503,25 @@ function getWeather(city) {
 
 function watch(offset) {
   const watchContainer = document.getElementById('watchContainer');
-  const now = new Date();
+  const targetTime = new Date();
+  var now = new Date(targetTime.getTime() + offset * 60 * 1000);
+  now.setMinutes(now.getMinutes() + now.getTimezoneOffset());
 
   const seconds = now.getUTCSeconds();
 
   const mins = now.getUTCMinutes();
 
   const hour = now.getUTCHours();
-  const time = now.getTime();
+  const time = now.toLocaleTimeString('de', {
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  });
 
   // console.log(hour, mins, seconds, time);
-  watchContainer.innerHTML = `UTC Time is: ${hour}:${mins}:${seconds}`;
-  return `${hour}:${mins}:${seconds} - ${offset} - ${time}`;
+  watchContainer.innerHTML = `Local Time is: ${time} `;
+  // return `${hour}:${mins}:${seconds} - ${offset} - ${time}`;
 }
 
 // ==========================================================================
@@ -560,7 +565,6 @@ function removeUnwantedWiki(text) {
 // ==========================================================================
 function addPost() {
   blogContainer.innerHTML = '';
-
   /* ===== STYLE BANNER ===== */
   // const bannerImage = document.getElementById('bannerImage');
   // const bannerTitle = document.getElementById('bannerTitle');
