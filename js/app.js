@@ -1,8 +1,11 @@
+// ==========================================================================
+// 2 default values
+// ==========================================================================
 const blogPosts = [
   {
     name: 'Hamburg',
     coords: { lat: 53.5510846, lng: 9.9936818 },
-    postTitle: 'The most beatiful city in the world',
+    postTitle: 'The most beautiful city in the world',
     postDescription: 'This is where i live...',
     rating: '5',
     month: 'May',
@@ -38,33 +41,43 @@ const blogPosts = [
 // HANDLE LOCAL STORAGE
 // ==========================================================================
 
+// if LocalStorage is empty -> load default values
+function testIfStorageisEmpty() {
+  if (getArrayFromLocalStorage() === null) {
+    console.error('Local Storage is empty -> loading default');
+    localStorage.setItem('allLocations', JSON.stringify(blogPosts));
+  }
+}
+testIfStorageisEmpty();
+
 // reset Local Storage and add default entries
 function resetLocalStorage() {
-  // alert('Reset Locat Storage');
   if (confirm('Reset Local Storage to default! Are you sure?')) {
     localStorage.setItem('allLocations', JSON.stringify(blogPosts));
     window.open('./index.html', '_self');
   }
 }
 
+// add one new element to the  localStorage and print all posts
 function addToLocalStorage(newElement) {
   array = getArrayFromLocalStorage();
   array.push(newElement);
   pushArrayToLocalStorage(array);
-  // blogContainer.innerHTML = '';
   printAllPosts();
 }
-
+// get content of localStorage
 function getArrayFromLocalStorage() {
   let array = [];
   array = JSON.parse(localStorage.getItem('allLocations'));
   return array;
 }
 
+// set content of localStorage to array
 function pushArrayToLocalStorage(array) {
   localStorage.setItem('allLocations', JSON.stringify(array));
 }
 
+// erase entry with the number 'id' from localStorage
 function eraseEntryFromLocalStorage(id) {
   const array = getArrayFromLocalStorage();
   array.splice(id, 1);
@@ -73,10 +86,9 @@ function eraseEntryFromLocalStorage(id) {
 }
 
 // ==========================================================================
-// Get elements from dom & GLOBAL variables
+// GLOBAL variables & Get global elements from dom
 // ==========================================================================
-const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-// const proxyurl = '';
+// const proxyurl = 'https://cors-anywhere.herokuapp.com/'; // no longer needed
 
 const blogContainer = document.getElementById('blogContainer');
 const overviewMapContainer = document.getElementById('overviewMap');
@@ -93,9 +105,10 @@ addPostForm.addEventListener('submit', onSubmit);
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', onSubmit);
 
+// maybe not needed
 const locationIsOk = document.getElementById('locationIsOk');
 // ==========================================================================
-// ALL POSTS AS CARDS => OVERVIEW
+//  => PRINT OVERVIEW OF ALL POSTS AS CARDS
 // ==========================================================================
 
 function printAllPosts() {
@@ -127,21 +140,15 @@ function printOnePost(element, index) {
     </div>
     <div class="blogTextWrapper">
         <h2>${element.name}</h2>
-      
         <h3>${element.postTitle}</h3>
-        
         <p>${overwiewText}</p>
     </div>
-    
     <div class="cardBottom">
-      
         <div>
-          
             <svg class="ratingContainer">
               <use xlink:href="#starRating${element.rating}">
             </svg>
         </div>
-       
     </div>
 `;
 
@@ -684,13 +691,11 @@ function initOverviewMap() {
   markers.forEach(addMarker);
   overviewMap.fitBounds(bounds);
 
-  // overviewMap.panToBounds(bounds);
   // overviewMap.setCenter(bounds.getCenter());
   overviewMap.setCenter(mapCenter);
-
-  // overviewMap.setZoom(Math.max(6, overviewMap.getZoom()));
+  // overviewMap.setZoom(overviewMap.getZoom() - 1);
 }
 
 // initOverviewMap();
-overviewMapContainer.classList.add('hidden');
 // ==========================================================================
+overviewMapContainer.classList.add('hidden');
