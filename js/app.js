@@ -198,7 +198,11 @@ function onClick(object) {
   </svg>
   <p>Visited in ${element.month} ${element.year}</p>
     <p id="weatherContainer">Temperature: </p> 
-    <p id="watchContainer">Clock: </p> 
+    <div id="watchContainer">
+      <p>Local Time</br>
+      <span class="watchDisplay">--:--:--</span>
+      </p>
+    </div>
     <button onclick="eraseEntryFromLocalStorage(${id})">Delete Entry</button>
     <div class="blogpageArticeImage" 
       style="background-image: url(${element.postImage2URL}); 
@@ -514,13 +518,16 @@ function watch(offset) {
   const hour = now.getUTCHours();
   const time = now.toLocaleTimeString('de', {
     hour12: false,
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
+    // hour: '2-digit',
+    // minute: '2-digit',
+    // second: '2-digit',
   });
 
   // console.log(hour, mins, seconds, time);
-  watchContainer.innerHTML = `Local Time is: ${time} `;
+  watchContainer.innerHTML = `
+  <p>Local Time</br>
+  <span class="watchDisplay">${time}</span>
+  </p>`;
   // return `${hour}:${mins}:${seconds} - ${offset} - ${time}`;
 }
 
