@@ -184,7 +184,7 @@ function onClick(object) {
   <div class="blogpageTextWrapper">
   <div id="weatherContainer">
     <p>Local Weather</br>
-    <span  id="weatherDisplay" class="watchDisplay">--:--:--</span>
+      <span id="weatherDisplay" class="watchDisplay"></span>
     </p>
   </div>
   <svg class="ratingContainer">
@@ -435,7 +435,10 @@ function resetInputForm() {
 function addWeatherToPage(temperature, iconUrl) {
   const weatherDisplay = document.getElementById('weatherDisplay');
   // weatherDisplay.innerHTML = `${temperature} °C`;
-  weatherDisplay.innerHTML = `${temperature} <img src="${iconUrl}" style="height: 4rem; width:auto;">`;
+  weatherDisplay.innerHTML = `
+  
+  
+  ${temperature} <img src="${iconUrl}" style="height: 4rem; width:auto;">`;
 }
 
 function getWeather(city) {
