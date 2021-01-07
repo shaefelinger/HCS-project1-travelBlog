@@ -182,30 +182,32 @@ function onClick(object) {
   
 
   <div class="blogpageTextWrapper">
-  
   <div id="weatherContainer">
     <p>Local Weather</br>
     <span  id="weatherDisplay" class="watchDisplay">--:--:--</span>
     </p>
   </div>
-  
-  <div id="watchContainer">
-    <p>Local Time</br>
-    <span class="watchDisplay">--:--:--</span>
-    </p>
-  </div>
+  <svg class="ratingContainer">
+          <use xlink:href="#starRating${element.rating}">
+        </svg>
+        <div id="watchContainer">
+          <p>Local Time</br>  
+          <span class="watchDisplay">--:--:--</span>
+          </p>
+        </div>
+ 
 
-    <h2>${element.name}</h2>
+
+    <h1>${element.name}</h1>
     <div>
         <h3>${element.postTitle}</h3>
         <p>${element.postDescription}</p>
         <p>${element.wiki}</p>
     </div>
     <div>
-        <svg class="ratingContainer">
-          <use xlink:href="#starRating${element.rating}">
-        </svg>
+       
         <p>Visited in ${element.month} ${element.year}</p>
+       
     </div>
     
     <button onclick="eraseEntryFromLocalStorage(${id})">Delete Entry</button>
@@ -218,6 +220,7 @@ function onClick(object) {
       background-position: center;
       margin-bottom: 2rem">
     </div>
+
 
   </div>
   <div id="map">map</div>
@@ -429,10 +432,10 @@ function resetInputForm() {
 // WEATHER
 // ==========================================================================
 
-function addWeatherToPage(temperature) {
+function addWeatherToPage(temperature, iconUrl) {
   const weatherDisplay = document.getElementById('weatherDisplay');
   // weatherDisplay.innerHTML = `${temperature} °C`;
-  weatherDisplay.innerHTML = temperature;
+  weatherDisplay.innerHTML = `${temperature} <img src="${iconUrl}" style="height: 4rem; width:auto;">`;
 }
 
 function getWeather(city) {
@@ -442,10 +445,12 @@ function getWeather(city) {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      const actualTemperature =
-        data.main.temp + ' °C - ' + data.weather[0].description;
+      // const weatherIcon = data.weather[0].icon;
+      const iconUrl = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+      console.log(iconUrl);
+      const actualTemperature = data.main.temp + ' °C';
 
-      addWeatherToPage(actualTemperature);
+      addWeatherToPage(actualTemperature, iconUrl);
       // return actualTemperature;
     })
     .catch((error) => {
