@@ -105,7 +105,7 @@ submitButton.addEventListener('click', onSubmit);
 // maybe not needed ???
 const locationIsOk = document.getElementById('locationIsOk');
 // ==========================================================================
-//  => PRINT OVERVIEW OF ALL POSTS AS CARDS
+// OVERVIEW-PAGE: Display all posts als cards
 // ==========================================================================
 
 function printAllPosts() {
@@ -157,9 +157,10 @@ function printOnePost(element, index) {
 }
 
 // ==========================================================================
-//  => IF CARD IS CLICKED: DISPLAY SINGLE POST
+// DETAILS PAGE: DISPLAY SINGLE POST
 // ==========================================================================
 function onClick(object) {
+  console.log('Details Page', object);
   const id = object.srcElement.id;
   const array = JSON.parse(localStorage.getItem('allLocations'));
   const element = array[id];
@@ -182,11 +183,7 @@ function onClick(object) {
   
 
   <div class="blogpageTextWrapper">
-  <div id="weatherContainer">
-    <p>Local Weather</br>
-      <span id="weatherDisplay" class="watchDisplay"></span>
-    </p>
-  </div>
+  <div id="weatherContainer"></div>
   <svg class="ratingContainer">
           <use xlink:href="#starRating${element.rating}">
         </svg>
@@ -254,7 +251,8 @@ function onClick(object) {
 
   blogContainer.appendChild(newArticle);
   initMap(element.coords);
-  getWeather(element.name);
+  // getWeather(element.name);
+  getWeather(element.coords);
   setInterval(watch, 1000, element.utc_offset);
 }
 
@@ -303,7 +301,7 @@ function initialize() {
     // const googleDOMNodes = document.getElementsByClassName('pac-item');
 
     let googlePlaceID = place.place_id;
-    if (googlePlaceID) {
+    if (place.photos) {
       // => this is a valid location
       // ==========================================================================
       console.log('complete Location');
@@ -322,6 +320,7 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 function locationIsValid() {
+  console.log('loc is valid:', currentPlace.photos);
   locationIsOk.innerHTML = 'Location is valid';
   searchTextField.setAttribute('disabled', true);
   // searchTextField.style.color = '#111';
@@ -329,7 +328,7 @@ function locationIsValid() {
   // searchTextField.style.paddingLeft = '0px';
   searchTextField.classList.add('fieldDisabled');
   titleField.focus();
-  console.log(currentPlace.photos[0].getUrl());
+
   bannerImage.style.backgroundImage = `url(${currentPlace.photos[0].getUrl()})`;
   bannerTitle.innerHTML = `${currentPlace.name}`;
 }
@@ -433,17 +432,26 @@ function resetInputForm() {
 // ==========================================================================
 
 function addWeatherToPage(temperature, iconUrl) {
-  const weatherDisplay = document.getElementById('weatherDisplay');
-  // weatherDisplay.innerHTML = `${temperature} °C`;
-  weatherDisplay.innerHTML = `
+  const weatherContainer = document.getElementById('weatherContainer');
+  weatherContainer.innerHTML = `
   
-  
-  ${temperature} <img src="${iconUrl}" style="height: 4rem; width:auto;">`;
+  <p>Local Weather</br>
+    <span id="weatherDisplay" class="watchDisplay">
+    ${temperature} <img src="${iconUrl}" style="height: 4rem; width:auto;">
+    </span>
+  </p>
+
+
+  `;
 }
 
-function getWeather(city) {
+function getWeather(coords) {
+  // fetch(
+  //   `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=80ab875a41f65bcfc23fdbad56346559&units=metric`
+  // )
+  console.log(coords.lat);
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=80ab875a41f65bcfc23fdbad56346559&units=metric`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lng}&appid=80ab875a41f65bcfc23fdbad56346559&units=metric`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -451,7 +459,7 @@ function getWeather(city) {
       // const weatherIcon = data.weather[0].icon;
       const iconUrl = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
       console.log(iconUrl);
-      const actualTemperature = data.main.temp + ' °C';
+      const actualTemperature = Math.round(data.main.temp) + ' °C';
 
       addWeatherToPage(actualTemperature, iconUrl);
       // return actualTemperature;
