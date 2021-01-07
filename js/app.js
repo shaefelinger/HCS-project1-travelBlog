@@ -160,8 +160,19 @@ function printOnePost(element, index) {
 // DETAILS PAGE: DISPLAY SINGLE POST
 // ==========================================================================
 function onClick(object) {
-  console.log('Details Page', object);
   const id = object.srcElement.id;
+  showDetailsPage(id);
+}
+
+function showDetailsPage(id) {
+  console.log('Details Page:', id);
+
+  blogContainer.classList.remove('hidden');
+  bannerImage.classList.remove('hidden');
+  addPostForm.classList.add('hidden');
+  overviewMapContainer.classList.add('hidden');
+
+  // const id = object.srcElement.id;
   const array = JSON.parse(localStorage.getItem('allLocations'));
   const element = array[id];
   blogContainer.innerHTML = '';
@@ -440,8 +451,6 @@ function addWeatherToPage(temperature, iconUrl) {
     ${temperature} <img src="${iconUrl}" style="height: 4rem; width:auto;">
     </span>
   </p>
-
-
   `;
 }
 
@@ -449,16 +458,16 @@ function getWeather(coords) {
   // fetch(
   //   `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=80ab875a41f65bcfc23fdbad56346559&units=metric`
   // )
-  console.log(coords.lat);
+  // console.log(coords.lat);
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lng}&appid=80ab875a41f65bcfc23fdbad56346559&units=metric`
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       // const weatherIcon = data.weather[0].icon;
       const iconUrl = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-      console.log(iconUrl);
+      // console.log(iconUrl);
       const actualTemperature = Math.round(data.main.temp) + ' °C';
 
       addWeatherToPage(actualTemperature, iconUrl);
@@ -574,9 +583,7 @@ function overviewMapPage() {
   bannerTitle.innerHTML = 'Map-Overview';
 
   blogContainer.classList.add('hidden');
-
   bannerImage.classList.add('hidden');
-
   addPostForm.classList.add('hidden');
   overviewMapContainer.classList.remove('hidden');
 
@@ -610,16 +617,19 @@ function initOverviewMap() {
 
     const infoWindow = new google.maps.InfoWindow({
       content: `
-      <div style="width: 300px;"</div>
+      <div onclick="showDetailsPage(${i})" style="width: 300px;">
       <h3>${location.name}</h3>
       <p>${location.postTitle}</p>
-      <div
-        style="background-image: url(${location.postImage1URL});
-        width: 100%;
-        height: 80px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 100%;">
+        <div
+          style="background-image: url(${location.postImage1URL});
+          width: 100%;
+          height: 80px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100%;">
+        </div>
+        <p>Click Image for Details"</p>
+        
       </div>
       </div>
       `,
