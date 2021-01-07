@@ -11,9 +11,9 @@ const blogPosts = [
     month: 'May',
     year: '1997',
     postImage1URL:
-      'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwK6NLYi-_Ni4ir7MgAkg2DLGuzxv-AiM1x7lmPv0WWDPGWUMR-toZGWOG4o5Vee18oI7RvS2xJEruZUF7giIOb_wbLCDZN-jeXkgTM-eKKhzjsSDoDomfLan5XIT3HxGPsHaeHftCnQEB3EZvVoJdo3cr74q3kjDgAWA9Y_Anyy0LJb&3u900&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=78995',
+      'https://images.unsplash.com/photo-1473615695634-d284ec918736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2900&q=80',
     postImage2URL:
-      'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwINqX6w5Njs_0f-RJ4lP8YCrDvXu0FYmgEUsnU5GfoOZ1jmztUZgc0Td1B4PrS2zff86bojGnKoYMO8YkcTw-r0F-Sq1vYK8jxJZMwPKQ3apAuZeNpdg-b4lPUx-pHo51lul7kJtS_xtyWuEcDglUkb89ncmDRm-M0sV5FeS5ip-tJg&3u3000&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=40008',
+      'https://images.unsplash.com/photo-1598790969148-62630087609e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1825&q=80',
     wiki: `Hamburg is the second-largest city in Germany after Berlin and 7th largest city in the European Union with a population of over 1.84 million.One of Germany's 16 federated states, it is surrounded by Schleswig-Holstein to the north and Lower Saxony to the south. The city's metropolitan region is home to more than five million people. Hamburg lies on the River Elbe and two of its tributaries, the River Alster and the River Bille.`,
     utc_offset: 60,
   },
@@ -26,9 +26,9 @@ const blogPosts = [
     month: 'May',
     year: '2018',
     postImage1URL:
-      'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwJ9T1xf8tVTnBXNyyoq5BUxoE2Y2OdWAB8-wgoOpDwtqFYExQZ4MNcEj71gWaVgtHz4pgmLi2TZR3ZpUL2OaxsoHR1p7KZNJAeAXPKEXCbWPZ4K7PO_r7j7CYmBHXLs-wMXMK8ez8CkWaty-y8TkDFzkd2bhILPHhGieJoMPjlNE1e8&3u640&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=87773',
+      'https://images.unsplash.com/photo-1585586813880-257f9b38d25d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80',
     postImage2URL:
-      'https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sATtYBwKe5ofb0PIf5pwVkbqOuYjkXruaOBHHwFeucMYMt0km9cP8dnRgX-XTz0RyXGRO9miHsjVxbDjJjkuwfSLfz2rhzvR4inOjfYhmaPyQOjoZ8P5fOuAd1W4MWLEiez1oXh8GaWHrV319DwSOXENg2YhjyOT4nfAo_PfSooU9tEIY_nTg&3u4600&5m1&2e1&callback=none&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&token=26593',
+      'https://images.unsplash.com/photo-1522100199172-e0d85a587108?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2225&q=80',
     wiki:
       'Zürich is the largest city in Switzerland, and the capital of the canton of Zürich. It is located in north-central Switzerland, at the northwestern tip of Lake Zürich. As of January 2020, the municipality has 434,335 inhabitants, the urban area (agglomeration) 1.315 million (2009), and the Zürich metropolitan area 1.83 million (2011).',
     utc_offset: 60,

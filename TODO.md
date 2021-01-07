@@ -1,14 +1,17 @@
-* edit post?
+* evtl icon  in form
+* evtl. wetter nach koordinaten suchen
 
-* implement weather -> icon?
-    * check error of weather
+* about as dynamic content
+* style active links
+
+    * check error of weather?
 * cleanup css & code - comments
 * finetune layout -> responsive and design
 
 * icon and page title
 * burger menu
 
-* links: google, wiki, reiseportal?
+* evtl. links: google, wiki, reiseportal?
 
 
 * check other browsers
