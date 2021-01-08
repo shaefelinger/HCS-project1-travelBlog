@@ -50,6 +50,8 @@ testIfStorageisEmpty();
 
 // reset Local Storage and add default entries
 function resetLocalStorage() {
+  // showActiveLink(gotoResetAllLink);
+
   if (confirm('Reset Local Storage to default! Are you sure?')) {
     localStorage.setItem('allLocations', JSON.stringify(blogPosts));
     window.open('./index.html', '_self');
@@ -104,9 +106,38 @@ submitButton.addEventListener('click', onSubmit);
 
 // maybe not needed ???
 const locationIsOk = document.getElementById('locationIsOk');
+
+const gotoOverviewLink = document.getElementById('gotoOverviewLink');
+const gotoMapLink = document.getElementById('gotoMapLink');
+const gotoNewPostLink = document.getElementById('gotoNewPostLink');
+const gotoResetAllLink = document.getElementById('gotoResetAllLink');
+const gotoAboutPageLink = document.getElementById('gotoAboutPageLink');
+
+// ==========================================================================
+// SHOW ACTIVE LINK
+// ==========================================================================
+
+function showActiveLink(link) {
+  gotoOverviewLink.classList.remove('active');
+  gotoMapLink.classList.remove('active');
+  gotoNewPostLink.classList.remove('active');
+  gotoResetAllLink.classList.remove('active');
+  gotoAboutPageLink.classList.remove('active');
+  link.classList.add('active');
+}
+
 // ==========================================================================
 // OVERVIEW-PAGE: Display all posts als cards
 // ==========================================================================
+
+// goto post overview-page
+// =======================
+function gotoPostOverwiew() {
+  window.open('./index.html', '_self');
+  showActiveLink(gotoOverviewLink);
+  // gotoOverviewLink.classList.add('active');
+  // overviewMapContainer.classList.remove('hidden');
+}
 
 function printAllPosts() {
   blogContainer.innerHTML = '';
@@ -165,8 +196,10 @@ function onClick(object) {
 }
 
 function showDetailsPage(id) {
+  showActiveLink(gotoOverviewLink);
   console.log('Details Page:', id);
 
+  blogContainer.innerHTML = '';
   blogContainer.classList.remove('hidden');
   bannerImage.classList.remove('hidden');
   addPostForm.classList.add('hidden');
@@ -175,7 +208,6 @@ function showDetailsPage(id) {
   // const id = object.srcElement.id;
   const array = JSON.parse(localStorage.getItem('allLocations'));
   const element = array[id];
-  blogContainer.innerHTML = '';
 
   bannerImage.style.backgroundImage = `url(${element.postImage1URL})`;
   bannerButton.innerText = '< Back';
@@ -545,9 +577,10 @@ function removeUnwantedWiki(text) {
 }
 
 // ==========================================================================
-// PAGE: Add Posts
+// PAGE: ADD NEW POST
 // ==========================================================================
 function addPost() {
+  showActiveLink(gotoNewPostLink);
   blogContainer.innerHTML = '';
 
   bannerImage.classList.remove('hidden');
@@ -563,18 +596,12 @@ function addPost() {
 }
 
 // ==========================================================================
-// goto post overview-page
-// ==========================================================================
-function gotoPostOverwiew() {
-  window.open('./index.html', '_self');
-  // overviewMapContainer.classList.remove('hidden');
-}
-
-// ==========================================================================
-// PAGE: Overview-Map
+// PAGE: OVERVIEW-MAP
 // ==========================================================================
 
 function overviewMapPage() {
+  showActiveLink(gotoMapLink);
+  // gotoMapLink.classList.add('active');
   initOverviewMap();
 
   bannerImage.style.backgroundImage = `url(https://images.unsplash.com/photo-1498354178607-a79df2916198?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2002&q=80)`;
@@ -617,13 +644,13 @@ function initOverviewMap() {
 
     const infoWindow = new google.maps.InfoWindow({
       content: `
-      <div onclick="showDetailsPage(${i})" style="width: 300px;">
+      <div onclick="showDetailsPage(${i})" style="width: 200px;">
       <h3>${location.name}</h3>
       <p>${location.postTitle}</p>
         <div
           style="background-image: url(${location.postImage1URL});
           width: 100%;
-          height: 80px;
+          height: 120px;
           background-repeat: no-repeat;
           background-position: center;
           background-size: 100%;">
@@ -643,11 +670,6 @@ function initOverviewMap() {
 
   markers.forEach(addMarker);
   overviewMap.fitBounds(bounds);
-
-  // console.log(overviewMap.getZoom());
-  // overviewMap.setCenter(bounds.getCenter());
-  // overviewMap.setCenter(mapCenter);
-  // overviewMap.setZoom(overviewMap.getZoom() - 1);
 }
 
 // ==========================================================================
@@ -667,3 +689,61 @@ overviewMapContainer.classList.add('hidden');
 // }
 
 // customAlert();
+
+// ==========================================================================
+// PAGE: ABOUT
+// ==========================================================================
+function gotoAboutPage() {
+  showActiveLink(gotoAboutPageLink);
+  blogContainer.innerHTML = '';
+  blogContainer.classList.remove('hidden');
+  bannerImage.classList.remove('hidden');
+  addPostForm.classList.add('hidden');
+  overviewMapContainer.classList.add('hidden');
+
+  bannerImage.classList.remove('hidden');
+  bannerImage.style.backgroundImage = `url(https://picsum.photos/id/123/1000/535)`;
+  bannerButton.innerText = '< Back';
+  bannerLink.setAttribute('href', './index.html');
+  bannerTitle.innerHTML = 'About this project';
+
+  blogContainer.innerHTML = `
+  <div id="blogpageContainer">
+  <article class="blogpageArticle">
+      <h2>Project 1 - Travel Blog</h2>
+      <p>
+          This is my contribution for the first Project for the Full-Stack Web Development-Course at the
+          <a target="_blank" href="https://hamburgcodingschool.com/">Hamburg Coding School.</a>
+      </p>
+      <p>
+          It uses no Frameworks, just vanilla HTML, CSS and Javascript.
+      </p>
+      <p>
+          All Information is stored in the Local Sorage of the Browser, the App fetches information from
+          the APIs: <br>
+          - Google Maps <br>
+          - Wikipedia<br>
+          - Openweathermaps
+      </p>
+
+  </article>
+</div>
+
+<section class="aboutBottom">
+  <div class="aboutAuthorInfo">
+      <div class="authorPic  aboutAuthorPic">
+          <img src="../assets/_Steffen square.png">
+      </div>
+      <p class="author">Steffen Häfelinger</p>
+  </div>
+  <p class="aboutAuthorText">Steffen Häfelinger is a web developer located in Hamburg, Germany.
+      He is currently studying Full Stack Web Developement at
+      <a target="_blank" href="https://hamburgcodingschool.com/">Hamburg Coding School.</a>
+      He is also working as a professional Musician, Songwriter & Audio Engineer.
+  </p>
+</section>
+  
+  `;
+
+  window.scrollTo(0, 0);
+}

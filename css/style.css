@@ -138,6 +138,12 @@ button:focus {
   transition: color 250ms ease-in-out, transform 250ms ease-in-out;
 }
 
+.header nav .active {
+  color: #111;
+  transform: scale(1.1) translateY(-1px);
+  /* text-decoration: underline; */
+}
+
 /* HEADER RESPONSIVE
    ========================================================================== */
 /* small 640px */
@@ -296,7 +302,7 @@ button:focus {
 }
 
 /* ==========================================================================
-   Input Form - Nwe Post
+   NEW POST-PAGE: Input Form - 
    ========================================================================== */
 
 .formContainer {
@@ -372,16 +378,10 @@ textarea {
 #overviewMap {
   height: 700px;
   width: 100%;
-  /* margin-top: 4rem;
-  top: 8rem;
-  margin-bottom: 8rem; */
 }
 #overviewMapContainer {
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
-  /* align-items: center;  */
-  /* padding: 0 7%; */
 }
 
 /* ==========================================================================
@@ -399,14 +399,6 @@ textarea {
 #weatherContainer {
   font-size: 0.7rem;
 }
-
-/* table td {
-  vertical-align: top;
-}
-
-table {
-  width: 100%;
-} */
 
 /* ==========================================================================
    test
