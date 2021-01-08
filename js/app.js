@@ -4,6 +4,7 @@
 const blogPosts = [
   {
     name: 'Hamburg',
+    longName: 'Hamburg, Germany',
     coords: { lat: 53.5510846, lng: 9.9936818 },
     postTitle: 'The most beautiful city in the world',
     postDescription: 'This is where i live...',
@@ -19,6 +20,7 @@ const blogPosts = [
   },
   {
     name: 'Zürich',
+    longName: 'Zürich, Swizerland',
     coords: { lat: 47.3768866, lng: 8.541694 },
     postTitle: 'Nice but very expensive...',
     postDescription: '',
@@ -216,31 +218,35 @@ function gotoDetailsPage(id) {
 
   // this is the DETAILS-PAGE:
   newArticle.innerHTML = `
-  <div>
-    <div id="weatherContainer"></div>
-    <svg class="ratingContainer">
-      <use xlink:href="#starRating${element.rating}">
-    </svg>
-    <div id="watchContainer">
-      <p>Local Time</br>  
-        <span class="watchDisplay">--:--:--</span>
-      </p>
-    </div> 
-    <h2>${element.name}</h2>
     <div>
-        <h3>${element.postTitle}</h3>
-        <p>${element.postDescription}</p>
-        <p>${element.wiki}</p>
-    </div>
+      <div class="detailsTopContainer">
+        <div class="detailsInfoContainer">
+          <div id="weatherContainer"></div>
+          <div id="watchContainer">
+            <p>Local Time</br>  
+              <span class="watchDisplay">--:--:--</span>
+            </p>
+          </div> 
+          <p>Visited in ${element.month} ${element.year}</p>
+          <svg class="ratingContainer">
+            <use xlink:href="#starRating${element.rating}">
+          </svg>
+          <h2>${element.longName}</h2>
+        </div>
+        <div class="detailsImg2" 
+          style="background-image: url(${element.postImage2URL}); ">
+        </div>
+      </div>
+      <div>
+          <h3>${element.postTitle}</h3>
+          <p>${element.postDescription}</p>
+          <p >${element.wiki}</p>
+      </div>
     <div>
-        <p>Visited in ${element.month} ${element.year}</p>
-    </div>
-    <button onclick="eraseEntryFromLocalStorage(${id})">Delete Entry</button>
-    <div class="detailsImg2" 
-      style="background-image: url(${element.postImage2URL}); ">
-    </div>
   </div>
   <div id="map">map</div>
+  <button  class="secondaryButton" onclick="eraseEntryFromLocalStorage(${id})">DELETE POST</button>
+  <button  class="primaryButton" onclick="gotoOverviewPage()"> &lt; BACK</button>
   `;
 
   blogContainer.appendChild(newArticle);
@@ -331,6 +337,7 @@ function onSubmit(event) {
     // -> is valid..
     const newEntry = {
       name: currentPlace.name,
+      longName: currentPlace.formatted_address,
       coords: currentPlace.geometry.location.toJSON(),
       coords: currentPlace.geometry.location,
       postTitle: titleField.value,
@@ -375,11 +382,11 @@ function addWeatherToPage(temperature, iconUrl) {
   const weatherContainer = document.getElementById('weatherContainer');
   weatherContainer.innerHTML = `
   
-  <p>Local Weather</br>
+  <p>Local Weather</p>
     <span id="weatherDisplay" class="watchDisplay">
     ${temperature} <img src="${iconUrl}" style="height: 4rem; width:auto;">
     </span>
-  </p>
+  
   `;
 }
 
@@ -544,20 +551,6 @@ function initOverviewMap() {
 // ==========================================================================
 // HIDE OVERVIEW MAP ON PAGE LOAD
 overviewMapContainer.classList.add('hidden');
-
-// ==========================================================================
-// function customAlert(msg) {
-//   msg = 'hallo';
-
-//   const mainContainter = document.querySelector('.main');
-//   // console.log(mainContainter);
-//   const alert = document.createElement('div');
-//   alert.innerHTML =
-//     "<div style='position: fixed; top: 20px; left: 20px;'>" + msg + '</div>';
-//   mainContainter.appendChild(alert);
-// }
-
-// customAlert();
 
 // ==========================================================================
 // PAGE: ABOUT

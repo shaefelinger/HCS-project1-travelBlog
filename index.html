@@ -109,7 +109,8 @@
                 <form action="" id="addPostForm" class="hidden">
                     <input id="searchTextField" type="search" size="50" placeholder="*Enter a location"
                         autocomplete="on">
-                    <div id="locationIsOk">Enter Location...</div>
+                    <!-- <div id="locationIsOk">Enter Location...</div> -->
+
                     <hr>
 
                     <input required type="text" placeholder="*Enter a Title for your post" id="titleField">
@@ -144,9 +145,10 @@
                     <textarea id="wikiField" name="post" rows="5" cols="80"
                         placeholder="Edit Wikipedia Information"></textarea>
 
+                    <button class="secondaryButton" onclick="gotoOverviewPage()" type="button">CANCEL</button>
+                    <button id="submitButton" class="primaryButton" type="button">SUBMIT</button>
                     <button onclick="resetInputForm()" type="button">reset</button>
-                    <button onclick="gotoOverviewPage()" type="button">cancel</button>
-                    <button id="submitButton" type="button">submit2</button>
+
                 </form>
             </div>
         </main>

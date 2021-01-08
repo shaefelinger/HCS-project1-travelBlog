@@ -35,6 +35,33 @@ button:focus {
   display: none !important;
 }
 
+.secondaryButton {
+  background-color: #white;
+  border: 2px solid #155e39;
+  color: #155e39;
+  /* padding: 0.6rem 2rem;
+  margin: 1rem 0;
+  width: 190px; */
+}
+
+.primaryButton {
+  color: white;
+  background-color: #155e39;
+  border: 2px solid #155e39;
+
+  /* padding: 0.6rem 2rem;
+  margin: 1rem 0;
+  width: 180px; */
+}
+
+button {
+  padding: 0.6rem 2rem;
+  margin: 1rem 0;
+  width: 160px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
 /* ========================================================================== */
 /* MAIN-PAGE LAYOUT */
 /* ========================================================================== */
@@ -388,6 +415,19 @@ button:focus {
   width: 100%;
 }
 
+.detailsTopContainer {
+  display: flex;
+  /* justify-content: space-between; */
+  width: 850px;
+}
+
+.detailsInfoContainer {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
 .detailsArticle {
   width: 90%;
   color: #333;
@@ -395,31 +435,57 @@ button:focus {
 
 .detailsArticle p {
   color: #666;
+  margin-bottom: 4px;
+  margin-top: 30px;
 }
 
 .detailsArticle h2 {
-  margin-bottom: 2rem;
-  font-size: 3rem;
-  color: #333;
+  /* margin-bottom: 2rem; */
+  font-size: 2.4rem;
+  color: #222;
+}
+
+.detailsArticle h3 {
+  color: #444;
 }
 
 .detailsImg2 {
   border-radius: 50%;
-  background-color: green;
   /* width: 50%; */
-  height: 300px;
-  width: 300px;
+  height: 350px;
+  width: 350px;
   background-repeat: no-repeat;
   background-size: cover;
   /* background-clip: content-box; */
   background-position: center;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 }
 
+/* watch & weather  */
+#watchContainer {
+  font-size: 0.7rem;
+}
+
+.watchDisplay {
+  font-size: 1.4rem;
+  color: #333;
+}
+
+#weatherContainer {
+  font-size: 0.7rem;
+}
+
+#weatherContainer p {
+  margin-bottom: -12px;
+}
+
+/* map  */
 #map {
   height: 420px;
   width: 100%;
-  margin: 2rem 0 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  /* margin: 2rem 0 3rem; */
 }
 
 /* DETAILS-PAGE RESPONSIVE */
@@ -531,22 +597,6 @@ textarea {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
-}
-
-/* watch & weather */
-/* ========================================================================== */
-
-#watchContainer {
-  font-size: 0.7rem;
-}
-
-.watchDisplay {
-  font-size: 1.4rem;
-  color: #333;
-}
-
-#weatherContainer {
-  font-size: 0.7rem;
 }
 
 /* ========================================================================== */
