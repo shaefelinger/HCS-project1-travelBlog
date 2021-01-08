@@ -1,5 +1,6 @@
 * burger menu
-
+* style details page
+* style add new post page
 
     * check error of weather?
 * cleanup css & code - comments
@@ -12,8 +13,12 @@
 * evtl. links: google, wiki, reiseportal?
 
 * check other browsers
+    -> image steffen
 * check: wann werden neue fenster geöffnet?
 * documentation
+
+* upload to github
+* deploy from github
 
 ---
 

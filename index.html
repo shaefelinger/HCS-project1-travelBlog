@@ -5,17 +5,15 @@
     <meta charset="utf-8" />
     <title>Exercise 1</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
-    <script src="https://kit.fontawesome.com/3bc63d2309.js" crossorigin="anonymous"></script>
 
+    <script src="https://kit.fontawesome.com/3bc63d2309.js" crossorigin="anonymous"></script>
     <script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs"
         type="text/javascript"></script>
-
     <link rel="stylesheet" href="css/style.css">
-</head>
 
-<body>
-
-    <!-- ===== SVGs FOR STAR-RATING ===== -->
+    <!-- ========================================================================== -->
+    <!-- SVGs FOR STAR-RATING  -->
+    <!-- ========================================================================== -->
     <svg id="stars" style="display: none;" version="1.1">
         <symbol id="stars-full-star" viewBox="0 0 102 18">
             <path
@@ -58,12 +56,18 @@
             <use xlink:href="#stars-all-star" fill="#e9ba26" />
         </symbol>
     </svg>
+</head>
 
+<body>
+    <!-- Main-Container - Grid -->
     <div class="container">
+        <!-- ========================================================================== -->
+        <!-- HEADER  -->
+        <!-- ========================================================================== -->
         <header class="header">
             <a id="companyName" href="./index.html">
                 <img class="worldLogo" src="./assets/world.png" alt="logo">
-                <span class="pageTitle">Around the World</span>
+                <span>Around the World</span>
             </a>
             <nav>
                 <a id="gotoOverviewLink" onclick="gotoOverviewPage()" class="active">overview</a>
@@ -75,28 +79,36 @@
             </nav>
         </header>
 
+        <!-- ========================================================================== -->
+        <!-- MAIN-CONTENT  -->
+        <!-- ========================================================================== -->
         <main class="main">
             <div class="bannerPanel mainBanner" id="bannerImage">
                 <p class="bannerText" id="bannerTitle">The Travel-Blog</p>
                 <button onclick="gotoAboutPage()" id="bannerButton">about</button>
             </div>
 
-            <!-- THIS CONTAINS THE DYNAMIC CONTENT: -->
-            <div id="blogContainer"></div>
 
+            <!-- ========================================================================== -->
+            <!-- THIS CONTAINS THE DYNAMIC CONTENT: (Overview-Page, Details-Page, About-Page)-->
+            <div id="blogContainer"></div>
+            <!-- ========================================================================== -->
+
+            <!-- ========================================================================== -->
+            <!-- MAP PAGE  - default hidden -->
             <div id="overviewMapContainer">
                 <div id="overviewMap"></div>
             </div>
+            <!-- ========================================================================== -->
 
+            <!-- ========================================================================== -->
+            <!-- ADD NEW POST PAGE - default hidden -->
+            <!-- ========================================================================== -->
             <div class="formContainer">
-
-
                 <form action="" id="addPostForm" class="hidden">
-
                     <input id="searchTextField" type="search" size="50" placeholder="*Enter a location"
                         autocomplete="on">
                     <div id="locationIsOk">Enter Location...</div>
-                    <!-- <label for="searchTextField">Enter Location...</label> -->
                     <hr>
 
                     <input required type="text" placeholder="*Enter a Title for your post" id="titleField">
@@ -134,15 +146,14 @@
                     <button onclick="resetInputForm()" type="button">reset</button>
                     <button onclick="gotoOverviewPage()" type="button">cancel</button>
                     <button id="submitButton" type="button">submit2</button>
-                    <!-- <button id="submitButton" type="submit">submit</button> -->
                 </form>
             </div>
-
-
-
         </main>
+        <!-- ========================================================================== -->
 
-
+        <!-- ========================================================================== -->
+        <!-- FOOTER  -->
+        <!-- ========================================================================== -->
         <footer class="footer" id="footer">
             <div class="companyLink">
                 <a href="#">
@@ -163,16 +174,9 @@
                     <i class="fab fa-instagram"></i>
                 </a>
             </div>
-
         </footer>
     </div>
-
-
     <script src='./js/app.js'></script>
-    <!-- <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&callback=initMap&libraries=&v=weekly"
-        defer>
-        </script> -->
 </body>
 
 </html>

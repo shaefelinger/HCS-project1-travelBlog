@@ -383,7 +383,7 @@ function onSubmit(event) {
   }
   // check, if the entered place is valid
   if (currentPlace === 'noValidPlace') {
-    alert('Please enter a valid Location');
+    alert('Please select a Location from the list');
   } else {
     // -> is valid..
     const newEntry = {
