@@ -212,11 +212,11 @@ function gotoDetailsPage(id) {
 
   const newArticle = document.createElement('div');
 
-  newArticle.classList.add('blogpageArticle');
+  newArticle.classList.add('detailsArticle');
 
-  // this is the Page:
+  // this is the DETAILS-PAGE:
   newArticle.innerHTML = `
-  <div class="blogpageTextWrapper">
+  <div>
     <div id="weatherContainer"></div>
     <svg class="ratingContainer">
       <use xlink:href="#starRating${element.rating}">
@@ -226,7 +226,7 @@ function gotoDetailsPage(id) {
         <span class="watchDisplay">--:--:--</span>
       </p>
     </div> 
-    <h1>${element.name}</h1>
+    <h2>${element.name}</h2>
     <div>
         <h3>${element.postTitle}</h3>
         <p>${element.postDescription}</p>
@@ -236,18 +236,11 @@ function gotoDetailsPage(id) {
         <p>Visited in ${element.month} ${element.year}</p>
     </div>
     <button onclick="eraseEntryFromLocalStorage(${id})">Delete Entry</button>
-    <div class="blogpageArticeImage" 
-      style="background-image: url(${element.postImage2URL}); 
-      width: 75%;
-      height: 400px;
-      background-repeat: no-repeat;
-      background-size: 100%;
-      background-position: center;
-      margin-bottom: 2rem">
+    <div class="detailsImg2" 
+      style="background-image: url(${element.postImage2URL}); ">
     </div>
   </div>
   <div id="map">map</div>
-  <section class="blogpageBottom"></section>
   `;
 
   blogContainer.appendChild(newArticle);
@@ -533,9 +526,7 @@ function initOverviewMap() {
       <div class="infoWindow" onclick="gotoDetailsPage(${i})" style="width: 200px;">
         <h3>${location.name}</h3>
         <p>${location.postTitle}</p>
-        <div class="infoWindowImage" style="background-image: url(${location.postImage1URL});></div>
-        <figcaption>Click Image for Details"</figcaption>
-      </div>
+        <div class="infoWindowImage" style="background-image: url(${location.postImage1URL});"></div>
       </div>
       `,
     });
@@ -589,8 +580,8 @@ function gotoAboutPage() {
   bannerTitle.innerHTML = 'About this project';
 
   blogContainer.innerHTML = `
-  <div id="blogpageContainer">
-  <article class="blogpageArticle">
+  <div id="aboutContainer">
+    <div class="aboutArticle">
       <h2>Project 1 - Travel Blog</h2>
       <p>
           This is my contribution for the first Project for the Full-Stack Web Development-Course at the
@@ -606,24 +597,21 @@ function gotoAboutPage() {
           - Wikipedia<br>
           - Openweathermaps
       </p>
-
-  </article>
-</div>
-
-<section class="aboutBottom">
-  <div class="aboutAuthorInfo">
-      <div class="authorPic  aboutAuthorPic">
-          <img src="../assets/_Steffen square.png">
-      </div>
-      <p class="author">Steffen Häfelinger</p>
+    </div>
   </div>
-  <p class="aboutAuthorText">Steffen Häfelinger is a web developer located in Hamburg, Germany.
-      He is currently studying Full Stack Web Developement at
-      <a target="_blank" href="https://hamburgcodingschool.com/">Hamburg Coding School.</a>
-      He is also working as a professional Musician, Songwriter & Audio Engineer.
-  </p>
-</section>
-  
+  <section class="aboutBottom">
+    <div class="aboutAuthorInfo">
+        <div class="authorPic  aboutAuthorPic">
+            <img src="../assets/_Steffen square.png">
+        </div>
+        <p class="author">Steffen Häfelinger</p>
+    </div>
+    <p class="aboutAuthorText">Steffen Häfelinger is a web developer located in Hamburg, Germany.
+        He is currently studying Full Stack Web Developement at
+        <a target="_blank" href="https://hamburgcodingschool.com/">Hamburg Coding School.</a>
+        He is also working as a professional Musician, Songwriter & Audio Engineer.
+    </p>
+  </section>
   `;
 
   window.scrollTo(0, 0);

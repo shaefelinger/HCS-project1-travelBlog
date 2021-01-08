@@ -379,6 +379,10 @@ button:focus {
 }
 
 /* ========================================================================== */
+/* PAGE: DETAILS-PAGE  */
+/* ========================================================================== */
+
+/* ========================================================================== */
 /* PAGE: NEW POST Input Form  */
 /* ========================================================================== */
 
@@ -451,7 +455,6 @@ textarea {
 /* PAGE: Overview-Map */
 /* ========================================================================== */
 
-/* =========== */
 #overviewMap {
   height: 700px;
   width: 100%;
@@ -478,8 +481,7 @@ textarea {
   background-size: 100%;
 }
 
-/* ========================================================================== */
-/* watch */
+/* watch & weather */
 /* ========================================================================== */
 
 #watchContainer {
@@ -498,6 +500,12 @@ textarea {
 /* ========================================================================== */
 /* PAGE: About
 /* ========================================================================== */
+#aboutContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .authorPic img {
   border-radius: 50%;
   float: left;
@@ -543,9 +551,28 @@ p.author {
   margin-top: 3rem;
 }
 
+.aboutArticle {
+  width: 90%;
+  color: #333;
+}
+
+.aboutArticle p {
+  color: #666;
+}
+
+.aboutArticle h2 {
+  margin-bottom: 2rem;
+  /* font-size: 3rem;
+  color: #666; */
+}
+
 /* ABOUT RESPONSIVE */
 /* ========================================================================== */
 @media (min-width: 640px) {
+  #aboutContainer {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
   .aboutAuthorInfo {
     flex-direction: row;
   }
@@ -555,5 +582,9 @@ p.author {
     padding-right: 30%;
     text-align: center;
     margin-top: 2rem;
+  }
+
+  .aboutArticle {
+    width: 60%;
   }
 }
