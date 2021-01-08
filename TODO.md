@@ -1,11 +1,9 @@
 * burger menu
 
-* was soll der button im banner machen?
-
-
 
     * check error of weather?
 * cleanup css & code - comments
+
 * finetune layout -> responsive and design
 * evtl icon  in form
 

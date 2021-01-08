@@ -51,6 +51,7 @@ testIfStorageisEmpty();
 // reset Local Storage and add default entries
 function resetLocalStorage() {
   // showActiveLink(gotoResetAllLink);
+  console.log('-> Reset LocalStorage');
 
   if (confirm('Reset Local Storage to default! Are you sure?')) {
     localStorage.setItem('allLocations', JSON.stringify(blogPosts));
@@ -197,8 +198,8 @@ function onClick(object) {
 }
 
 function gotoDetailsPage(id) {
+  console.log('-> Details Page - ID:', id);
   showActiveLink(gotoOverviewLink);
-  console.log('Details Page:', id);
 
   blogContainer.innerHTML = '';
   blogContainer.classList.remove('hidden');
@@ -343,16 +344,12 @@ function initialize() {
   autocomplete.addListener('place_changed', () => {
     let place = autocomplete.getPlace();
 
-    // const googleDOMNodes = document.getElementsByClassName('pac-item');
-
-    let googlePlaceID = place.place_id;
+    // let googlePlaceID = place.place_id;
     if (place.photos) {
-      // => this is a valid location
+      // => this is a valid location, if photos exist
       // ==========================================================================
       console.log('complete Location');
-      // getGoogleInfoByPlaceId(googlePlaceID);
       currentPlace = place;
-      // console.log(place);
       getWiki(place.name);
       locationIsValid();
     } else {
@@ -368,9 +365,6 @@ function locationIsValid() {
   console.log('loc is valid:', currentPlace.photos);
   locationIsOk.innerHTML = 'Location is valid';
   searchTextField.setAttribute('disabled', true);
-  // searchTextField.style.color = '#111';
-  // searchTextField.style.border = '0px';
-  // searchTextField.style.paddingLeft = '0px';
   searchTextField.classList.add('fieldDisabled');
   titleField.focus();
 
@@ -378,58 +372,20 @@ function locationIsValid() {
   bannerTitle.innerHTML = `${currentPlace.name}`;
 }
 
-// // kann wahrscheinlihc weg
-// function getPhotosfromPlace(place) {
-//   console.log('jetzt die fotos', place.photos[0].photo_reference);
-//   console.log('jetzt die fotos', place.photos[1].photo_reference);
-
-//   imageurl1 =
-//     'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=' +
-//     place.photos[0].photo_reference +
-//     '&key=' +
-//     'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
-
-//   console.log(imageurl1);
-//   // let photo1 = fetch(
-//   //   proxyurl +
-//   //     `https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs&maxwidth=1600&photoreference=ATtYBwLgxMdmBtbvTRUi4Yo2yt6UmZ97af6AWDzYamZXmY1SCUqzeMt576DDztmoBJCBM8h_fvISOkrV6PU-tdIieVxKDE0x62EL9ITkWjyn9GSYSOrq9xX5cmnZX2pz4tpCbKeBKXHlMzgeg3UiTtjgLFywC2xe4QjTBwVdzkMzlnr1K5R9`
-//   // ).then((res) => {
-//   //   console.log(photo1);
-//   // });
-// }
-
 // ==========================================================================
 //  HANDLING OF NEW ENTRY
 // ==========================================================================
 
 function onSubmit(event) {
-  // console.log(descriptionField.value);
-
-  // console.log(titleField.value);
   if (!titleField.value) {
     alert('Please enter a Title');
     return;
   }
   // check, if the entered place is valid
-  // event.preventDefault();
-  // console.log(currentPlace.photos[0]);
   if (currentPlace === 'noValidPlace') {
     alert('Please enter a valid Location');
   } else {
-    // create and add new entry to Local Storage:
-
-    // const Image1URL =
-    //   'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=' +
-    //   currentPlace.photos[0].photo_reference +
-    //   '&key=' +
-    //   'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
-
-    // const Image2URL =
-    //   'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=' +
-    //   currentPlace.photos[1].photo_reference +
-    //   '&key=' +
-    //   'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
-
+    // -> is valid..
     const newEntry = {
       name: currentPlace.name,
       coords: currentPlace.geometry.location.toJSON(),
@@ -439,8 +395,6 @@ function onSubmit(event) {
       rating: ratingField.value,
       month: monthField.value,
       year: yearField.value,
-      // postImage1URL: Image1URL,
-      // postImage2URL: Image2URL,
       postImage1URL: currentPlace.photos[0].getUrl(),
       postImage2URL: currentPlace.photos[1].getUrl(),
       postAuthor: 'Guest',
@@ -466,10 +420,7 @@ function resetInputForm() {
   currentPlace = 'noValidPlace';
   bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
   bannerTitle.innerHTML = 'Add new post...';
-  // searchTextField.style.border = '10px';
   searchTextField.classList.remove('fieldDisabled');
-  // searchTextField.style.paddingLeft = '10.8px';
-  // alert('reset');
 }
 
 // ==========================================================================
@@ -489,23 +440,15 @@ function addWeatherToPage(temperature, iconUrl) {
 }
 
 function getWeather(coords) {
-  // fetch(
-  //   `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=80ab875a41f65bcfc23fdbad56346559&units=metric`
-  // )
-  // console.log(coords.lat);
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lng}&appid=80ab875a41f65bcfc23fdbad56346559&units=metric`
   )
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data);
-      // const weatherIcon = data.weather[0].icon;
       const iconUrl = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-      // console.log(iconUrl);
       const actualTemperature = Math.round(data.main.temp) + ' °C';
 
       addWeatherToPage(actualTemperature, iconUrl);
-      // return actualTemperature;
     })
     .catch((error) => {
       return 'Something went wrong...' + error;
@@ -522,24 +465,19 @@ function watch(offset) {
   var now = new Date(targetTime.getTime() + offset * 60 * 1000);
   now.setMinutes(now.getMinutes() + now.getTimezoneOffset());
 
-  const seconds = now.getUTCSeconds();
+  // const seconds = now.getUTCSeconds();
 
-  const mins = now.getUTCMinutes();
+  // const mins = now.getUTCMinutes();
 
-  const hour = now.getUTCHours();
+  // const hour = now.getUTCHours();
   const time = now.toLocaleTimeString('de', {
     hour12: false,
-    // hour: '2-digit',
-    // minute: '2-digit',
-    // second: '2-digit',
   });
 
-  // console.log(hour, mins, seconds, time);
   watchContainer.innerHTML = `
   <p>Local Time</br>
-  <span class="watchDisplay">${time}</span>
+    <span class="watchDisplay">${time}</span>
   </p>`;
-  // return `${hour}:${mins}:${seconds} - ${offset} - ${time}`;
 }
 
 // ==========================================================================
@@ -581,7 +519,8 @@ function removeUnwantedWiki(text) {
 // ==========================================================================
 // PAGE: ADD NEW POST
 // ==========================================================================
-function addPost() {
+function gotoAddPostPage() {
+  console.log('-> Add Post page');
   showActiveLink(gotoNewPostLink);
   blogContainer.innerHTML = '';
 
@@ -604,6 +543,7 @@ function addPost() {
 // ==========================================================================
 
 function gotoMapPage() {
+  console.log('-> Map Page');
   showActiveLink(gotoMapLink);
   // gotoMapLink.classList.add('active');
   initOverviewMap();
