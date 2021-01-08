@@ -1,3 +1,21 @@
+.authorPic img {
+  height: 40px;
+  border-radius: 50%;
+  float: left;
+  bottom: 0;
+  margin: 4px 16px 0 0;
+}
+
+/* .largePic img {
+  height: 120px;
+} */
+
+p.author {
+  color: #4a5568;
+  margin-top: 0.3rem;
+  display: inline-block;
+}
+
 .aboutAuthorPic img {
   height: 120px;
 }

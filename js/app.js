@@ -96,9 +96,7 @@ const overviewMapContainer = document.getElementById('overviewMap');
 const bannerImage = document.getElementById('bannerImage');
 const bannerTitle = document.getElementById('bannerTitle');
 const bannerButton = document.getElementById('bannerButton');
-// const bannerLink = document.getElementById('bannerLink');
 
-// input form for new entry -> Submit-Button-> call onSubmit()
 const addPostForm = document.getElementById('addPostForm');
 addPostForm.addEventListener('submit', onSubmit);
 
@@ -106,7 +104,7 @@ const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', onSubmit);
 
 // maybe not needed ???
-const locationIsOk = document.getElementById('locationIsOk');
+// const locationIsOk = document.getElementById('locationIsOk');
 
 const gotoOverviewLink = document.getElementById('gotoOverviewLink');
 const gotoMapLink = document.getElementById('gotoMapLink');
@@ -117,7 +115,6 @@ const gotoAboutPageLink = document.getElementById('gotoAboutPageLink');
 // ==========================================================================
 // SHOW ACTIVE LINK
 // ==========================================================================
-
 function showActiveLink(link) {
   gotoOverviewLink.classList.remove('active');
   gotoMapLink.classList.remove('active');
@@ -131,16 +128,15 @@ function showActiveLink(link) {
 // OVERVIEW-PAGE: Display all posts als cards
 // ==========================================================================
 
-// goto post overview-page
-// =======================
+// goto overview-page
+// ==========================================================================
 function gotoOverviewPage() {
   console.log('-> Overview Page');
   window.open('./index.html', '_self');
   showActiveLink(gotoOverviewLink);
-  // gotoOverviewLink.classList.add('active');
-  // overviewMapContainer.classList.remove('hidden');
 }
 
+// print all posts
 function printAllPosts() {
   blogContainer.innerHTML = '';
   const allLocations = localStorage.getItem('allLocations');
@@ -160,13 +156,7 @@ function printOnePost(element, index) {
   // this is the Card:
   newArticle.innerHTML = `
   <div class="overlayButton" id="${index}"></div>
-    <div class="blogImage" 
-      style="background-image: url(${element.postImage1URL}); 
-      width: 100%;
-      height: 200px;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 100%;">
+    <div class="blogImage" style="background-image: url(${element.postImage1URL});">
     </div>
     <div class="blogTextWrapper">
         <h2>${element.name}</h2>
@@ -363,7 +353,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 function locationIsValid() {
   console.log('loc is valid:', currentPlace.photos);
-  locationIsOk.innerHTML = 'Location is valid';
+  // locationIsOk.innerHTML = 'Location is valid';
   searchTextField.setAttribute('disabled', true);
   searchTextField.classList.add('fieldDisabled');
   titleField.focus();
@@ -413,7 +403,7 @@ function onSubmit(event) {
 
 function resetInputForm() {
   addPostForm.reset();
-  locationIsOk.innerHTML = 'Enter a Location';
+  // locationIsOk.innerHTML = 'Enter a Location';
   searchTextField.removeAttribute('disabled', true);
   searchTextField.focus();
   wikiField.innerHTML = '';
