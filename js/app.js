@@ -156,20 +156,19 @@ function printOnePost(element, index) {
   // this is the Card:
   newArticle.innerHTML = `
   <div class="overlayButton" id="${index}"></div>
-    <div class="blogImage" style="background-image: url(${element.postImage1URL});">
-    </div>
-    <div class="blogTextWrapper">
-        <h2>${element.name}</h2>
-        <h3>${element.postTitle}</h3>
-        <p>${overviewText}</p>
-    </div>
-    <div class="cardBottom">
-        <div>
-            <svg class="ratingContainer">
-              <use xlink:href="#starRating${element.rating}">
-            </svg>
-        </div>
-    </div>
+  <div class="blogImage" style="background-image: url(${element.postImage1URL});"></div>
+  <div class="blogTextWrapper">
+      <h2>${element.name}</h2>
+      <h3>${element.postTitle}</h3>
+      <p>${overviewText}</p>
+  </div>
+  <div class="cardBottom">
+      <div>
+          <svg class="ratingContainer">
+            <use xlink:href="#starRating${element.rating}">
+          </svg>
+      </div>
+  </div>
 `;
 
   blogContainer.appendChild(newArticle);
@@ -182,6 +181,8 @@ function printOnePost(element, index) {
 // ==========================================================================
 // DETAILS PAGE: DISPLAY SINGLE POST
 // ==========================================================================
+
+// if clicked on Card
 function onClick(object) {
   const id = object.srcElement.id;
   gotoDetailsPage(id);
@@ -212,25 +213,19 @@ function gotoDetailsPage(id) {
   const newArticle = document.createElement('div');
 
   newArticle.classList.add('blogpageArticle');
-  // <p id="weatherDisplay">Temperature: </p>
 
+  // this is the Page:
   newArticle.innerHTML = `
-  
-  
-
   <div class="blogpageTextWrapper">
-  <div id="weatherContainer"></div>
-  <svg class="ratingContainer">
-          <use xlink:href="#starRating${element.rating}">
-        </svg>
-        <div id="watchContainer">
-          <p>Local Time</br>  
-          <span class="watchDisplay">--:--:--</span>
-          </p>
-        </div>
- 
-
-
+    <div id="weatherContainer"></div>
+    <svg class="ratingContainer">
+      <use xlink:href="#starRating${element.rating}">
+    </svg>
+    <div id="watchContainer">
+      <p>Local Time</br>  
+        <span class="watchDisplay">--:--:--</span>
+      </p>
+    </div> 
     <h1>${element.name}</h1>
     <div>
         <h3>${element.postTitle}</h3>
@@ -238,11 +233,8 @@ function gotoDetailsPage(id) {
         <p>${element.wiki}</p>
     </div>
     <div>
-       
         <p>Visited in ${element.month} ${element.year}</p>
-       
     </div>
-    
     <button onclick="eraseEntryFromLocalStorage(${id})">Delete Entry</button>
     <div class="blogpageArticeImage" 
       style="background-image: url(${element.postImage2URL}); 
@@ -253,41 +245,13 @@ function gotoDetailsPage(id) {
       background-position: center;
       margin-bottom: 2rem">
     </div>
-
-
   </div>
   <div id="map">map</div>
-  <section class="blogpageBottom">
-  </section>
-`;
-
-  // <div class="">
-  //     <input required type="text" value="${element.postTitle}" id="titleEdit" style="width: 100%">
-  //     <textarea id="descriptionField" name="post" rows="5" cols="80" style="width: 100%">${element.postDescription}</textarea>
-  //     <textarea id="wikiEdit" name="post" rows="5" cols="80" style="width: 100%"
-  //         >${element.wiki}</textarea>
-  // </div>
-
-  {
-    /* <section class="blogpageShare">
-<h4>Share this article</h4>
-  <div>
-      <a href="#">
-          <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="#">
-          <i class="fab fa-twitter"></i>
-      </a>
-      <a href="#">
-          <i class="fab fa-linkedin"></i>
-      </a>
-  </div>
-</section> */
-  }
+  <section class="blogpageBottom"></section>
+  `;
 
   blogContainer.appendChild(newArticle);
   initMap(element.coords);
-  // getWeather(element.name);
   getWeather(element.coords);
   setInterval(watch, 1000, element.utc_offset);
 }
@@ -312,7 +276,7 @@ function initMap(coords) {
 }
 
 // ==========================================================================
-// location autocomplete for New Post-Page */
+// location autocomplete for Add Post-Page */
 // ==========================================================================
 
 let currentPlace = 'noValidPlace';
@@ -334,17 +298,14 @@ function initialize() {
   autocomplete.addListener('place_changed', () => {
     let place = autocomplete.getPlace();
 
-    // let googlePlaceID = place.place_id;
     if (place.photos) {
       // => this is a valid location, if photos exist
-      // ==========================================================================
       console.log('complete Location');
       currentPlace = place;
       getWiki(place.name);
       locationIsValid();
     } else {
       // -> inclomplete location
-      // ==========================================================================
       alert('Please select a Location from the list');
     }
   });
@@ -353,7 +314,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 function locationIsValid() {
   console.log('loc is valid:', currentPlace.photos);
-  // locationIsOk.innerHTML = 'Location is valid';
   searchTextField.setAttribute('disabled', true);
   searchTextField.classList.add('fieldDisabled');
   titleField.focus();
@@ -401,9 +361,10 @@ function onSubmit(event) {
   }
 }
 
+// Reset Form
+// ==========================================================================
 function resetInputForm() {
   addPostForm.reset();
-  // locationIsOk.innerHTML = 'Enter a Location';
   searchTextField.removeAttribute('disabled', true);
   searchTextField.focus();
   wikiField.innerHTML = '';
@@ -414,7 +375,7 @@ function resetInputForm() {
 }
 
 // ==========================================================================
-// WEATHER
+// Weather
 // ==========================================================================
 
 function addWeatherToPage(temperature, iconUrl) {
@@ -441,12 +402,12 @@ function getWeather(coords) {
       addWeatherToPage(actualTemperature, iconUrl);
     })
     .catch((error) => {
-      return 'Something went wrong...' + error;
+      console.error('Weather: Something went wrong: ' + error);
     });
 }
 
 // ==========================================================================
-// WATCH
+// Watch
 // ==========================================================================
 
 function watch(offset) {
@@ -455,11 +416,6 @@ function watch(offset) {
   var now = new Date(targetTime.getTime() + offset * 60 * 1000);
   now.setMinutes(now.getMinutes() + now.getTimezoneOffset());
 
-  // const seconds = now.getUTCSeconds();
-
-  // const mins = now.getUTCMinutes();
-
-  // const hour = now.getUTCHours();
   const time = now.toLocaleTimeString('de', {
     hour12: false,
   });
@@ -501,7 +457,7 @@ function getWiki(name) {
     });
 }
 
-/* remove the 'listen'-text from the wiki - only works, when inside () */
+/* remove the '(listen)'-text from the wiki - only works, when inside () */
 function removeUnwantedWiki(text) {
   return text.replaceAll('(listen)', '');
 }
@@ -519,7 +475,6 @@ function gotoAddPostPage() {
   bannerButton.innerText = '< Back';
   bannerButton.setAttribute('onclick', 'gotoOverviewPage()');
 
-  // bannerLink.setAttribute('href', './index.html');
   bannerTitle.innerHTML = 'Add new post...';
 
   addPostForm.classList.remove('hidden');
@@ -535,13 +490,11 @@ function gotoAddPostPage() {
 function gotoMapPage() {
   console.log('-> Map Page');
   showActiveLink(gotoMapLink);
-  // gotoMapLink.classList.add('active');
   initOverviewMap();
 
-  bannerImage.style.backgroundImage = `url(https://images.unsplash.com/photo-1498354178607-a79df2916198?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2002&q=80)`;
-  bannerButton.innerText = '< Back';
-  // bannerLink.setAttribute('href', './index.html');
-  bannerTitle.innerHTML = 'Map-Overview';
+  // bannerImage.style.backgroundImage = `url(https://images.unsplash.com/photo-1498354178607-a79df2916198?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2002&q=80)`;
+  // bannerButton.innerText = '< Back';
+  // bannerTitle.innerHTML = 'Map-Overview';
 
   blogContainer.classList.add('hidden');
   bannerImage.classList.add('hidden');
@@ -551,9 +504,8 @@ function gotoMapPage() {
   window.scrollTo(0, 0);
 }
 
-// CREATE THE MAP
+// Create the Overview-Map
 function initOverviewMap() {
-  const mapCenter = { lat: 53.5, lng: 9.9 };
   const options = {
     maxZoom: 10,
     mapTypeControl: false,
@@ -578,19 +530,11 @@ function initOverviewMap() {
 
     const infoWindow = new google.maps.InfoWindow({
       content: `
-      <div onclick="gotoDetailsPage(${i})" style="width: 200px;">
-      <h3>${location.name}</h3>
-      <p>${location.postTitle}</p>
-        <div
-          style="background-image: url(${location.postImage1URL});
-          width: 100%;
-          height: 120px;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: 100%;">
-        </div>
-        <p>Click Image for Details"</p>
-        
+      <div class="infoWindow" onclick="gotoDetailsPage(${i})" style="width: 200px;">
+        <h3>${location.name}</h3>
+        <p>${location.postTitle}</p>
+        <div class="infoWindowImage" style="background-image: url(${location.postImage1URL});></div>
+        <figcaption>Click Image for Details"</figcaption>
       </div>
       </div>
       `,

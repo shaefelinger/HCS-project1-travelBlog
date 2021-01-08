@@ -1,7 +1,7 @@
 @import 'sh_sanitize.css';
 /* @import 'card_style.css'; */
 @import 'blogpage_style.css';
-@import 'about_style.css';
+/* @import 'about_style.css'; */
 
 /* ========================================================================== */
 /* BASIC STYLING */
@@ -182,10 +182,6 @@ button:focus {
 .mainBanner {
   background-image: url('https://picsum.photos/id/116/1000/535');
 }
-
-/* #aboutBanner {
-  background-image: url('https://picsum.photos/id/123/1000/535');
-} */
 
 .bannerPanel {
   height: 200px;
@@ -465,6 +461,23 @@ textarea {
   justify-content: center;
 }
 
+.infoWindow:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.infoWindow {
+  height: 200px;
+}
+
+.infoWindowImage {
+  width: 100%;
+  height: 120px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
 /* ========================================================================== */
 /* watch */
 /* ========================================================================== */
@@ -483,5 +496,64 @@ textarea {
 }
 
 /* ========================================================================== */
-/* test */
+/* PAGE: About
 /* ========================================================================== */
+.authorPic img {
+  border-radius: 50%;
+  float: left;
+  bottom: 0;
+  margin: 4px 16px 0 0;
+  height: 120px;
+}
+
+p.author {
+  color: #4a5568;
+  margin-top: 0.3rem;
+  display: inline-block;
+}
+
+.aboutAuthorInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-left: 30%;
+  padding-right: 30%;
+  font-size: 0.8rem;
+  color: #888;
+  height: 100%;
+}
+
+.aboutAuthorInfo .author {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+
+.aboutAuthorText {
+  margin-top: 0;
+  padding: 0 15%;
+  font-size: 0.8rem;
+  color: #888;
+  height: 100%;
+  text-align: center;
+}
+
+.aboutBottom {
+  margin-top: 3rem;
+}
+
+/* ABOUT RESPONSIVE */
+/* ========================================================================== */
+@media (min-width: 640px) {
+  .aboutAuthorInfo {
+    flex-direction: row;
+  }
+
+  .aboutAuthorText {
+    padding-left: 30%;
+    padding-right: 30%;
+    text-align: center;
+    margin-top: 2rem;
+  }
+}
