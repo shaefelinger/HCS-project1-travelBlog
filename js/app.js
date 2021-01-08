@@ -20,7 +20,7 @@ const blogPosts = [
   {
     name: 'Zürich',
     coords: { lat: 47.3768866, lng: 8.541694 },
-    postTitle: 'Nice but expensive...',
+    postTitle: 'Nice but very expensive...',
     postDescription: '',
     rating: '3',
     month: 'May',
@@ -595,7 +595,7 @@ function gotoAboutPage() {
           the APIs: <br>
           - Google Maps <br>
           - Wikipedia<br>
-          - Openweathermaps
+          - Openweathermaps 
       </p>
     </div>
   </div>

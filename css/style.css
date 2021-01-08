@@ -614,6 +614,11 @@ p.author {
   color: #666; */
 }
 
+.aboutArticle a:hover,
+.aboutAuthorText a:hover {
+  text-decoration: underline;
+}
+
 /* ABOUT RESPONSIVE */
 /* ========================================================================== */
 @media (min-width: 640px) {
