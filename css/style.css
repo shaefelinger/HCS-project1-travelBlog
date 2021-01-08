@@ -404,10 +404,14 @@ button:focus {
 }
 
 .detailsImg2 {
-  width: 50%;
-  height: 400px;
+  border-radius: 50%;
+  background-color: green;
+  /* width: 50%; */
+  height: 300px;
+  width: 300px;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
+  /* background-clip: content-box; */
   background-position: center;
   margin-bottom: 2rem;
 }
