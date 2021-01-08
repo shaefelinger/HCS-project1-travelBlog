@@ -95,7 +95,7 @@ const overviewMapContainer = document.getElementById('overviewMap');
 const bannerImage = document.getElementById('bannerImage');
 const bannerTitle = document.getElementById('bannerTitle');
 const bannerButton = document.getElementById('bannerButton');
-const bannerLink = document.getElementById('bannerLink');
+// const bannerLink = document.getElementById('bannerLink');
 
 // input form for new entry -> Submit-Button-> call onSubmit()
 const addPostForm = document.getElementById('addPostForm');
@@ -132,7 +132,8 @@ function showActiveLink(link) {
 
 // goto post overview-page
 // =======================
-function gotoPostOverwiew() {
+function gotoOverviewPage() {
+  console.log('-> Overview Page');
   window.open('./index.html', '_self');
   showActiveLink(gotoOverviewLink);
   // gotoOverviewLink.classList.add('active');
@@ -192,10 +193,10 @@ function printOnePost(element, index) {
 // ==========================================================================
 function onClick(object) {
   const id = object.srcElement.id;
-  showDetailsPage(id);
+  gotoDetailsPage(id);
 }
 
-function showDetailsPage(id) {
+function gotoDetailsPage(id) {
   showActiveLink(gotoOverviewLink);
   console.log('Details Page:', id);
 
@@ -211,7 +212,8 @@ function showDetailsPage(id) {
 
   bannerImage.style.backgroundImage = `url(${element.postImage1URL})`;
   bannerButton.innerText = '< Back';
-  bannerLink.setAttribute('href', './index.html');
+  bannerButton.setAttribute('onclick', 'gotoOverviewPage()');
+  // bannerLink.setAttribute('href', './index.html');
   bannerTitle.innerHTML = element.name;
 
   window.scrollTo(0, 0);
@@ -586,7 +588,9 @@ function addPost() {
   bannerImage.classList.remove('hidden');
   bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
   bannerButton.innerText = '< Back';
-  bannerLink.setAttribute('href', './index.html');
+  bannerButton.setAttribute('onclick', 'gotoOverviewPage()');
+
+  // bannerLink.setAttribute('href', './index.html');
   bannerTitle.innerHTML = 'Add new post...';
 
   addPostForm.classList.remove('hidden');
@@ -599,14 +603,14 @@ function addPost() {
 // PAGE: OVERVIEW-MAP
 // ==========================================================================
 
-function overviewMapPage() {
+function gotoMapPage() {
   showActiveLink(gotoMapLink);
   // gotoMapLink.classList.add('active');
   initOverviewMap();
 
   bannerImage.style.backgroundImage = `url(https://images.unsplash.com/photo-1498354178607-a79df2916198?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2002&q=80)`;
   bannerButton.innerText = '< Back';
-  bannerLink.setAttribute('href', './index.html');
+  // bannerLink.setAttribute('href', './index.html');
   bannerTitle.innerHTML = 'Map-Overview';
 
   blogContainer.classList.add('hidden');
@@ -644,7 +648,7 @@ function initOverviewMap() {
 
     const infoWindow = new google.maps.InfoWindow({
       content: `
-      <div onclick="showDetailsPage(${i})" style="width: 200px;">
+      <div onclick="gotoDetailsPage(${i})" style="width: 200px;">
       <h3>${location.name}</h3>
       <p>${location.postTitle}</p>
         <div
@@ -694,6 +698,7 @@ overviewMapContainer.classList.add('hidden');
 // PAGE: ABOUT
 // ==========================================================================
 function gotoAboutPage() {
+  console.log('-> AboutPage');
   showActiveLink(gotoAboutPageLink);
   blogContainer.innerHTML = '';
   blogContainer.classList.remove('hidden');
@@ -704,7 +709,9 @@ function gotoAboutPage() {
   bannerImage.classList.remove('hidden');
   bannerImage.style.backgroundImage = `url(https://picsum.photos/id/123/1000/535)`;
   bannerButton.innerText = '< Back';
-  bannerLink.setAttribute('href', './index.html');
+  bannerButton.setAttribute('onclick', 'gotoOverviewPage()');
+
+  // bannerLink.setAttribute('href', './index.html');
   bannerTitle.innerHTML = 'About this project';
 
   blogContainer.innerHTML = `

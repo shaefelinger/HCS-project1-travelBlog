@@ -66,8 +66,8 @@
                 <span class="pageTitle">Around the World</span>
             </a>
             <nav>
-                <a id="gotoOverviewLink" onclick="gotoPostOverwiew()" class="active">overview</a>
-                <a id="gotoMapLink" onclick="overviewMapPage()">map</a>
+                <a id="gotoOverviewLink" onclick="gotoOverviewPage()" class="active">overview</a>
+                <a id="gotoMapLink" onclick="gotoMapPage()">map</a>
                 <a id="gotoNewPostLink" onclick="addPost()">+ new
                     post</a>
                 <a id="gotoResetAllLink" onclick="resetLocalStorage()" href="">reset all</a>
@@ -78,7 +78,7 @@
         <main class="main">
             <div class="bannerPanel mainBanner" id="bannerImage">
                 <p class="bannerText" id="bannerTitle">The Travel-Blog</p>
-                <a id="bannerLink" href="./subpages/about.html"><button id="bannerButton">about</button></a>
+                <button onclick="gotoAboutPage()" id="bannerButton">about</button>
             </div>
 
             <!-- THIS CONTAINS THE DYNAMIC CONTENT: -->
@@ -132,7 +132,7 @@
                         placeholder="Edit Wikipedia Information"></textarea>
 
                     <button onclick="resetInputForm()" type="button">reset</button>
-                    <button onclick="gotoPostOverwiew()" type="button">cancel</button>
+                    <button onclick="gotoOverviewPage()" type="button">cancel</button>
                     <button id="submitButton" type="button">submit2</button>
                     <!-- <button id="submitButton" type="submit">submit</button> -->
                 </form>

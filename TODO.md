@@ -1,18 +1,17 @@
-* evtl icon  in form
-* evtl. wetter nach koordinaten suchen
+* burger menu
 
-* about as dynamic content
-* style active links
+* was soll der button im banner machen?
+
+
 
     * check error of weather?
 * cleanup css & code - comments
 * finetune layout -> responsive and design
+* evtl icon  in form
 
 * icon and page title
-* burger menu
 
 * evtl. links: google, wiki, reiseportal?
-
 
 * check other browsers
 * check: wann werden neue fenster geöffnet?
