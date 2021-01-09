@@ -136,7 +136,7 @@ function onBurgerClick() {
 // ==========================================================================
 // SHOW ACTIVE LINK
 // ==========================================================================
-function showActiveLink(link) {
+function showActiveLink(link, sideLink) {
   gotoOverviewLink.classList.remove('active');
   gotoMapLink.classList.remove('active');
   gotoNewPostLink.classList.remove('active');
@@ -150,6 +150,7 @@ function showActiveLink(link) {
   gotoAboutPageSideMenu.classList.remove('active');
 
   link.classList.add('active');
+  sideLink.classList.add('active');
 }
 
 // ==========================================================================
@@ -161,7 +162,7 @@ function showActiveLink(link) {
 function gotoOverviewPage() {
   console.log('-> Overview Page');
   window.open('./index.html', '_self');
-  showActiveLink(gotoOverviewLink);
+  showActiveLink(gotoOverviewLink, gotoOverviewSideMenu);
 }
 
 // print all posts
@@ -218,7 +219,7 @@ function onClick(object) {
 
 function gotoDetailsPage(id) {
   console.log('-> Details Page - ID:', id);
-  showActiveLink(gotoOverviewLink);
+  showActiveLink(gotoOverviewLink, gotoOverviewSideMenu);
 
   blogContainer.innerHTML = '';
   blogContainer.classList.remove('hidden');
@@ -493,7 +494,7 @@ function removeUnwantedWiki(text) {
 // ==========================================================================
 function gotoAddPostPage() {
   console.log('-> Add Post page');
-  showActiveLink(gotoNewPostLink);
+  showActiveLink(gotoNewPostLink, gotoNewPostSideMenu);
   blogContainer.innerHTML = '';
 
   bannerImage.classList.remove('hidden');
@@ -515,7 +516,7 @@ function gotoAddPostPage() {
 
 function gotoMapPage() {
   console.log('-> Map Page');
-  showActiveLink(gotoMapLink);
+  showActiveLink(gotoMapLink, gotoMapSideMenu);
   initOverviewMap();
 
   // bannerImage.style.backgroundImage = `url(https://images.unsplash.com/photo-1498354178607-a79df2916198?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2002&q=80)`;
@@ -583,7 +584,7 @@ overviewMapContainer.classList.add('hidden');
 // ==========================================================================
 function gotoAboutPage() {
   console.log('-> AboutPage');
-  showActiveLink(gotoAboutPageLink);
+  showActiveLink(gotoAboutPageLink, gotoAboutPageSideMenu);
   blogContainer.innerHTML = '';
   blogContainer.classList.remove('hidden');
   bannerImage.classList.remove('hidden');

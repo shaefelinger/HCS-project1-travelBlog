@@ -209,7 +209,7 @@ button {
   text-transform: uppercase;
   font-size: 0.9rem;
   text-align: right;
-  border-radius: 15px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
