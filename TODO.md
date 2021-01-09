@@ -1,7 +1,8 @@
-* burger menu
+
 * watch checken -> display error
 * style details page
 * style add new post page
+make responsive: detals & add new post
 
     * check error of weather?
 * cleanup css & code - comments

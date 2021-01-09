@@ -92,6 +92,8 @@ function eraseEntryFromLocalStorage(id) {
 // GLOBAL variables & Get global elements from dom
 // ==========================================================================
 
+let watchID;
+
 const blogContainer = document.getElementById('blogContainer');
 const overviewMapContainer = document.getElementById('overviewMap');
 
@@ -279,7 +281,10 @@ function gotoDetailsPage(id) {
   blogContainer.appendChild(newArticle);
   initMap(element.coords);
   getWeather(element.coords);
-  setInterval(watch, 1000, element.utc_offset);
+
+  watchID = setInterval(watch, 1000, element.utc_offset);
+  console.log(watchID);
+  // startWatch(watch, element.utc_offset);
 }
 
 // add map to SinglePost
@@ -437,8 +442,17 @@ function getWeather(coords) {
 // Watch
 // ==========================================================================
 
+// const startWatch = setInterval(watch, 1000);
+// const stopWatch = clearInterval(startWatch);
+
 function watch(offset) {
   const watchContainer = document.getElementById('watchContainer');
+  console.log('WatchID', watchID);
+  if (watchContainer === null) {
+    clearInterval(watchID);
+    console.log('Watch stopped');
+    return;
+  }
   const targetTime = new Date();
   var now = new Date(targetTime.getTime() + offset * 60 * 1000);
   now.setMinutes(now.getMinutes() + now.getTimezoneOffset());
@@ -494,6 +508,7 @@ function removeUnwantedWiki(text) {
 // ==========================================================================
 function gotoAddPostPage() {
   console.log('-> Add Post page');
+
   showActiveLink(gotoNewPostLink, gotoNewPostSideMenu);
   blogContainer.innerHTML = '';
 
@@ -527,6 +542,8 @@ function gotoMapPage() {
   bannerImage.classList.add('hidden');
   addPostForm.classList.add('hidden');
   overviewMapContainer.classList.remove('hidden');
+
+  blogContainer.innerHTML = '';
 
   window.scrollTo(0, 0);
 }
