@@ -114,6 +114,25 @@ const gotoNewPostLink = document.getElementById('gotoNewPostLink');
 const gotoResetAllLink = document.getElementById('gotoResetAllLink');
 const gotoAboutPageLink = document.getElementById('gotoAboutPageLink');
 
+const gotoOverviewSideMenu = document.getElementById('gotoOverviewSideMenu');
+const gotoMapSideMenu = document.getElementById('gotoMapSideMenu');
+const gotoNewPostSideMenu = document.getElementById('gotoNewPostSideMenu');
+const gotoResetAllSideMenu = document.getElementById('gotoResetAllSideMenu');
+const gotoAboutPageSideMenu = document.getElementById('gotoAboutPageSideMenu');
+
+// ==========================================================================
+// BURGER MENU
+// ==========================================================================
+const burger = document.getElementById('burger');
+const sideMenu = document.getElementById('sideMenu');
+burger.addEventListener('click', onBurgerClick);
+sideMenu.addEventListener('click', onBurgerClick);
+
+function onBurgerClick() {
+  console.log('sdfsdf');
+  sideMenu.classList.toggle('sideMenu-hiding');
+}
+
 // ==========================================================================
 // SHOW ACTIVE LINK
 // ==========================================================================
@@ -123,6 +142,13 @@ function showActiveLink(link) {
   gotoNewPostLink.classList.remove('active');
   gotoResetAllLink.classList.remove('active');
   gotoAboutPageLink.classList.remove('active');
+
+  gotoOverviewSideMenu.classList.remove('active');
+  gotoMapSideMenu.classList.remove('active');
+  gotoNewPostSideMenu.classList.remove('active');
+  gotoResetAllSideMenu.classList.remove('active');
+  gotoAboutPageSideMenu.classList.remove('active');
+
   link.classList.add('active');
 }
 

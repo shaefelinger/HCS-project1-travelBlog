@@ -1,4 +1,5 @@
 * burger menu
+* watch checken -> display error
 * style details page
 * style add new post page
 

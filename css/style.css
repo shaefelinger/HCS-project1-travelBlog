@@ -168,15 +168,89 @@ button {
   transform: scale(1.1) translateY(-1px);
 }
 
+/* ========== NAV not shown on small screens ========== */
+.header nav {
+  display: none;
+}
+
+/* .header nav a {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #155e39;
+  margin: 0 1rem;
+  display: inline-block;
+  transition: color 800ms ease-in-out, transform 800ms ease-in-out;
+} */
+
+/* .header nav a:hover {
+  transform: scale(1.1) translateY(-1px);
+  color: #111;
+  transition: color 250ms ease-in-out, transform 250ms ease-in-out;
+} */
+
+/* BURGER-MENU for small screens */
+.header .burger {
+  display: block;
+  font-size: 1.2rem;
+}
+
+/* SIDE-MENU  */
+#sideMenu {
+  background-color: #fafafa;
+  display: block;
+  /* width: 320px; */
+  position: fixed;
+  right: 1rem;
+  top: 2rem;
+  /* height: 100%; */
+  z-index: 100000;
+  box-shadow: 5px 5px 5px #ccc;
+  transition: 1s;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  text-align: right;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* height: 180px; */
+  padding: 1rem;
+}
+
+#sideMenu a {
+  display: block;
+  padding: 0.4rem 0.4rem 0.4rem 3rem;
+  text-decoration: none;
+  color: #155e39;
+  transition: all 300ms ease-in-out;
+}
+
+#sideMenu a:hover {
+  /* font-weight: bold; */
+  background-color: #eee;
+  color: #111;
+}
+
+#sideMenu a.active {
+  /* font-weight: bold; */
+  background-color: #eee;
+  color: #111;
+}
+
+.sideMenu-hiding {
+  margin-right: -320px;
+  /* margin-right: 0; */
+}
+
 /* HEADER RESPONSIVE  */
 /* ========================================================================== */
 
 /* small 640px */
-@media (min-width: 640px) {
+@media (min-width: 800px) {
   .header nav a {
     display: inline-block;
     margin: 0 1rem;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .header nav a:hover {
@@ -184,10 +258,35 @@ button {
     color: #111;
     transition: color 250ms ease-in-out, transform 250ms ease-in-out;
   }
+
+  .header nav {
+    display: block;
+  }
+
+  .header .burger {
+    display: none;
+  }
+  #sideMenu {
+    display: none;
+  }
+}
+
+/* md 768px */
+@media (min-width: 880px) {
+  .header nav a {
+    font-size: 0.8rem;
+  }
 }
 
 /* lg 1024px */
 @media (min-width: 1024px) {
+  .header #companyName {
+    font-size: 2rem;
+  }
+}
+
+/* xl 1280px */
+@media (min-width: 1280px) {
   .header #companyName {
     font-size: 2.5rem;
   }
