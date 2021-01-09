@@ -590,10 +590,10 @@ button {
 /* DETAILS-PAGE RESPONSIVE */
 /* ========================================================================== */
 @media (min-width: 640px) {
-  #detailsContainer {
+  /* #detailsContainer {
     flex-wrap: wrap;
     flex-direction: row;
-  }
+  } */
   .detailsArticle {
     width: 60%;
   }

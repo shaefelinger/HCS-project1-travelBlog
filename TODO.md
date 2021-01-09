@@ -1,14 +1,12 @@
-
-* watch checken -> display error
+finetune layout -> responsive and design
 * style details page
 * style add new post page
-make responsive: detals & add new post
+* evtl icon  in form
+-> and make responsive: detals & add new post
 
-    * check error of weather?
 * cleanup css & code - comments
 
-* finetune layout -> responsive and design
-* evtl icon  in form
+
 
 * icon and page title
 

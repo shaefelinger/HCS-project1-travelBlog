@@ -434,7 +434,7 @@ function getWeather(coords) {
       addWeatherToPage(actualTemperature, iconUrl);
     })
     .catch((error) => {
-      console.error('Weather: Something went wrong: ' + error);
+      console.error('Weather: Something went wrong... ' + error);
     });
 }
 
@@ -447,7 +447,7 @@ function getWeather(coords) {
 
 function watch(offset) {
   const watchContainer = document.getElementById('watchContainer');
-  console.log('WatchID', watchID);
+  console.log('Watch - ID:  ', watchID);
   if (watchContainer === null) {
     clearInterval(watchID);
     console.log('Watch stopped');
@@ -552,6 +552,7 @@ function gotoMapPage() {
 function initOverviewMap() {
   const options = {
     maxZoom: 10,
+    minZoom: 2,
     mapTypeControl: false,
     streetViewControl: false,
   };
