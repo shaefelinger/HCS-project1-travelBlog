@@ -603,6 +603,13 @@ button {
 /* PAGE: NEW POST Input Form  */
 /* ========================================================================== */
 
+/* .inputIcon {
+  font-size: 2rem;
+  position: relative;
+  left: -390px;
+  color: #aaa;
+} */
+
 .formContainer {
   display: flex;
   justify-content: center;
@@ -610,12 +617,15 @@ button {
   align-items: center;
 }
 
-.formContainer input,
-.formContainer textarea {
+.formContainer input {
   margin-top: 1rem;
-  width: 100%;
+  width: 600px;
 }
 
+.formContainer textarea {
+  margin-top: 2rem;
+  width: 600px;
+}
 .formContainer button {
   width: 200px;
   margin: 0 2rem;
@@ -631,6 +641,8 @@ button {
 
 #ratingField {
   color: #777;
+  margin-top: 1rem;
+  height: 2.8rem;
 }
 
 label {
@@ -655,18 +667,23 @@ textarea {
 
 #searchTextField {
   font-size: 1.8rem;
+  /* padding-left: 3rem; */
   /* color: #333; */
+}
+
+#titleField {
+  font-size: 1.4rem;
 }
 
 #ratingField i {
   color: #155e39;
 }
 
-#locationIsOk {
+/* #locationIsOk {
   font-size: 0.6rem;
   color: #aaa;
   display: none;
-}
+} */
 
 /* ========================================================================== */
 /* PAGE: Overview-Map */

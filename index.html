@@ -119,13 +119,31 @@
             <!-- ========================================================================== -->
             <div class="formContainer">
                 <form action="" id="addPostForm" class="hidden">
-                    <input id="searchTextField" type="search" size="50" placeholder="*Enter a location"
-                        autocomplete="on">
+                    <input id="searchTextField" name="locationField" type="search" size="50"
+                        placeholder="*Enter a location" autocomplete="on">
+                    <!-- <i class="inputIcon fas fa-map-marker-alt"></i> -->
+                    <label for="locationField">*required </label>
                     <!-- <div id="locationIsOk">Enter Location...</div> -->
 
                     <hr>
 
-                    <input required type="text" placeholder="*Enter a Title for your post" id="titleField">
+                    <input required type="text" placeholder="*Enter a Title for your post" name="titleField"
+                        id="titleField">
+                    <label for="titleField">*required </label>
+
+                    <br>
+
+                    <select name="rating" id="ratingField">
+                        <option value="0" disabled="disabled" selected="selected">Enter Rating</option>
+                        <option class="star" value="1">★</option>
+                        <option value="2">★★</option>
+                        <option value="3">★★★</option>
+                        <option value="4">★★★★</option>
+                        <option value="5">★★★★★</option>
+                    </select>
+                    <label for="rating">Rate your trip </label>
+                    <br>
+
                     <label for="monthInput">Enter the Month and Year </label>
                     <select required name="monthInput" id="monthField">
                         <option value="January">January</option>
@@ -143,16 +161,11 @@
                     </select>
                     <input required class="yearInput" type="number" placeholder="Enter the year" value="2020" min="1900"
                         max="2100" id="yearField">
+
+
                     <textarea id="descriptionField" name="post" rows="5" cols="80"
                         placeholder="Enter a description about your trip"></textarea>
-                    <select name="rating" id="ratingField">
-                        <option value="0" disabled="disabled" selected="selected">Enter Rating</option>
-                        <option class="star" value="1">★</option>
-                        <option value="2">★★</option>
-                        <option value="3">★★★</option>
-                        <option value="4">★★★★</option>
-                        <option value="5">★★★★★</option>
-                    </select>
+
 
                     <textarea id="wikiField" name="post" rows="5" cols="80"
                         placeholder="Edit Wikipedia Information"></textarea>
