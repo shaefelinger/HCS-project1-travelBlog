@@ -94,6 +94,19 @@ function eraseEntryFromLocalStorage(id) {
 
 let watchID;
 
+let postImage1URL =
+  'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=80';
+let postImage2URL =
+  // 'https://images.unsplash.com/photo-1515622472995-1a06094d2224?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1600&q=80';
+  // 'https://images.unsplash.com/photo-1478860002487-680cc42afbeb?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=934&q=80';
+  // 'https://images.unsplash.com/photo-1473625247510-8ceb1760943f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2199&q=80  ';
+  // 'https://images.unsplash.com/photo-1483247416020-58799b6de4c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2251&q=80';
+  // 'https://images.unsplash.com/photo-1488628278511-2177a435414d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2251&q=80  ';
+  // 'https://images.unsplash.com/photo-1470472304068-4398a9daab00?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2250&q=80';
+  // 'https://images.unsplash.com/photo-1462043103994-3eb31d19a057?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2250&q=80';
+  // 'https://images.unsplash.com/photo-1488375634201-b85b28653a79?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=3146&q=80';
+  'https://images.unsplash.com/photo-1517842264405-72bb906a1936?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2250&q=80';
+
 const blogContainer = document.getElementById('blogContainer');
 const overviewMapContainer = document.getElementById('overviewMap');
 
@@ -329,7 +342,7 @@ function initialize() {
   autocomplete.addListener('place_changed', () => {
     let place = autocomplete.getPlace();
 
-    if (place.photos) {
+    if (place.place_id) {
       // => this is a valid location, if photos exist
       console.log('complete Location');
       currentPlace = place;
@@ -348,8 +361,10 @@ function locationIsValid() {
   searchTextField.setAttribute('disabled', true);
   searchTextField.classList.add('fieldDisabled');
   titleField.focus();
+  if (currentPlace.photos) {
+    bannerImage.style.backgroundImage = `url(${currentPlace.photos[0].getUrl()})`;
+  }
 
-  bannerImage.style.backgroundImage = `url(${currentPlace.photos[0].getUrl()})`;
   bannerTitle.innerHTML = `${currentPlace.name}`;
 }
 
@@ -367,6 +382,16 @@ function onSubmit(event) {
     alert('Please select a Location from the list');
   } else {
     // -> is valid..
+    // -> check, if photos are available.. or use fallback-photos
+    if (currentPlace.photos) {
+      if (currentPlace.photos[0]) {
+        postImage1URL = currentPlace.photos[0].getUrl();
+      }
+      if (currentPlace.photos[1]) {
+        postImage2URL = currentPlace.photos[1].getUrl();
+      }
+    }
+
     const newEntry = {
       name: currentPlace.name,
       longName: currentPlace.formatted_address,
@@ -377,8 +402,8 @@ function onSubmit(event) {
       rating: ratingField.value,
       month: monthField.value,
       year: yearField.value,
-      postImage1URL: currentPlace.photos[0].getUrl(),
-      postImage2URL: currentPlace.photos[1].getUrl(),
+      postImage1URL: postImage1URL,
+      postImage2URL: postImage2URL,
       postAuthor: 'Guest',
       wiki: wikiField.value,
       utc_offset: currentPlace.utc_offset_minutes,
@@ -585,6 +610,9 @@ function initOverviewMap() {
     marker.addListener('click', function () {
       infoWindow.open(overviewMap, marker);
     });
+    // marker.addListener('mouseleave', function () {
+    //   infoWindow.close(overviewMap, marker);
+    // });
 
     bounds.extend(location.coords);
   }
