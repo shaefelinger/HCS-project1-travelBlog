@@ -54,20 +54,20 @@ testIfStorageisEmpty();
 function resetLocalStorage() {
   // showActiveLink(gotoResetAllLink);
   console.log('-> Reset LocalStorage');
-
   if (confirm('Reset Local Storage to default! Are you sure?')) {
     localStorage.setItem('allLocations', JSON.stringify(blogPosts));
     window.open('./index.html', '_self');
   }
 }
 
-// add one new element to the  localStorage and print all posts
+// add one new element to the localStorage and print all posts
 function addToLocalStorage(newElement) {
   array = getArrayFromLocalStorage();
   array.push(newElement);
   pushArrayToLocalStorage(array);
   printAllPosts();
 }
+
 // get content of localStorage
 function getArrayFromLocalStorage() {
   let array = [];
@@ -92,21 +92,16 @@ function eraseEntryFromLocalStorage(id) {
 // GLOBAL variables & Get global elements from dom
 // ==========================================================================
 
+// watchID is needed to stop the watch after leaving the Details Page
 let watchID;
 
+// Fallback Images - in case google does not provide Images. -> eg. try to enter "Nuussuaq, Greenland" ;-)
 let postImage1URL =
   'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=80';
 let postImage2URL =
-  // 'https://images.unsplash.com/photo-1515622472995-1a06094d2224?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1600&q=80';
-  // 'https://images.unsplash.com/photo-1478860002487-680cc42afbeb?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=934&q=80';
-  // 'https://images.unsplash.com/photo-1473625247510-8ceb1760943f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2199&q=80  ';
-  // 'https://images.unsplash.com/photo-1483247416020-58799b6de4c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2251&q=80';
-  // 'https://images.unsplash.com/photo-1488628278511-2177a435414d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2251&q=80  ';
-  // 'https://images.unsplash.com/photo-1470472304068-4398a9daab00?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2250&q=80';
-  // 'https://images.unsplash.com/photo-1462043103994-3eb31d19a057?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2250&q=80';
-  // 'https://images.unsplash.com/photo-1488375634201-b85b28653a79?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=3146&q=80';
   'https://images.unsplash.com/photo-1517842264405-72bb906a1936?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2250&q=80';
 
+// Screen Elements
 const blogContainer = document.getElementById('blogContainer');
 const overviewMapContainer = document.getElementById('overviewMap');
 
@@ -120,9 +115,7 @@ addPostForm.addEventListener('submit', onSubmit);
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', onSubmit);
 
-// maybe not needed ???
-// const locationIsOk = document.getElementById('locationIsOk');
-
+// the Nav- and the Side-Menu-Items:
 const gotoOverviewLink = document.getElementById('gotoOverviewLink');
 const gotoMapLink = document.getElementById('gotoMapLink');
 const gotoNewPostLink = document.getElementById('gotoNewPostLink');
@@ -149,7 +142,8 @@ function onBurgerClick() {
 }
 
 // ==========================================================================
-// SHOW ACTIVE LINK
+// Show active link in Nav-Menu and Sidebar
+// i am sure there is a better solution to implement this...
 // ==========================================================================
 function showActiveLink(link, sideLink) {
   gotoOverviewLink.classList.remove('active');
@@ -172,15 +166,18 @@ function showActiveLink(link, sideLink) {
 // OVERVIEW-PAGE: Display all posts als cards
 // ==========================================================================
 
+//
 // goto overview-page
-// ==========================================================================
+//
 function gotoOverviewPage() {
   console.log('-> Overview Page');
   window.open('./index.html', '_self');
   showActiveLink(gotoOverviewLink, gotoOverviewSideMenu);
 }
 
+//
 // print all posts
+//
 function printAllPosts() {
   blogContainer.innerHTML = '';
   const allLocations = localStorage.getItem('allLocations');
@@ -189,7 +186,9 @@ function printAllPosts() {
 }
 printAllPosts();
 
-/* ***** ADD SINGLE POST AS CARD TO DOM ***** */
+//
+//  ADD SINGLE POST AS CARD TO DOM
+//
 function printOnePost(element, index) {
   const newArticle = document.createElement('div');
   newArticle.classList.add('blogPost');
@@ -226,12 +225,13 @@ function printOnePost(element, index) {
 // DETAILS PAGE: DISPLAY SINGLE POST
 // ==========================================================================
 
-// if clicked on Card
+// if clicked on Card in the Overview Page
 function onClick(object) {
   const id = object.srcElement.id;
   gotoDetailsPage(id);
 }
 
+// this shows the Details Page
 function gotoDetailsPage(id) {
   console.log('-> Details Page - ID:', id);
   showActiveLink(gotoOverviewLink, gotoOverviewSideMenu);
@@ -242,14 +242,12 @@ function gotoDetailsPage(id) {
   addPostForm.classList.add('hidden');
   overviewMapContainer.classList.add('hidden');
 
-  // const id = object.srcElement.id;
   const array = JSON.parse(localStorage.getItem('allLocations'));
   const element = array[id];
 
   bannerImage.style.backgroundImage = `url(${element.postImage1URL})`;
   bannerButton.innerText = '< Back';
   bannerButton.setAttribute('onclick', 'gotoOverviewPage()');
-  // bannerLink.setAttribute('href', './index.html');
   bannerTitle.innerHTML = element.name;
 
   window.scrollTo(0, 0);
@@ -296,11 +294,9 @@ function gotoDetailsPage(id) {
   getWeather(element.coords);
 
   watchID = setInterval(watch, 1000, element.utc_offset);
-  console.log(watchID);
-  // startWatch(watch, element.utc_offset);
 }
 
-// add map to SinglePost
+// add map to Details Page
 // ==========================================================================
 
 function initMap(coords) {
@@ -369,7 +365,7 @@ function locationIsValid() {
 }
 
 // ==========================================================================
-//  HANDLING OF NEW ENTRY
+//  HANDLING OF NEW ENTRY (after pressing the Submit Button)
 // ==========================================================================
 
 function onSubmit(event) {
@@ -392,6 +388,7 @@ function onSubmit(event) {
       }
     }
 
+    // create the new Entry
     const newEntry = {
       name: currentPlace.name,
       longName: currentPlace.formatted_address,
@@ -404,12 +401,11 @@ function onSubmit(event) {
       year: yearField.value,
       postImage1URL: postImage1URL,
       postImage2URL: postImage2URL,
-      postAuthor: 'Guest',
       wiki: wikiField.value,
       utc_offset: currentPlace.utc_offset_minutes,
     };
     addToLocalStorage(newEntry);
-    // hide and reset form and reset 'currentPlace'
+    // hide and reset form, reset 'currentPlace' and go back to Overview-Page
     addPostForm.reset();
     addPostForm.classList.add('hidden');
     currentPlace = 'noValidPlace';
@@ -438,12 +434,10 @@ function resetInputForm() {
 function addWeatherToPage(temperature, iconUrl) {
   const weatherContainer = document.getElementById('weatherContainer');
   weatherContainer.innerHTML = `
-  
   <p>Local Weather</p>
     <span id="weatherDisplay" class="watchDisplay">
     ${temperature} <img src="${iconUrl}" style="height: 4rem; width:auto;">
     </span>
-  
   `;
 }
 
@@ -466,9 +460,6 @@ function getWeather(coords) {
 // ==========================================================================
 // Watch
 // ==========================================================================
-
-// const startWatch = setInterval(watch, 1000);
-// const stopWatch = clearInterval(startWatch);
 
 function watch(offset) {
   const watchContainer = document.getElementById('watchContainer');
@@ -559,10 +550,6 @@ function gotoMapPage() {
   showActiveLink(gotoMapLink, gotoMapSideMenu);
   initOverviewMap();
 
-  // bannerImage.style.backgroundImage = `url(https://images.unsplash.com/photo-1498354178607-a79df2916198?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2002&q=80)`;
-  // bannerButton.innerText = '< Back';
-  // bannerTitle.innerHTML = 'Map-Overview';
-
   blogContainer.classList.add('hidden');
   bannerImage.classList.add('hidden');
   addPostForm.classList.add('hidden');
@@ -598,6 +585,7 @@ function initOverviewMap() {
       map: overviewMap,
     });
 
+    // info window
     const infoWindow = new google.maps.InfoWindow({
       content: `
       <div class="infoWindow" onclick="gotoDetailsPage(${i})" style="width: 200px;">
@@ -610,9 +598,6 @@ function initOverviewMap() {
     marker.addListener('click', function () {
       infoWindow.open(overviewMap, marker);
     });
-    // marker.addListener('mouseleave', function () {
-    //   infoWindow.close(overviewMap, marker);
-    // });
 
     bounds.extend(location.coords);
   }
@@ -621,8 +606,9 @@ function initOverviewMap() {
   overviewMap.fitBounds(bounds);
 }
 
-// ==========================================================================
+//
 // HIDE OVERVIEW MAP ON PAGE LOAD
+//
 overviewMapContainer.classList.add('hidden');
 
 // ==========================================================================
@@ -642,7 +628,6 @@ function gotoAboutPage() {
   bannerButton.innerText = '< Back';
   bannerButton.setAttribute('onclick', 'gotoOverviewPage()');
 
-  // bannerLink.setAttribute('href', './index.html');
   bannerTitle.innerHTML = 'About this project';
 
   blogContainer.innerHTML = `

@@ -646,9 +646,13 @@ button {
 }
 
 label {
-  /* font-size: 0.8rem; */
   color: #aaa;
   margin: 0;
+}
+
+.required {
+  font-size: 0.6rem;
+  /* background-color: #155e39; */
 }
 
 textarea {
@@ -667,6 +671,7 @@ textarea {
 
 #searchTextField {
   font-size: 1.8rem;
+  /* font-weight: 700; */
   /* padding-left: 3rem; */
   /* color: #333; */
 }
