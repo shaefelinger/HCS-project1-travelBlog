@@ -143,7 +143,7 @@ button:hover {
 
 @media (min-width: 640px) {
   #blogContainer {
-    /* display: flex; */
+    display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
@@ -533,7 +533,6 @@ button:hover {
 @media (min-width: 640px) {
   .blogPost {
     width: 40%;
-    /* width: 80%; */
     max-width: 600px;
   }
 }
@@ -776,9 +775,21 @@ textarea {
 }
 
 .fieldDisabled {
+  /* font-size: 1.9rem !important; */
+  /* color: #333 !important; */
+  /* font-weight: 800 !important; */
+  /* padding-bottom: 1rem; */
+  /* display: inline-block; */
+  /* height: 20px; */
+}
+
+#searchTextField:disabled {
   border: 0;
   padding-left: 0;
-  font-size: 2.4rem !important;
+  font-size: 1.9rem;
+  color: #111;
+  font-weight: 800;
+  /* opacity: 1; */
 }
 
 #titleField {
@@ -810,13 +821,13 @@ textarea {
 
 .infoWindow:hover {
   cursor: pointer;
-  /* transform: scale(0.98) translateY(-1px); */
+  /* transform: scale(0.98) translateY(1px); */
 }
 
 .infoWindow:hover * {
   /* text-decoration: underline; */
   /* color: #999; */
-  opacity: 0.8;
+  opacity: 0.85;
   /* color: black; */
 }
 
@@ -837,6 +848,7 @@ textarea {
   background-position: center;
   background-size: 100%;
 }
+
 .infoWindowImage:hover {
   /* transform: scale(0.95) translateY(-1px); */
   /* opacity: 0.8; */

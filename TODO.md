@@ -1,15 +1,8 @@
-
-* make info-window nice
-
+* check local images instead of lorempicsum?
+* responsive breakpoint for cards??
 * cleanup css & code - comments
 
-
-
-* icon and page title
-
 * check other browsers
-* check: wann werden neue fenster geöffnet?
-* write documentation/readme
 
 * upload to github
 * deploy from github
