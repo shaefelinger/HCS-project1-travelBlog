@@ -116,6 +116,7 @@ const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', onSubmit);
 
 const searchTextUnderline = document.getElementById('searchTextUnderline');
+const locationLabel = document.getElementById('locationLabel');
 
 // the Nav- and the Side-Menu-Items:
 const gotoOverviewLink = document.getElementById('gotoOverviewLink');
@@ -247,7 +248,7 @@ function gotoDetailsPage(id) {
   const array = JSON.parse(localStorage.getItem('allLocations'));
   const element = array[id];
 
-  bannerImage.style.backgroundImage = `url(${element.postImage1URL})`;
+  bannerImage.style.backgroundImage = `url(${element.postImage1URL})`; //  !!! use function!!!
   bannerButton.innerText = '< Back';
   bannerButton.setAttribute('onclick', 'gotoOverviewPage()');
   bannerTitle.innerHTML = element.name;
@@ -359,6 +360,7 @@ function locationIsValid() {
   searchTextField.setAttribute('disabled', true);
   searchTextField.classList.add('fieldDisabled');
   searchTextUnderline.classList.remove('hidden');
+  locationLabel.classList.add('hidden');
   titleField.focus();
   if (currentPlace.photos) {
     bannerImage.style.backgroundImage = `url(${currentPlace.photos[0].getUrl()})`;
@@ -429,6 +431,7 @@ function resetInputForm() {
   bannerTitle.innerHTML = 'Add new post...';
   searchTextField.classList.remove('fieldDisabled');
   searchTextUnderline.classList.add('hidden');
+  locationLabel.classList.remove('hidden');
 }
 
 // ==========================================================================

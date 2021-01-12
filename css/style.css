@@ -81,7 +81,7 @@ button:hover {
 .bannerPanel button {
   color: white;
   width: 160px;
-
+  height: 40px;
   /* padding: 0.4rem 2.5rem; */
   /* text-transform: uppercase; */
   letter-spacing: 0.3em;
@@ -365,7 +365,6 @@ button:hover {
   text-shadow: 0 0 10px black;
 }
 
-/* ========================================================================== */
 /* BANNER RESPONSIVE 
 /* ========================================================================== */
 
@@ -621,10 +620,12 @@ button:hover {
 /* ========================================================================== */
 
 #addPostForm {
-  width: 40%;
-  min-width: 600px;
+  /* width: 40%; */
+  /* min-width: 600px; */
+  max-width: 600px;
   /* color: red; */
   color: #333;
+  padding: 0 2rem;
 }
 
 input:focus,
@@ -665,12 +666,15 @@ input {
   justify-content: center;
   flex-direction: row;
   align-items: center;
+  /* background-color: aqua; */
+  /* width: 100%; */
 }
 
 .formContainer input,
 .formContainer textarea {
-  margin-top: 1rem;
-  width: 600px;
+  /* margin-top: 1rem; */
+  /* width: 600px; */
+  width: 100%;
 }
 
 /* .searchTextUnderline {
@@ -690,13 +694,19 @@ input {
 
 #ratingField {
   color: #777;
-  margin-top: 1rem;
-  /* height: 2.8rem; */
+  /* margin-top: 1rem; */
 }
 
 label {
-  color: #aaa;
+  color: #777;
   margin: 0;
+  /* height: 3rem;
+  display: inline-block; */
+  /* background-color: blueviolet; */
+  display: block;
+  /* padding-left: 6px; */
+  margin-top: 1rem;
+  font-size: 0.8rem;
 }
 
 .required {
@@ -711,10 +721,12 @@ textarea {
 #monthField,
 #yearField {
   width: 7rem;
+  margin-top: 0;
 }
 
 #searchTextField {
   font-size: 1.4rem;
+  margin-top: 0;
   /* font-weight: 700; */
   /* padding-left: 3rem; */
   /* color: #333; */
@@ -730,9 +742,9 @@ textarea {
   font-size: 1.4rem;
 }
 
-#ratingField i {
+/* #ratingField i {
   color: #155e39;
-}
+} */
 
 /* #locationIsOk {
   font-size: 0.6rem;
