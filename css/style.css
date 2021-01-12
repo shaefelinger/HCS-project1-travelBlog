@@ -816,8 +816,8 @@ textarea {
 .infoWindow:hover * {
   /* text-decoration: underline; */
   /* color: #999; */
-  opacity: 0.9;
-  color: black;
+  opacity: 0.8;
+  /* color: black; */
 }
 
 .infoWindow * {
@@ -839,7 +839,7 @@ textarea {
 }
 .infoWindowImage:hover {
   /* transform: scale(0.95) translateY(-1px); */
-  opacity: 0.8;
+  /* opacity: 0.8; */
 }
 
 /* ========================================================================== */
