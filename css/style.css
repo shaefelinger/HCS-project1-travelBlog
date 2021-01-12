@@ -810,11 +810,24 @@ textarea {
 
 .infoWindow:hover {
   cursor: pointer;
-  text-decoration: underline;
+  /* transform: scale(0.98) translateY(-1px); */
 }
 
+.infoWindow:hover * {
+  /* text-decoration: underline; */
+  /* color: #999; */
+  opacity: 0.9;
+  color: black;
+}
+
+.infoWindow * {
+  transition: all 500ms ease;
+}
+.infoWindow h3 {
+}
 .infoWindow {
   height: 200px;
+  transition: all 500ms ease;
 }
 
 .infoWindowImage {
@@ -823,6 +836,10 @@ textarea {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+}
+.infoWindowImage:hover {
+  /* transform: scale(0.95) translateY(-1px); */
+  opacity: 0.8;
 }
 
 /* ========================================================================== */
