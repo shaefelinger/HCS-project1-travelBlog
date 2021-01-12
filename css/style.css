@@ -451,11 +451,6 @@ button:hover {
   z-index: 20000;
 }
 
-.ratingContainer {
-  height: 1rem;
-  width: 85px;
-}
-
 /* Blog Card */
 /* ========================================================================== */
 
@@ -504,6 +499,11 @@ button:hover {
   color: #4a5568;
 }
 
+.ratingContainer {
+  height: 1rem;
+  width: 85px;
+}
+
 .cardBottom {
   padding: 1rem 2rem 2rem;
 }
@@ -529,25 +529,54 @@ button:hover {
   justify-content: center;
   /* width: 100%; */
   max-width: 600px;
+  background-color: #222;
 }
 
 .detailsTopContainer {
   display: flex;
-  /* flex-direction: column; */
-  /* justify-content: space-between; */
+  justify-content: space-between;
+  height: 240px;
+  /* flex-direction: column;   */
+  /* align-items: flex-end; */
   /* width: 850px; */
 }
 
 .detailsInfoContainer {
-  width: 450px;
   display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-around;
+  /* width: 450px; */
+  /* justify-content: flex-start;  */
+}
+
+.detailsImg2 {
+  /* position: relative; */
+  /* right: 0; */
+  /* float: right; */
+  /* border-radius: 50%; */
+  border-radius: 5px;
+
+  width: 100%;
+  /* height: max-content; */
+
+  /* margin-left: 50px !important; */
+  /* height: 350px;
+  width: 350px; */
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* background-clip: content-box; */
+  /* margin-bottom: 2rem; */
+
+  box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.3);
 }
 
 .detailsArticle {
   width: 90%;
   color: #333;
+  position: relative;
 }
 
 .detailsArticle p {
@@ -559,28 +588,17 @@ button:hover {
 .detailsArticle h2 {
   /* margin-bottom: 2rem; */
   font-size: 2.4rem;
-  color: #222;
+  color: #333;
 }
 
 .detailsArticle h3 {
   color: #444;
 }
 
-.detailsImg2 {
-  border-radius: 50%;
-  /* width: 50%; */
-  height: 350px;
-  width: 350px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* background-clip: content-box; */
-  background-position: center;
-  /* margin-bottom: 2rem; */
-}
-
 /* watch & weather  */
 #watchContainer {
   font-size: 0.7rem;
+  height: 100px;
 }
 
 .watchDisplay {
@@ -590,6 +608,8 @@ button:hover {
 
 #weatherContainer {
   font-size: 0.7rem;
+  height: 100px;
+  /* margin-top: -2rem; */
 }
 
 #weatherContainer p {

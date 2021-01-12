@@ -265,24 +265,27 @@ function gotoDetailsPage(id) {
   newArticle.innerHTML = `
     <div>
       <div class="detailsTopContainer">
-        <div class="detailsInfoContainer">
-          <div id="weatherContainer"></div>
-          <div id="watchContainer">
-            <p>Local Time</br>  
-              <span class="watchDisplay">--:--:--</span>
-            </p>
-          </div> 
-          <p>Visited in ${element.month} ${element.year}</p>
-          <svg class="ratingContainer">
-            <use xlink:href="#starRating${element.rating}">
-          </svg>
-          <h2>${element.longName}</h2>
-        </div>
+     
+   
         <div class="detailsImg2" 
           style="background-image: url(${element.postImage2URL}); ">
         </div>
       </div>  
       <div>
+      <div class="detailsInfoContainer">
+        <div id="weatherContainer"></div>
+        <div id="watchContainer">
+          <p>Local Time</br>  
+            <span class="watchDisplay">--:--:--</span>
+          </p>
+        </div> 
+     </div>
+      <h2>${element.longName}</h2>
+      <p>Visited in ${element.month} ${element.year}</p>
+      <svg class="ratingContainer">
+        <use xlink:href="#starRating${element.rating}">
+      </svg>
+
           <h3>${element.postTitle}</h3>
           <p>${element.postDescription}</p>
           <p >${element.wiki}</p>
