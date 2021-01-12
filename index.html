@@ -120,16 +120,13 @@
             <div class="formContainer">
                 <form action="" id="addPostForm" class="hidden">
                     <input id="searchTextField" name="locationField" type="search" size="50"
-                        placeholder="*Enter a location first" autocomplete="on">
+                        placeholder="*Enter a location" autocomplete="on">
                     <!-- <i class="inputIcon fas fa-map-marker-alt"></i> -->
-                    <label class="required" for="locationField">*required </label>
                     <!-- <div id="locationIsOk">Enter Location...</div> -->
 
                     <hr>
 
-                    <input required type="text" placeholder="*Enter a Title for your post" name="titleField"
-                        id="titleField">
-                    <label class="required" for="titleField">*required </label>
+                    <input required type="text" placeholder="*Enter a Title" name="titleField" id="titleField">
 
                     <br>
 
@@ -164,15 +161,18 @@
                     <label for="monthInput">Enter the Date </label>
 
                     <textarea id="descriptionField" name="post" rows="5" cols="80"
-                        placeholder="Enter a description about your trip"></textarea>
+                        placeholder="Enter a description"></textarea>
 
 
                     <textarea id="wikiField" name="post" rows="5" cols="80"
                         placeholder="Edit Wikipedia Information"></textarea>
+                    <p class="required">* = required </p>
 
-                    <button class="secondaryButton" onclick="gotoOverviewPage()" type="button">CANCEL</button>
-                    <button id="submitButton" class="primaryButton" type="button">SUBMIT</button>
-                    <button onclick="resetInputForm()" type="button">reset</button>
+                    <div class="buttonContainer">
+                        <button class="primaryButton" id="submitButton" type="button">SUBMIT</button>
+                        <button class="secondaryButton" onclick="gotoOverviewPage()" type="button">CANCEL</button>
+                        <button class="resetButton" onclick="resetInputForm()" type="button">reset form</button>
+                    </div>
 
                 </form>
             </div>

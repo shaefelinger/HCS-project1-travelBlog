@@ -19,47 +19,103 @@ h4 {
   font-size: 1.4rem;
 }
 
-button {
-  margin: 0;
-  padding: 0;
-}
-
 input:focus,
 select:focus,
 textarea:focus,
-button:focus {
-  /* outline: none; */
+button:focus,
+a:focus {
+  outline: none;
+  box-shadow: 0 0 0px 1px #777;
+}
+
+input,
+select,
+textarea,
+button {
+  border-radius: 5px;
+}
+
+input,
+select {
+  height: 50px;
 }
 
 .hidden {
   display: none !important;
 }
 
-.secondaryButton {
-  background-color: #white;
-  border: 2px solid #155e39;
-  color: #155e39;
-  /* padding: 0.6rem 2rem;
-  margin: 1rem 0;
-  width: 190px; */
+/* 
+ * Buttons
+ */
+
+button {
+  padding: 0.6rem 2rem;
+  margin: 0.4rem 0;
+  width: 100%;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  font-weight: 700;
+  text-transform: uppercase;
+  /* border-radius: 5px; */
+  transition: all 100ms ease;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .primaryButton {
   color: white;
-  background-color: #155e39;
-  border: 2px solid #155e39;
-
-  /* padding: 0.6rem 2rem;
-  margin: 1rem 0;
-  width: 180px; */
+  background-color: hsl(150, 63%, 23%);
+  border: 2px solid hsl(150, 63%, 23%);
 }
 
-button {
-  padding: 0.6rem 2rem;
-  margin: 1rem 0;
+.primaryButton:hover {
+  background-color: hsl(150, 63%, 15%);
+}
+
+.secondaryButton {
+  background-color: #white;
+  /* border: 2px solid #155e39; */
+  border: 2px solid hsl(150, 63%, 23%);
+  color: #155e39;
+}
+
+.secondaryButton:hover {
+  background-color: hsla(0, 0%, 93%, 0.5);
+  /* border-color: hsl(150, 63%, 10%); */
+  /* color: hsl(150, 63%, 10%); */
+  /* border: 2px solid #155e39; */
+  /* color: #155e39; */
+}
+
+.resetButton {
+  color: #777;
+}
+
+.resetButton:hover {
+  color: #777;
+  background-color: hsla(0, 0%, 93%, 0.5);
+}
+
+.bannerPanel button {
+  color: white;
   width: 160px;
-  font-size: 0.8rem;
-  text-transform: uppercase;
+
+  /* padding: 0.4rem 2.5rem; */
+  /* text-transform: uppercase; */
+  letter-spacing: 0.3em;
+  font-weight: 700;
+  /* font-size: 0.8rem; */
+  border: solid 2px white;
+  transition: all 800ms ease;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 20px black;
+}
+
+.bannerPanel button:hover {
+  color: #111;
+  background-color: #fefefe;
 }
 
 /* ========================================================================== */
@@ -327,25 +383,6 @@ button {
   z-index: 1001;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   text-shadow: 0 0 10px black;
-}
-
-.bannerPanel button {
-  color: white;
-  padding: 0.4rem 2.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-size: 0.8rem;
-  font-weight: 700;
-  border: solid 2px white;
-  transition: all 800ms ease;
-  background-color: rgba(0, 0, 0, 0.4);
-  text-shadow: 0 0 20px black;
-}
-
-.bannerPanel button:hover {
-  color: #111;
-  background-color: white;
-  cursor: pointer;
 }
 
 /* ========================================================================== */
@@ -626,11 +663,11 @@ button {
   margin-top: 2rem;
   width: 600px;
 }
-.formContainer button {
+/* .formContainer button {
   width: 200px;
   margin: 0 2rem;
   align-self: center;
-}
+} */
 
 #addPostForm {
   width: 40%;
