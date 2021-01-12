@@ -1,8 +1,5 @@
-finetune layout -> responsive and design
-* style details page
-* style add new post page
-* evtl icon  in form
--> and make responsive: detals & add new post
+
+* make info-window nice
 
 * cleanup css & code - comments
 
@@ -10,12 +7,9 @@ finetune layout -> responsive and design
 
 * icon and page title
 
-* evtl. links: google, wiki, reiseportal?
-
 * check other browsers
-    -> image steffen
 * check: wann werden neue fenster geöffnet?
-* documentation
+* write documentation/readme
 
 * upload to github
 * deploy from github

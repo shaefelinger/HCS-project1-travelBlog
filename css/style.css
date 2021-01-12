@@ -349,6 +349,7 @@ button:hover {
   height: 200px;
   background-size: cover;
   background-position: center;
+
   margin: 2rem 0 3rem;
   display: flex;
   flex-direction: column;
@@ -365,6 +366,16 @@ button:hover {
   text-shadow: 0 0 10px black;
 }
 
+.bannerOverlay {
+  background-color: #222;
+  /* height: 200px;
+  margin: 2rem 0 3rem; */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* z-index: 1; */
+  opacity: 0.3;
+}
 /* BANNER RESPONSIVE 
 /* ========================================================================== */
 
@@ -375,13 +386,22 @@ button:hover {
 
   .bannerPanel {
     height: 335px;
+    /* margin: 2rem 2rem 3rem; */
+  }
+  .bannerOverlay {
+    height: 335px;
     margin: 2rem 2rem 3rem;
   }
+
+
 }
 
 /* large 1024px */
 @media (min-width: 1024px) {
   .bannerPanel {
+    height: 335px;
+  }
+  .bannerOverlay {
     height: 335px;
   }
 
@@ -535,7 +555,7 @@ button:hover {
 .detailsTopContainer {
   display: flex;
   justify-content: space-between;
-  height: 240px;
+  height: 440px;
   /* flex-direction: column;   */
   /* align-items: flex-end; */
   /* width: 850px; */
@@ -556,6 +576,7 @@ button:hover {
   /* float: right; */
   /* border-radius: 50%; */
   border-radius: 5px;
+  /* margin-top: 3rem; */
 
   width: 100%;
   /* height: max-content; */
@@ -634,6 +655,13 @@ button:hover {
   } */
   .detailsArticle {
     width: 60%;
+  }
+
+
+
+@media (min-width: 800px) {
+  .detailsImg2 {
+    margin-top: 2rem;
   }
 }
 

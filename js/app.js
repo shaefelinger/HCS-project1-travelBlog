@@ -265,21 +265,12 @@ function gotoDetailsPage(id) {
   newArticle.innerHTML = `
     <div>
       <div class="detailsTopContainer">
-     
-   
         <div class="detailsImg2" 
-          style="background-image: url(${element.postImage2URL}); ">
-        </div>
+        style="background-image: url(${element.postImage2URL}); ">
+      </div>
       </div>  
       <div>
-      <div class="detailsInfoContainer">
-        <div id="weatherContainer"></div>
-        <div id="watchContainer">
-          <p>Local Time</br>  
-            <span class="watchDisplay">--:--:--</span>
-          </p>
-        </div> 
-     </div>
+
       <h2>${element.longName}</h2>
       <p>Visited in ${element.month} ${element.year}</p>
       <svg class="ratingContainer">
@@ -289,12 +280,26 @@ function gotoDetailsPage(id) {
           <h3>${element.postTitle}</h3>
           <p>${element.postDescription}</p>
           <p >${element.wiki}</p>
+
+         
+
       </div>
-    <div>
-  </div>
+      <div class="detailsInfoContainer">
+      <div id="weatherContainer"></div>
+      <div id="watchContainer">
+        <p>Local Time</br>  
+          <span class="watchDisplay">--:--:--</span>
+        </p>
+      </div> 
+     
+   </div>
+
   <div id="map">map</div>
+ 
   <button  class="secondaryButton" onclick="eraseEntryFromLocalStorage(${id})">DELETE POST</button>
   <button  class="primaryButton" onclick="gotoOverviewPage()"> &lt; BACK</button>
+
+   
   `;
 
   blogContainer.appendChild(newArticle);
