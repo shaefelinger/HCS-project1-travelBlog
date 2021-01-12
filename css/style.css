@@ -392,8 +392,6 @@ button:hover {
     height: 335px;
     margin: 2rem 2rem 3rem;
   }
-
-
 }
 
 /* large 1024px */
@@ -649,15 +647,10 @@ button:hover {
 /* DETAILS-PAGE RESPONSIVE */
 /* ========================================================================== */
 @media (min-width: 640px) {
-  /* #detailsContainer {
-    flex-wrap: wrap;
-    flex-direction: row;
-  } */
   .detailsArticle {
     width: 60%;
   }
-
-
+}
 
 @media (min-width: 800px) {
   .detailsImg2 {
