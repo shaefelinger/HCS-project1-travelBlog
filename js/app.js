@@ -245,10 +245,12 @@ function gotoDetailsPage(id) {
   addPostForm.classList.add('hidden');
   overviewMapContainer.classList.add('hidden');
 
-  const array = JSON.parse(localStorage.getItem('allLocations'));
+  // const array = JSON.parse(localStorage.getItem('allLocations')); //  !!! use function!!!
+  const array = getArrayFromLocalStorage();
+
   const element = array[id];
 
-  bannerImage.style.backgroundImage = `url(${element.postImage1URL})`; //  !!! use function!!!
+  bannerImage.style.backgroundImage = `url(${element.postImage1URL})`;
   bannerButton.innerText = '< Back';
   bannerButton.setAttribute('onclick', 'gotoOverviewPage()');
   bannerTitle.innerHTML = element.name;
@@ -279,7 +281,7 @@ function gotoDetailsPage(id) {
         <div class="detailsImg2" 
           style="background-image: url(${element.postImage2URL}); ">
         </div>
-      </div>
+      </div>  
       <div>
           <h3>${element.postTitle}</h3>
           <p>${element.postDescription}</p>
