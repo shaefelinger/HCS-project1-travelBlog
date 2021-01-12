@@ -124,11 +124,34 @@
                     <!-- <i class="inputIcon fas fa-map-marker-alt"></i> -->
                     <!-- <div id="locationIsOk">Enter Location...</div> -->
 
-                    <hr>
+                    <hr id="searchTextUnderline" class="hidden">
 
                     <input required type="text" placeholder="*Enter a Title" name="titleField" id="titleField">
 
-                    <br>
+                    <!-- <br> -->
+
+
+
+                    <div class="dateContainer">
+                        <select required name="monthInput" id="monthField">
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="Oktober">Oktober</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                        <input required class="yearInput" type="number" placeholder="Enter the year" value="2020"
+                            min="1900" max="2100" id="yearField">
+                        <label for="monthInput">Enter the date of your trip</label>
+                    </div>
+                    <!-- <br> -->
 
                     <select name="rating" id="ratingField">
                         <option value="0" disabled="disabled" selected="selected">Enter Rating</option>
@@ -139,26 +162,7 @@
                         <option value="5">★★★★★</option>
                     </select>
                     <label for="rating">Rate your trip </label>
-                    <br>
-
-
-                    <select required name="monthInput" id="monthField">
-                        <option value="January">January</option>
-                        <option value="February">February</option>
-                        <option value="March">March</option>
-                        <option value="April">April</option>
-                        <option value="May">May</option>
-                        <option value="June">June</option>
-                        <option value="July">July</option>
-                        <option value="August">August</option>
-                        <option value="September">September</option>
-                        <option value="Oktober">Oktober</option>
-                        <option value="November">November</option>
-                        <option value="December">December</option>
-                    </select>
-                    <input required class="yearInput" type="number" placeholder="Enter the year" value="2020" min="1900"
-                        max="2100" id="yearField">
-                    <label for="monthInput">Enter the Date </label>
+                    <!-- <br> -->
 
                     <textarea id="descriptionField" name="post" rows="5" cols="80"
                         placeholder="Enter a description"></textarea>

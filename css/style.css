@@ -19,27 +19,6 @@ h4 {
   font-size: 1.4rem;
 }
 
-input:focus,
-select:focus,
-textarea:focus,
-button:focus,
-a:focus {
-  outline: none;
-  box-shadow: 0 0 0px 1px #777;
-}
-
-input,
-select,
-textarea,
-button {
-  border-radius: 5px;
-}
-
-input,
-select {
-  height: 50px;
-}
-
 .hidden {
   display: none !important;
 }
@@ -58,6 +37,7 @@ button {
   text-transform: uppercase;
   /* border-radius: 5px; */
   transition: all 100ms ease;
+  height: 50px;
 }
 
 button:hover {
@@ -640,11 +620,44 @@ button:hover {
 /* PAGE: NEW POST Input Form  */
 /* ========================================================================== */
 
-/* .inputIcon {
-  font-size: 2rem;
-  position: relative;
-  left: -390px;
-  color: #aaa;
+#addPostForm {
+  width: 40%;
+  min-width: 600px;
+  /* color: red; */
+  color: #333;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+a:focus {
+  outline: none;
+  box-shadow: 0 0 0px 1px #777;
+}
+
+input,
+select,
+textarea,
+button {
+  border-radius: 5px;
+}
+
+input,
+select {
+  height: 50px;
+}
+
+input {
+  display: block;
+}
+
+.dateContainer * {
+  display: inline;
+}
+
+/* select {
+  display: inline;
 } */
 
 .formContainer {
@@ -654,32 +667,31 @@ button:hover {
   align-items: center;
 }
 
-.formContainer input {
+.formContainer input,
+.formContainer textarea {
   margin-top: 1rem;
   width: 600px;
 }
 
-.formContainer textarea {
+/* .searchTextUnderline {
+  display: none;
+} */
+
+/* .formContainer textarea {
   margin-top: 2rem;
   width: 600px;
-}
+} */
+
 /* .formContainer button {
   width: 200px;
   margin: 0 2rem;
   align-self: center;
 } */
 
-#addPostForm {
-  width: 40%;
-  min-width: 600px;
-  /* color: red; */
-  color: #333;
-}
-
 #ratingField {
   color: #777;
   margin-top: 1rem;
-  height: 2.8rem;
+  /* height: 2.8rem; */
 }
 
 label {
@@ -696,21 +708,22 @@ textarea {
   resize: none;
 }
 
-.fieldDisabled {
-  border: 0;
-  padding-left: 0;
-}
-
 #monthField,
 #yearField {
   width: 7rem;
 }
 
 #searchTextField {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   /* font-weight: 700; */
   /* padding-left: 3rem; */
   /* color: #333; */
+}
+
+.fieldDisabled {
+  border: 0;
+  padding-left: 0;
+  font-size: 2.4rem !important;
 }
 
 #titleField {

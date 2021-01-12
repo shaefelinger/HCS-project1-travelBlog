@@ -115,6 +115,8 @@ addPostForm.addEventListener('submit', onSubmit);
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', onSubmit);
 
+const searchTextUnderline = document.getElementById('searchTextUnderline');
+
 // the Nav- and the Side-Menu-Items:
 const gotoOverviewLink = document.getElementById('gotoOverviewLink');
 const gotoMapLink = document.getElementById('gotoMapLink');
@@ -356,6 +358,7 @@ function locationIsValid() {
   console.log('loc is valid:', currentPlace.photos);
   searchTextField.setAttribute('disabled', true);
   searchTextField.classList.add('fieldDisabled');
+  searchTextUnderline.classList.remove('hidden');
   titleField.focus();
   if (currentPlace.photos) {
     bannerImage.style.backgroundImage = `url(${currentPlace.photos[0].getUrl()})`;
@@ -425,6 +428,7 @@ function resetInputForm() {
   bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
   bannerTitle.innerHTML = 'Add new post...';
   searchTextField.classList.remove('fieldDisabled');
+  searchTextUnderline.classList.add('hidden');
 }
 
 // ==========================================================================
