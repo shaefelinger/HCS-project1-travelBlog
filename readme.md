@@ -15,9 +15,10 @@ The page is fully responsive.
 It uses no frameworks, just vanilla HTML, CSS and Javascript. It is just a single HTML-Page and all content is added and removed via Javascript.
 
 All data is stored in the Local Storage of the Browser, the App fetches information from the following APIs:
-\- Google Maps
-\- Wikipedia
-\- Openweathermaps
+
+- Google Maps
+- Wikipedia
+- Openweathermaps
 
 There are 5 main pages: Overview-Page, Details-Page, Map-Page, +AddPost-page, and the About-Page: 
 
@@ -46,7 +47,7 @@ This shows all available information for that location:
 
 Shows all locations on a map. The zoom is automatically adapted to show all locations.
 
-Clicking on a marker opens a Info-popup for that location. Clicking on the popup opens the corresponding Details-Page. 
+Clicking on a marker opens an Info-popup for that location. Clicking on this popup opens the corresponding Details-Page. 
 
 ### +Add-Post-Page
 
