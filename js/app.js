@@ -640,7 +640,6 @@ function gotoAboutPage() {
   <div id="aboutContainer">
     <div class="aboutArticle">
       <h2>Project 1 - Travel Blog</h2>
-      <a href="https://github.com/shaefelinger/HCS-project1-travelBlog" target="_blank">This Project on Github</a>
 
       <p>
         This is my contribution for the first Project for the Full-Stack Web Development-Course at the
@@ -656,13 +655,17 @@ function gotoAboutPage() {
         - Wikipedia<br>
         - Openweathermaps 
       </p>
-        
+      <a href="https://github.com/shaefelinger/HCS-project1-travelBlog" target="_blank">
+        <i class="fab fa-github"></i>
+        This Project on Github
+      </a>
+  
     </div>
   </div>
   <section class="aboutBottom">
     <div class="aboutAuthorInfo">
       <div class="authorPic  aboutAuthorPic">
-        <img src="./assets/Steffen_square.png">
+        <img src="../assets/Steffen_square.png">
       </div>
       <p class="author">Steffen Häfelinger</p>
     </div>
