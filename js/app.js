@@ -534,7 +534,7 @@ function gotoAddPostPage() {
 
   bannerImage.classList.remove('hidden');
   // bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
-  bannerImage.style.backgroundImage = `url(../assets/addPostPic1000x535.jpg)`;
+  bannerImage.style.backgroundImage = `url(./assets/addPostPic1000x535.jpg)`;
   bannerButton.innerText = '< Back';
   bannerButton.setAttribute('onclick', 'gotoOverviewPage()');
 
