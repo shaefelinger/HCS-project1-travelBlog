@@ -654,6 +654,8 @@ function gotoAboutPage() {
         - Wikipedia<br>
         - Openweathermaps 
       </p>
+      <a href="https://github.com/shaefelinger/HCS-project1-travelBlog" target="_blank">This Project on Github</a>
+        
     </div>
   </div>
   <section class="aboutBottom">
