@@ -640,6 +640,8 @@ function gotoAboutPage() {
   <div id="aboutContainer">
     <div class="aboutArticle">
       <h2>Project 1 - Travel Blog</h2>
+      <a href="https://github.com/shaefelinger/HCS-project1-travelBlog" target="_blank">This Project on Github</a>
+
       <p>
         This is my contribution for the first Project for the Full-Stack Web Development-Course at the
         <a target="_blank" href="https://hamburgcodingschool.com/">Hamburg Coding School.</a>
@@ -654,7 +656,6 @@ function gotoAboutPage() {
         - Wikipedia<br>
         - Openweathermaps 
       </p>
-      <a href="https://github.com/shaefelinger/HCS-project1-travelBlog" target="_blank">This Project on Github</a>
         
     </div>
   </div>
