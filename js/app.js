@@ -659,7 +659,7 @@ function gotoAboutPage() {
   <section class="aboutBottom">
     <div class="aboutAuthorInfo">
       <div class="authorPic  aboutAuthorPic">
-        <img src="./assets/_Steffen square.png">
+        <img src="../assets/_Steffen square.png">
       </div>
       <p class="author">Steffen Häfelinger</p>
     </div>
