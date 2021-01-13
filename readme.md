@@ -6,6 +6,8 @@
 
 This Project was done as part of the Full-Stack Web Development-Course at the [Hamburg Coding School.](https://hamburgcodingschool.com/)
 
+The Page is live here: https://shaefelinger.github.io/HCS-project1-travelBlog/index.html
+
 ## Features
 
 The page is fully responsive.  
