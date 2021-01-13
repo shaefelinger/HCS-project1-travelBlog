@@ -707,8 +707,7 @@ textarea {
 .infoWindow * {
   transition: all 500ms ease;
 }
-.infoWindow h3 {
-}
+
 .infoWindow {
   height: 200px;
   transition: all 500ms ease;
@@ -720,9 +719,6 @@ textarea {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
-}
-
-.infoWindowImage:hover {
 }
 
 /* ========================================================================== */
