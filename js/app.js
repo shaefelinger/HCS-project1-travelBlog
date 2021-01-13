@@ -99,9 +99,6 @@ const bannerImage = document.getElementById('bannerImage');
 const bannerTitle = document.getElementById('bannerTitle');
 const bannerButton = document.getElementById('bannerButton');
 
-// const addPostForm = document.getElementById('addPostForm');
-// addPostForm.addEventListener('submit', onSubmit);
-
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', onSubmit);
 
@@ -203,16 +200,16 @@ function printOnePost(element, index) {
   <div class="overlayButton" id="${index}"></div>
   <div class="blogImage" style="background-image: url(${element.postImage1URL});"></div>
   <div class="blogTextWrapper">
-      <h2>${element.name}</h2>
-      <h3>${element.postTitle}</h3>
-      <p>${overviewText}</p>
+    <h2>${element.name}</h2>
+    <h3>${element.postTitle}</h3>
+    <p>${overviewText}</p>
   </div>
   <div class="cardBottom">
-      <div>
-          <svg class="ratingContainer">
-            <use xlink:href="#starRating${element.rating}">
-          </svg>
-      </div>
+    <div>
+      <svg class="ratingContainer">
+        <use xlink:href="#starRating${element.rating}">
+      </svg>
+    </div>
   </div>
 `;
 
@@ -244,9 +241,7 @@ function gotoDetailsPage(id) {
   addPostForm.classList.add('hidden');
   overviewMapContainer.classList.add('hidden');
 
-  // const array = JSON.parse(localStorage.getItem('allLocations')); //  !!! use function!!!
   const array = getArrayFromLocalStorage();
-
   const element = array[id];
 
   bannerImage.style.backgroundImage = `url(${element.postImage1URL})`;
@@ -264,41 +259,30 @@ function gotoDetailsPage(id) {
   newArticle.innerHTML = `
     <div>
       <div class="detailsTopContainer">
-        <div class="detailsImg2" 
-        style="background-image: url(${element.postImage2URL}); ">
+        <div class="detailsImg2" style="background-image: url(${element.postImage2URL}); ">
       </div>
-      </div>  
-      <div>
-
+    </div>  
+    <div>
       <h2>${element.longName}</h2>
       <p>Visited in ${element.month} ${element.year}</p>
       <svg class="ratingContainer">
         <use xlink:href="#starRating${element.rating}">
       </svg>
-
-          <h3>${element.postTitle}</h3>
-          <p>${element.postDescription}</p>
-          <p >${element.wiki}</p>
-
-         
-
-      </div>
-      <div class="detailsInfoContainer">
+      <h3>${element.postTitle}</h3>
+      <p>${element.postDescription}</p>
+      <p >${element.wiki}</p>
+    </div>
+    <div class="detailsInfoContainer">
       <div id="weatherContainer"></div>
       <div id="watchContainer">
         <p>Local Time</br>  
           <span class="watchDisplay">--:--:--</span>
         </p>
       </div> 
-     
-   </div>
-
+    </div>
   <div id="map">map</div>
- 
   <button  class="secondaryButton" onclick="eraseEntryFromLocalStorage(${id})">DELETE POST</button>
   <button  class="primaryButton" onclick="gotoOverviewPage()"> &lt; BACK</button>
-
-   
   `;
 
   blogContainer.appendChild(newArticle);
@@ -655,32 +639,32 @@ function gotoAboutPage() {
     <div class="aboutArticle">
       <h2>Project 1 - Travel Blog</h2>
       <p>
-          This is my contribution for the first Project for the Full-Stack Web Development-Course at the
-          <a target="_blank" href="https://hamburgcodingschool.com/">Hamburg Coding School.</a>
+        This is my contribution for the first Project for the Full-Stack Web Development-Course at the
+        <a target="_blank" href="https://hamburgcodingschool.com/">Hamburg Coding School.</a>
       </p>
       <p>
-          It uses no Frameworks, just vanilla HTML, CSS and Javascript.
+        It uses no Frameworks, just vanilla HTML, CSS and Javascript.
       </p>
       <p>
-          All Information is stored in the Local Sorage of the Browser, the App fetches information from
-          the APIs: <br>
-          - Google Maps <br>
-          - Wikipedia<br>
-          - Openweathermaps 
+        All Information is stored in the Local Sorage of the Browser, the App fetches information from
+        the APIs: <br>
+        - Google Maps <br>
+        - Wikipedia<br>
+        - Openweathermaps 
       </p>
     </div>
   </div>
   <section class="aboutBottom">
     <div class="aboutAuthorInfo">
-        <div class="authorPic  aboutAuthorPic">
-            <img src="./assets/_Steffen square.png">
-        </div>
-        <p class="author">Steffen Häfelinger</p>
+      <div class="authorPic  aboutAuthorPic">
+        <img src="./assets/_Steffen square.png">
+      </div>
+      <p class="author">Steffen Häfelinger</p>
     </div>
     <p class="aboutAuthorText">Steffen Häfelinger is a web developer located in Hamburg, Germany.
-        He is currently studying Full Stack Web Developement at
-        <a target="_blank" href="https://hamburgcodingschool.com/">Hamburg Coding School.</a>
-        He is also working as a professional Musician, Songwriter & Audio Engineer.
+      He is currently studying Full Stack Web Developement at
+      <a target="_blank" href="https://hamburgcodingschool.com/">Hamburg Coding School.</a>
+      He is also working as a professional Musician, Songwriter & Audio Engineer.
     </p>
   </section>
   `;
