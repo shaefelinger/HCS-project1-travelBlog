@@ -657,7 +657,7 @@ function gotoAboutPage() {
       </p>
       <a href="https://github.com/shaefelinger/HCS-project1-travelBlog" target="_blank">
         <i class="fab fa-github"></i>
-        This Project on Github
+        This project and documentation on Github
       </a>
   
     </div>
