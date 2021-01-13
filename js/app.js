@@ -628,7 +628,8 @@ function gotoAboutPage() {
   overviewMapContainer.classList.add('hidden');
 
   bannerImage.classList.remove('hidden');
-  bannerImage.style.backgroundImage = `url(https://picsum.photos/id/123/1000/535)`;
+  // bannerImage.style.backgroundImage = `url(https://picsum.photos/id/123/1000/535)`;
+  bannerImage.style.backgroundImage = `url(../assets/aboutPic1000x535.jpg)`;
   bannerButton.innerText = '< Back';
   bannerButton.setAttribute('onclick', 'gotoOverviewPage()');
 
