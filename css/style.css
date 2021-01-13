@@ -243,12 +243,12 @@ button:hover {
 /* HEADER RESPONSIVE  */
 /* ========================================================================== */
 
-/* small 640px */
-@media (min-width: 800px) {
+/* small 820px */
+@media (min-width: 820px) {
   .header nav a {
     display: inline-block;
     margin: 0 1rem;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   .header nav a:hover {
@@ -272,7 +272,7 @@ button:hover {
 /* md 768px */
 @media (min-width: 880px) {
   .header nav a {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }
 
