@@ -120,17 +120,14 @@
             <!-- ========================================================================== -->
             <div class="formContainer">
                 <form action="" id="addPostForm" class="hidden">
+
                     <label for="locationField" id="locationLabel">Enter a Location*</label>
                     <input id="searchTextField" name="locationField" type="search" size="50" placeholder=""
                         autocomplete="on">
-
-
                     <hr id="searchTextUnderline" class="hidden">
 
                     <label for="titleField">Enter a Title for the post*</label>
                     <input required type="text" placeholder="" name="titleField" id="titleField">
-
-                    <!-- <br> -->
 
                     <label for="monthInput">Enter the date of your trip</label>
                     <div class="dateContainer">
@@ -151,9 +148,8 @@
                         <input required class="yearInput" type="number" placeholder="Enter the year" value="2020"
                             min="1900" max="2100" id="yearField">
                     </div>
-                    <!-- <br> -->
-                    <label for="rating">Rate your trip </label>
 
+                    <label for="rating">Rate your trip </label>
                     <select name="rating" id="ratingField">
                         <option value="0" disabled="disabled" selected="selected">Enter Rating</option>
                         <option class="star" value="1">★</option>
@@ -162,7 +158,7 @@
                         <option value="4">★★★★</option>
                         <option value="5">★★★★★</option>
                     </select>
-                    <!-- <br> -->
+
                     <label for="descriptionField">Enter a description</label>
                     <textarea id="descriptionField" name="descriptionField" rows="6" cols="80"
                         placeholder=""></textarea>

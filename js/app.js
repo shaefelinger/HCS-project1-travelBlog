@@ -52,7 +52,6 @@ testIfStorageisEmpty();
 
 // reset Local Storage and add default entries
 function resetLocalStorage() {
-  // showActiveLink(gotoResetAllLink);
   console.log('-> Reset LocalStorage');
   if (confirm('Reset Local Storage to default! Are you sure?')) {
     localStorage.setItem('allLocations', JSON.stringify(blogPosts));
@@ -92,15 +91,6 @@ function eraseEntryFromLocalStorage(id) {
 // GLOBAL variables & Get global elements from dom
 // ==========================================================================
 
-// watchID is needed to stop the watch after leaving the Details Page
-let watchID;
-
-// Fallback Images - in case google does not provide Images. -> eg. try to enter "Nuussuaq, Greenland" ;-)
-let postImage1URL =
-  'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=80';
-let postImage2URL =
-  'https://images.unsplash.com/photo-1517842264405-72bb906a1936?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2250&q=80';
-
 // Screen Elements
 const blogContainer = document.getElementById('blogContainer');
 const overviewMapContainer = document.getElementById('overviewMap');
@@ -109,8 +99,8 @@ const bannerImage = document.getElementById('bannerImage');
 const bannerTitle = document.getElementById('bannerTitle');
 const bannerButton = document.getElementById('bannerButton');
 
-const addPostForm = document.getElementById('addPostForm');
-addPostForm.addEventListener('submit', onSubmit);
+// const addPostForm = document.getElementById('addPostForm');
+// addPostForm.addEventListener('submit', onSubmit);
 
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', onSubmit);
@@ -130,6 +120,15 @@ const gotoMapSideMenu = document.getElementById('gotoMapSideMenu');
 const gotoNewPostSideMenu = document.getElementById('gotoNewPostSideMenu');
 const gotoResetAllSideMenu = document.getElementById('gotoResetAllSideMenu');
 const gotoAboutPageSideMenu = document.getElementById('gotoAboutPageSideMenu');
+
+// watchID is needed to stop the watch after leaving the Details Page
+let watchID;
+
+// Fallback Images - in case google does not provide Images. -> eg. try to enter "Nuussuaq, Greenland" ;-)
+let postImage1URL =
+  'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=80';
+let postImage2URL =
+  'https://images.unsplash.com/photo-1517842264405-72bb906a1936?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2250&q=80';
 
 // ==========================================================================
 // BURGER MENU
