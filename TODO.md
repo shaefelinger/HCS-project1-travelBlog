@@ -1,4 +1,3 @@
-* check local images instead of lorempicsum?
 * responsive breakpoint for cards??
 * cleanup css & code - comments
 
