@@ -720,14 +720,15 @@ textarea {
 }
 
 .infoWindow {
-  height: 220px;
+  /* height: 220px; */
   padding: 0 10px;
 }
 
 .miniButton {
   font-size: 0.6rem;
-  height: 1rem;
-  padding: 0;
+  height: 2rem;
+  /* padding: 10px; */
+
   color: #555;
 }
 
