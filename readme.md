@@ -45,7 +45,7 @@ This shows all available information for that location:
 
 ### Map-Page
 
-Shows all locations on a map. The zoom is automatically adapted to show all locations.
+Shows all locations on a map. The zoom is automatically adapted to fit all locations.
 
 Clicking on a marker opens an Info-popup for that location. Clicking on this popup opens the corresponding Details-Page. 
 
@@ -53,7 +53,7 @@ Clicking on a marker opens an Info-popup for that location. Clicking on this pop
 
 Here you enter a new post. Location and Title are required, the rest is optional. 
 
-The Location-Field uses Googlemaps- Autocomplete.  After entering a valid location from the list, the Input-Field gets locked and the following Information is fetched:
+The Location-Field uses Googlemaps-Autocomplete.  After entering a valid location from the list, the Input-Field gets locked and the following Information is fetched:
 
 ###### From Googlemaps:
 
