@@ -4,7 +4,7 @@
 
 ## About this Project
 
-This Project was done as part of the Full-Stack Web Development-Course at the [Hamburg Coding School.](https://hamburgcodingschool.com/)
+This is my contribution for the first Project for the Full-Stack Web Development-Course at the [Hamburg Coding School.](https://hamburgcodingschool.com/)
 
 The Page is live here: https://shaefelinger.github.io/HCS-project1-travelBlog/index.html
 
@@ -89,4 +89,3 @@ GitHub: https://github.com/shaefelinger
 Facebook: https://www.facebook.com/steffen.hafelinger/
 
 Instagram: https://www.instagram.com/steffenhaefelinger/
-
