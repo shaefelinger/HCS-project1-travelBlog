@@ -88,4 +88,3 @@ GitHub: https://github.com/shaefelinger
 
 Facebook: https://www.facebook.com/steffen.hafelinger/
 
-Instagram: https://www.instagram.com/steffenhaefelinger/
