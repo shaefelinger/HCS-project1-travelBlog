@@ -202,7 +202,7 @@ button:hover {
 
 /* SIDE-MENU  */
 #sideMenu {
-  font-size: 1rem;
+  font-size: 1.1rem;
   padding: 1rem;
   text-align: right;
   text-transform: uppercase;
@@ -662,7 +662,7 @@ label {
   font-size: 0.8rem;
 }
 
-.required {
+.miniText {
   font-size: 0.6rem;
 }
 
@@ -720,7 +720,15 @@ textarea {
 }
 
 .infoWindow {
-  height: 200px;
+  height: 220px;
+  padding: 0 10px;
+}
+
+.miniButton {
+  font-size: 0.6rem;
+  height: 1rem;
+  padding: 0;
+  color: #555;
 }
 
 .infoWindowImage {

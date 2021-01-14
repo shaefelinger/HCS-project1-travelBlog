@@ -584,6 +584,7 @@ function initOverviewMap() {
         <h3>${location.name}</h3>
         <p>${location.postTitle}</p>
         <div class="infoWindowImage" style="background-image: url(${location.postImage1URL});"></div>
+        <button class="miniButton">read more</button>
       </div>
       `,
     });
