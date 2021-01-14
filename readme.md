@@ -51,7 +51,7 @@ Clicking on a marker opens an Info-popup for that location. Clicking on this pop
 
 ### +Add-Post-Page
 
-Here you enter a new post. Location and Title are required, the rest is optional. 
+Here you enter a new post. Location, Title and Date are required, the rest is optional. 
 
 The Location-Field uses Googlemaps-Autocomplete.  After entering a valid location from the list, the Input-Field gets locked and the following Information is fetched:
 
@@ -61,6 +61,7 @@ The Location-Field uses Googlemaps-Autocomplete.  After entering a valid locatio
 - The Location (lat, lng)
 - The Timezone
 - Name & Country
+- Place-ID
 
 ###### From Wikipedia:
 
@@ -87,4 +88,3 @@ Mail: mail@steffen-haefelinger.com
 GitHub: https://github.com/shaefelinger
 
 Facebook: https://www.facebook.com/steffen.hafelinger/
-

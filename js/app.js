@@ -423,7 +423,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 function locationIsValid() {
   console.log('loc is valid:', currentPlace.photos);
   searchTextField.setAttribute('disabled', true);
-  // searchTextField.setAttribute('type', 'text'); // just for safari
   searchTextUnderline.classList.remove('hidden');
   locationLabel.classList.add('hidden');
   titleField.focus();
@@ -493,7 +492,6 @@ function resetInputForm() {
   bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
   bannerTitle.innerHTML = 'Add new post...';
 
-  // searchTextField.setAttribute('type', 'search'); // just for Safari...
   searchTextUnderline.classList.add('hidden');
   locationLabel.classList.remove('hidden');
 }
@@ -645,7 +643,7 @@ function gotoAboutPage() {
       </p>
       <a href="https://github.com/shaefelinger/HCS-project1-travelBlog" target="_blank">
         <i class="fab fa-github"></i>
-        View this project and documentation on Github
+        View this project and the documentation on Github
       </a>
   
     </div>
