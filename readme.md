@@ -53,7 +53,7 @@ Clicking on a marker opens an Info-popup for that location. Clicking on this pop
 
 Here you enter a new post. Location and Title are required, the rest is optional. 
 
-The Location-Field uses Googlemaps-Autocomplete.  After entering a valid location from the list, the Input-Field gets locked and the following Information is fetched:
+The Location-Field uses Googlemaps-Autocomplete.  After entering a valid location from the list, the following Information is fetched:
 
 ###### From Googlemaps:
 

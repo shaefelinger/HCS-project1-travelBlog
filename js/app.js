@@ -422,7 +422,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 function locationIsValid() {
   console.log('loc is valid:', currentPlace.photos);
-  searchTextField.setAttribute('disabled', true);
+  // searchTextField.setAttribute('disabled', true);
   // searchTextField.setAttribute('type', 'text'); // just for safari
   searchTextUnderline.classList.remove('hidden');
   locationLabel.classList.add('hidden');
