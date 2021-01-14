@@ -68,7 +68,7 @@ The Location-Field uses Googlemaps-Autocomplete.  After entering a valid locatio
 
 ### Reset All
 
-Resets the Local Storage to 2 default values. This is also automatically done, if the Local Sorage is empty.
+Resets the Local Storage to 2 default values. This is also automatically done if the Local Storage is empty.
 
 ### About Page
 
