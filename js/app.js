@@ -424,19 +424,15 @@ function locationIsValid() {
   console.log('loc is valid:', currentPlace.photos);
   searchTextField.setAttribute('disabled', true);
   searchTextField.setAttribute('type', 'text');
-  // searchTextField.classList.add('fieldDisabled');
-
   searchTextUnderline.classList.remove('hidden');
   locationLabel.classList.add('hidden');
   titleField.focus();
   if (currentPlace.photos) {
     bannerImage.style.backgroundImage = `url(${currentPlace.photos[0].getUrl()})`;
   }
-
   bannerTitle.innerHTML = `${currentPlace.name}`;
 }
 
-// ==========================================================================
 //  HANDLING OF NEW ENTRY (after pressing the Submit Button)
 // ==========================================================================
 
@@ -502,7 +498,6 @@ function resetInputForm() {
   locationLabel.classList.remove('hidden');
 }
 
-// ==========================================================================
 // WIKI
 // ==========================================================================
 
