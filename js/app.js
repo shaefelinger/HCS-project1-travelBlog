@@ -88,7 +88,7 @@ function eraseEntryFromLocalStorage(id) {
 }
 
 // ==========================================================================
-// GLOBAL variables & Get global elements from dom
+// GLOBAL variables & Get elements from dom
 // ==========================================================================
 
 // Screen Elements
@@ -118,10 +118,10 @@ const gotoNewPostSideMenu = document.getElementById('gotoNewPostSideMenu');
 const gotoResetAllSideMenu = document.getElementById('gotoResetAllSideMenu');
 const gotoAboutPageSideMenu = document.getElementById('gotoAboutPageSideMenu');
 
-// watchID is needed to stop the watch after leaving the Details Page
+// watchID - is needed to stop the watch after leaving the Details Page
 let watchID;
 
-// Fallback Images - in case google does not provide Images. -> eg. try to enter "Nuussuaq, Greenland" ;-)
+// Fallback Images - in case google does not provide Images -> eg. try to enter "Nuussuaq, Greenland" ;-)
 let postImage1URL =
   'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=80';
 let postImage2URL =
@@ -136,7 +136,6 @@ burger.addEventListener('click', onBurgerClick);
 sideMenu.addEventListener('click', onBurgerClick);
 
 function onBurgerClick() {
-  console.log('sdfsdf');
   sideMenu.classList.toggle('sideMenu-hiding');
 }
 
@@ -179,9 +178,7 @@ function gotoOverviewPage() {
 //
 function printAllPosts() {
   blogContainer.innerHTML = '';
-  const allLocations = localStorage.getItem('allLocations');
-  allLocationsParsed = JSON.parse(allLocations);
-  allLocationsParsed.forEach(printOnePost);
+  getArrayFromLocalStorage().forEach(printOnePost);
 }
 printAllPosts();
 
@@ -252,7 +249,6 @@ function gotoDetailsPage(id) {
   window.scrollTo(0, 0);
 
   const newArticle = document.createElement('div');
-
   newArticle.classList.add('detailsArticle');
 
   // this is the DETAILS-PAGE:
@@ -311,7 +307,83 @@ function initMap(coords) {
   });
 }
 
+// Weather
 // ==========================================================================
+
+function addWeatherToPage(temperature, iconUrl) {
+  const weatherContainer = document.getElementById('weatherContainer');
+  weatherContainer.innerHTML = `
+  <p>Local Weather</p>
+    <span id="weatherDisplay" class="watchDisplay">
+    ${temperature} <img src="${iconUrl}" style="height: 4rem; width:auto;">
+    </span>
+  `;
+}
+
+function getWeather(coords) {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lng}&appid=80ab875a41f65bcfc23fdbad56346559&units=metric`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      const iconUrl = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+      const actualTemperature = Math.round(data.main.temp) + ' °C';
+
+      addWeatherToPage(actualTemperature, iconUrl);
+    })
+    .catch((error) => {
+      console.error('Weather: Something went wrong... ' + error);
+    });
+}
+
+// Watch
+// ==========================================================================
+
+function watch(offset) {
+  const watchContainer = document.getElementById('watchContainer');
+  console.log('Watch - ID:  ', watchID);
+  if (watchContainer === null) {
+    clearInterval(watchID);
+    console.log('Watch stopped');
+    return;
+  }
+  const targetTime = new Date();
+  var localTime = new Date(targetTime.getTime() + offset * 60 * 1000);
+  localTime.setMinutes(localTime.getMinutes() + localTime.getTimezoneOffset());
+
+  const timeString = localTime.toLocaleTimeString('de', {
+    hour12: false,
+  });
+
+  watchContainer.innerHTML = `
+  <p>Local Time</br>
+    <span class="watchDisplay">${timeString}</span>
+  </p>`;
+}
+
+// ==========================================================================
+// PAGE: ADD NEW POST
+// ==========================================================================
+function gotoAddPostPage() {
+  console.log('-> Add Post page');
+
+  showActiveLink(gotoNewPostLink, gotoNewPostSideMenu);
+  blogContainer.innerHTML = '';
+
+  bannerImage.classList.remove('hidden');
+  // bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
+  bannerImage.style.backgroundImage = `url(./assets/addPostPic1000x535.jpg)`;
+  bannerButton.innerText = '< Back';
+  bannerButton.setAttribute('onclick', 'gotoOverviewPage()');
+
+  bannerTitle.innerHTML = 'Add new post...';
+
+  addPostForm.classList.remove('hidden');
+  overviewMapContainer.classList.add('hidden');
+  window.scrollTo(0, 0);
+  searchTextField.focus();
+}
+
 // location autocomplete for Add Post-Page */
 // ==========================================================================
 
@@ -354,7 +426,6 @@ function locationIsValid() {
   searchTextField.setAttribute('type', 'text');
   // searchTextField.classList.add('fieldDisabled');
 
-  // searchTextField.style.fontSize = '2.4rem';
   searchTextUnderline.classList.remove('hidden');
   locationLabel.classList.add('hidden');
   titleField.focus();
@@ -432,62 +503,6 @@ function resetInputForm() {
 }
 
 // ==========================================================================
-// Weather
-// ==========================================================================
-
-function addWeatherToPage(temperature, iconUrl) {
-  const weatherContainer = document.getElementById('weatherContainer');
-  weatherContainer.innerHTML = `
-  <p>Local Weather</p>
-    <span id="weatherDisplay" class="watchDisplay">
-    ${temperature} <img src="${iconUrl}" style="height: 4rem; width:auto;">
-    </span>
-  `;
-}
-
-function getWeather(coords) {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lng}&appid=80ab875a41f65bcfc23fdbad56346559&units=metric`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      const iconUrl = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-      const actualTemperature = Math.round(data.main.temp) + ' °C';
-
-      addWeatherToPage(actualTemperature, iconUrl);
-    })
-    .catch((error) => {
-      console.error('Weather: Something went wrong... ' + error);
-    });
-}
-
-// ==========================================================================
-// Watch
-// ==========================================================================
-
-function watch(offset) {
-  const watchContainer = document.getElementById('watchContainer');
-  console.log('Watch - ID:  ', watchID);
-  if (watchContainer === null) {
-    clearInterval(watchID);
-    console.log('Watch stopped');
-    return;
-  }
-  const targetTime = new Date();
-  var now = new Date(targetTime.getTime() + offset * 60 * 1000);
-  now.setMinutes(now.getMinutes() + now.getTimezoneOffset());
-
-  const time = now.toLocaleTimeString('de', {
-    hour12: false,
-  });
-
-  watchContainer.innerHTML = `
-  <p>Local Time</br>
-    <span class="watchDisplay">${time}</span>
-  </p>`;
-}
-
-// ==========================================================================
 // WIKI
 // ==========================================================================
 
@@ -521,29 +536,6 @@ function getWiki(name) {
 /* remove the '(listen)'-text from the wiki - only works, when inside () */
 function removeUnwantedWiki(text) {
   return text.replaceAll('(listen)', '');
-}
-
-// ==========================================================================
-// PAGE: ADD NEW POST
-// ==========================================================================
-function gotoAddPostPage() {
-  console.log('-> Add Post page');
-
-  showActiveLink(gotoNewPostLink, gotoNewPostSideMenu);
-  blogContainer.innerHTML = '';
-
-  bannerImage.classList.remove('hidden');
-  // bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
-  bannerImage.style.backgroundImage = `url(./assets/addPostPic1000x535.jpg)`;
-  bannerButton.innerText = '< Back';
-  bannerButton.setAttribute('onclick', 'gotoOverviewPage()');
-
-  bannerTitle.innerHTML = 'Add new post...';
-
-  addPostForm.classList.remove('hidden');
-  overviewMapContainer.classList.add('hidden');
-  window.scrollTo(0, 0);
-  searchTextField.focus();
 }
 
 // ==========================================================================

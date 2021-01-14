@@ -12,7 +12,7 @@ The Page is live here: https://shaefelinger.github.io/HCS-project1-travelBlog/in
 
 The page is fully responsive.  
 
-It uses no frameworks, just vanilla HTML, CSS and Javascript. It is just a single HTML-Page and all content is added and removed via Javascript.
+It uses no frameworks, just vanilla HTML, CSS and Javascript. It's a single HTML-Page and all content is added and removed via Javascript.
 
 All data is stored in the Local Storage of the Browser, the App fetches information from the following APIs:
 
