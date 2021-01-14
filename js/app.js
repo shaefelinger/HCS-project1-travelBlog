@@ -423,7 +423,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 function locationIsValid() {
   console.log('loc is valid:', currentPlace.photos);
   searchTextField.setAttribute('disabled', true);
-  searchTextField.setAttribute('type', 'text'); // just for safari
+  // searchTextField.setAttribute('type', 'text'); // just for safari
   searchTextUnderline.classList.remove('hidden');
   locationLabel.classList.add('hidden');
   titleField.focus();
@@ -493,8 +493,7 @@ function resetInputForm() {
   bannerImage.style.backgroundImage = `url(https://picsum.photos/id/0/1000/535)`;
   bannerTitle.innerHTML = 'Add new post...';
 
-  searchTextField.setAttribute('type', 'search'); // just for Safari...
-  searchTextField.style.borderRadius = '5px'; // just for Safari mobile
+  // searchTextField.setAttribute('type', 'search'); // just for Safari...
   searchTextUnderline.classList.add('hidden');
   locationLabel.classList.remove('hidden');
 }
